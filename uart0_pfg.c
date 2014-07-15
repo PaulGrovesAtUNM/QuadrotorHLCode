@@ -32,31 +32,12 @@ DAMAGE.
 #include "uart.h"
 #include "irq.h"
 #include "hardware.h"
-//#include "gpsmath.h"
 #include "ssp.h"
 #include "sdk.h"
-//#include "ublox.h"
 
-struct {
-  signed short x;
-  signed short y;
-  signed short z;
-  signed short yaw;
-  signed short pitch;
-  signed short roll;
-} rawIn;
-
-struct {
-  float x;
-  float y;
-  float z;
-  float yaw;
-  float pitch;
-  float roll;
-} pose; 
+#include "UARTData.h"
 
 extern char updated;
-
 
 // IIR
 #define RX_DATA_AVAILABLE 0x40
@@ -90,6 +71,8 @@ extern char updated;
 
 //bool UART0_TX_ENABLED = 0;  //Not sending
 
+RingBuffer u0s, u0r; //Send / Receive ring buffers.
+
 // user uart
 void uart0ISR(void) __irq
 {
@@ -104,44 +87,25 @@ void uart0ISR(void) __irq
   LED(1,ON);
   LED(0,ON);
   // Handle UART interrupt
- f iir = U0IIR;
-  switch ((iir >> 1) & 0x7)
+  f iir = (U0IIR >> 1) & 0x7;
+  if ( iir & 0x2 )
   {
-      case 2://RX_DATA_AVAILABLE:
+      //case 2://RX_DATA_AVAILABLE:
       //case RX_CHAR_TIMEOUT: //Occurs if characters in buffer and no more have arrived.
-        // Read out all characters until the buffer is empty. 
-          // Expect: xxyyzzYYpprr
-          LED(1,OFF);
-          rawIn.x = U0RBR;
-          rawIn.x |= U0RBR << 8;
-          rawIn.y |= U0RBR;
-          rawIn.y |= U0RBR << 8;
-          rawIn.z |= U0RBR;
-          rawIn.z |= U0RBR << 8;
-          rawIn.yaw = U0RBR;
-          rawIn.yaw |= U0RBR << 8;
+        // Read out all characters until the buffer is empty.
 
-          while ( UART0_RX_EMPTY );
-          rawIn.yaw = U0RBR;
-          while ( UART0_RX_EMPTY );
-          rawIn.yaw |= U0RBR << 8;
-          while ( UART0_RX_EMPTY );
-          rawIn.pitch = U0RBR;
-          while ( UART0_RX_EMPTY );
-          rawIn.pitch |= U0RBR << 8;
-          while ( UART0_RX_EMPTY );
-          rawIn.roll = U0RBR;
-          while ( UART0_RX_EMPTY );
-          rawIn.roll |= U0RBR << 8;
           updated = 1;
           LED(0,OFF);
-		  break;
-      case 1://TX_BUFFER_EMPTY:
-      break;
-      default:
+        }
+	if ( iir & 0x1 ) //NEEDED:  HOW MANY CHARACTERS TO FILL THE TX BUFFER?
+//      case 1://TX_BUFFER_EMPTY, fill buffer.
+        while (RBbytes(&ub0s) && (U0LSR & 0x20))
+          U0THR = RBDequeue(&ub0s);
+  //    break;
+  //    default:
       //case 3:
         // RLS interrupt
-        break;
+  //      break;
       //case 6:
         // CTI interrupt
       //break;
@@ -164,14 +128,24 @@ void UART0Initialize(unsigned int baud)
   U0DLM = (divisor >> 8) & 0xFF;
   U0LCR &= ~0x80; /* Disable DLAB */
   U0FCR = FIFO_ENABLE | TL2; // Enable FIFO's, interrupt every 8 characters.
+  RBInit(&ub0s);
+  RBInit(&ub0r); //Send / Receive uart buffers.
   U0TER = 0x80; //Enable transmitter.
 }
 
 void UART0Debug(char *msg, int length)
 {
+
+  if ( U0LSR & 0x40 ) // Transmitter Empty, so we need to write directly to transmitter.
+  {
+    length--;
+    U0THR = *msg;
+    msg++;
+  }
+
   while (length > 0)
   {
-    UART0WriteChar(msg[0]);
+    RBEnqueue(&ub0s, *msg);
     msg++;
     length--;
   }
@@ -180,6 +154,8 @@ void UART0Debug(char *msg, int length)
 //Write to UART0
 void UART0WriteChar(unsigned char ch)
 {
-  while ((U0LSR & 0x20) == 0);
-  U0THR = ch;
+  if ( U0LSR & 0x40 ) // Transmitter Empty, so we need to write directly to transmitter.
+    U0THR = ch;
+  else
+    RBEnqueue(&ub0s, ch);
 }

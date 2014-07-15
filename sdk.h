@@ -30,7 +30,6 @@ DAMAGE.
 #define SDK_
 
 void SDK_mainloop(void);
-extern void rt_OneStep (void); //Matlab-Simulink code main
 extern unsigned char xbee_send_flag;
 
 
@@ -44,6 +43,7 @@ struct WO_SDK_STRUCT {
 
 	unsigned char disable_motor_onoff_by_stick; // if true, "minimum thrust + full yaw" command will not start/stop motors
 };
+
 extern struct WO_SDK_STRUCT WO_SDK;
 
 //--- read sensor data -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -117,20 +117,6 @@ struct RO_ALL_DATA {
 	 * motor[1]: rear
 	 * motor[2]: left
 	 * motor[3]: right
-	 *
-	 */
-
-	/*
-	 * Hexcopter (AscTec Firefly)
-	 *
-	 * measurement equals a real rpm of motor_rpm*64
-	 *
-	 * motor[0]: front-left
-	 * motor[1]: left
-	 * motor[2]: rear-left
-	 * motor[3]: rear-right
-	 * motor[4]: right
-	 * motor[5]: front-right
 	 *
 	 */
 	    unsigned char motor_rpm[6];
@@ -226,24 +212,6 @@ struct WO_DIRECT_INDIVIDUAL_MOTOR_CONTROL
 	 * motor[3]: right
 	 *
 	 */
-
-	/*
-	 * Hexcopter (AscTec Firefly -> Scorpion motors)
-	 *
-	 * motor commands equal a real commanded rpm of (25+(motor*175)/200)*50
-	 * please note that all fractions are removed during every calculation steps
-	 * e.g. motor = 100; means a turning speed of (25+ (100*175/200))*50=5600 rpm
-	 * Max. turning speed 10000 rpm
-	 *
-	 * motor[0]: front-left
-	 * motor[1]: left
-	 * motor[2]: rear-left
-	 * motor[3]: rear-right
-	 * motor[4]: right
-	 * motor[5]: front-right
-	 *
-	 */
-
 };
 extern struct WO_DIRECT_INDIVIDUAL_MOTOR_CONTROL WO_Direct_Individual_Motor_Control;
 

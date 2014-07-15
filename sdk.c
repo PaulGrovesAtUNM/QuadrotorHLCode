@@ -37,6 +37,10 @@ DAMAGE.
 #include "system.h"
 #include "lpc_aci_eeprom.h"
 
+#include "RingBuffer.h"
+#include "quadCommands.h"
+#include "quadComm.h"
+
 struct WO_SDK_STRUCT WO_SDK;
 struct WO_CTRL_INPUT WO_CTRL_Input;
 struct RO_RC_DATA RO_RC_Data;
@@ -50,10 +54,6 @@ unsigned char wpExampleActive=0;
 unsigned char emergencyMode;
 unsigned char emergencyModeUpdate=0;
 
-void SDK_EXAMPLE_direct_individual_motor_commands(void);
-void SDK_EXAMPLE_direct_motor_commands_with_standard_output_mapping(void);
-void SDK_EXAMPLE_attitude_commands(void);
-void SDK_EXAMPLE_gps_waypoint_control(void);
 int SDK_EXAMPLE_turn_motors_on(void);
 int SDK_EXAMPLE_turn_motors_off(void);
 
@@ -74,7 +74,7 @@ extern char newvals;
  * WO_(Write Only) data is written to the LL processor after
  * execution of this function.
  *
- * WO_ and RO_ structs are defined in sdk.h
+ * WO_ and RO_ strfucts are defined in sdk.h
  *
  * The struct RO_ALL_Data (defined in sdk.h)
  * is used to read all sensor data, results of the data fusion
@@ -143,41 +143,46 @@ extern char updated = 0;
 
 void SDK_mainloop(void)
 {
+	int i;
 	char dbgMsg[50];
+	char hdr; //Header character.
+	// If <=200 it's a direct motor command.
+	//  Else it's a command command.
 
+	if ( bytesAvailable() == 0 )
+		return; //Nothing to dFo.
 
+	hdr = getByte(&ub0r);
+	if ( hdr <= 200 )
+	{ //Direct motor commands sent.
 
-	//examples which show the different control modes
+		WO_SDK.ctrl_mode=0x00;	//0x00: direct individual motor control: individual commands for motors 0..3
+								//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
+								//0x02: attitude and throttle control: commands are input for standard attitude controller
+								//0x03: GPS waypoint control
 
-	//SDK_EXAMPLE_direct_individual_motor_commands();
-	//SDK_EXAMPLE_direct_motor_commands_with_standard_output_mapping();
-	//SDK_EXAMPLE_attitude_commands();
-	//SDK_EXAMPLE_gps_waypoint_control();
+		WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
+								//1: enable control by HL processor
 
-	//jeti telemetry can always be activated. You may deactivate this call if you don't use the AscTec Telemetry package.
-//	SDK_jetiAscTecExampleRun();
-	if ( newvals )
-	{
-		sprintf(dbgMsg, "(%f,%f,%f),[%f,%f,%f]\n\r",pose.x, pose.y, pose.z, pose.yaw, pose.pitch, pose.roll);
-		UART0Debug(dbgMsg,strlen(dbgMsg));
-		newvals = 0;
-	}
+		WO_SDK.disable_motor_onoff_by_stick = 0;
 
-	WO_SDK.ctrl_mode=0x00;	//0x00: direct individual motor control: individual commands for motors 0..3
-						//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
-							//0x02: attitude and throttle control: commands are input for standard attitude controller
-							//0x03: GPS waypoint control
+		for (i = 1; i < 4; i++ )
+			WO_Direct_Individual_Motor_Control.motor[0] = getByte();
+		WO_Direct_Individual_Motor_Control.motor[4] = RBDequeue();
+		WO_Direct_Individual_Motor_Control.motor[5] = 0;
+	} else {
+		switch (hdr)
+		{
+			case VERSION:
+				skipBytes(3); // Remove the 3 filler chars.
+				sendText( QUAD_VERSION );
+			break;
+			case DEBUGMODE:
+				DEBUGMODE = ( getBytes() != 0);
+				skipBytes(2);
+			break;			
+		}
 
-	WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-							//1: enable control by HL processor
-
-	WO_SDK.disable_motor_onoff_by_stick = 0;
-	WO_Direct_Individual_Motor_Control.motor[0] = 0;
-	WO_Direct_Individual_Motor_Control.motor[1] = 0;
-	WO_Direct_Individual_Motor_Control.motor[2] = 0;
-	WO_Direct_Individual_Motor_Control.motor[3] = 0;
-	WO_Direct_Individual_Motor_Control.motor[4] = 0;
-	WO_Direct_Individual_Motor_Control.motor[5] = 0;
 }
 
 

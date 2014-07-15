@@ -77,35 +77,21 @@ SRCARM += gpsmath.c
 SRCARM += sdk.c
 SRCARM += sdk_telemetry.c
 SRCARM += buzzer.c
-#Modified by PFG Begin
-#SRCARM += lpc_aci_eeprom.c
-#Modified by PFG End
-ifeq ($(MATLAB),1)
-SRCARM += $(wildcard ../custom_mdl/onboard_matlab_ert_rtw/*.c)
-endif
-# Modified by PFG Begin
-# SRCARM += asctecCommIntfOnboard.c
-# Modified by PFG End
 SRCARM += buildInfoSetup.c
+SRCARM += RingBuffer.c
 
 #Sources with interrupt routines in them
 SRCARMINT = $(TARGET).c
 SRCARMINT += hardware.c
 SRCARMINT += system.c
-# Modified by PFG Begin
-#SRCARMINT += uart.c
 SRCARMINT += uart0_pfg.c
 SRCARMINT += uart1_pfg.c
-# Modified by PFG End
 SRCARMINT += syscalls.c
 SRCARMINT += i2c.c
 SRCARMINT += i2c1.c
 SRCARMINT += Common_WinARM/src/irq.c
 SRCARMINT += adc.c
 SRCARMINT += ssp.c
-# Modified by PFG Begin
-#SRCARMINT += pelican_ptu.c
-# Modified by PFG End
 SRCARMINT += jetiTelemetry.c
 SRCARMINT += LPC2k_ee.c
 

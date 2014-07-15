@@ -73,24 +73,6 @@ volatile char SYSTEM_initialized=0;
 unsigned char DataOutputsPerSecond=10;
 unsigned short mainloop_overflows=0;
 
-extern struct {
-  signed short x;
-  signed short y;
-  signed short z;
-  signed short yaw;
-  signed short pitch;
-  signed short roll;
-} rawIn;
-
-extern struct {
-  float x;
-  float y;
-  float z;
-  float yaw;
-  float pitch;
-  float roll;
-} pose; 
-
 extern char updated;
 char newvals = 0;
 
@@ -98,21 +80,11 @@ void timer0ISR(void) __irq
 {
   T0IR = 0x01;      //Clear the timer 0 interrupt
 
-  if (updated)
-  {
-    pose.x =    (float)rawIn.x / 1000;
-    pose.y =    (float)rawIn.x / 1000;
-    pose.z =    (float)rawIn.x / 1000;
-    pose.yaw =  (float)rawIn.x / 1000;
-    pose.pitch =(float)rawIn.x / 1000;
-    pose.roll = (float)rawIn.x / 1000;
-    updated = 0;
-    newvals = 1;
-  }
-
   IENABLE;
+
+  // Performance Counter
   trigger_cnt++;
-  if(trigger_cnt==ControllerCyclesPerSecond)
+  if (trigger_cnt == ControllerCyclesPerSecond)
   {
   	trigger_cnt=0;
   	HL_Status.up_time++;
@@ -121,7 +93,8 @@ void timer0ISR(void) __irq
   	mainloop_cnt=0;
   }
 
-  if(mainloop_trigger<10) mainloop_trigger++;
+  if ( mainloop_trigger < 10 ) 
+    mainloop_trigger++;
 
   IDISABLE;
   VICVectAddr = 0;		// Acknowledge Interrupt
