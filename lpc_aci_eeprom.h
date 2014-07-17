@@ -3,7 +3,7 @@
 
 // Defined Callbacks for LPC2k Processors for writing/reading from EEPROM
 
-#include "asctecCommIntfOnboard.h"
+//#include "asctecCommIntfOnboard.h"
 #define _EEPROM_
 #include "LPC2k_ee.h"					/* LPC2000 EEPROM definitions */
 #undef _EEPROM_

@@ -78,7 +78,7 @@ void uart1ISR(void) __irq
       break;
       case 2:
     	// RX interrupt
-	     uBloxReceiveHandler(U1RBR);
+//	     uBloxReceiveHandler(U1RBR);
 	    break;
       case 3:
         // RLS interrupt

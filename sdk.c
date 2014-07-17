@@ -48,8 +48,6 @@ struct RO_ALL_DATA RO_ALL_Data;
 struct WO_DIRECT_MOTOR_CONTROL WO_Direct_Motor_Control;
 struct WO_DIRECT_INDIVIDUAL_MOTOR_CONTROL WO_Direct_Individual_Motor_Control;
 
-unsigned char wpExampleActive=0;
-
 //emergency mode variables
 unsigned char emergencyMode;
 unsigned char emergencyModeUpdate=0;
@@ -139,7 +137,9 @@ extern char newvals;
  * with SDK_SetEmergencyMode(). If non was set, Direct Landing is activated.
  */
 
-extern char updated = 0;
+extern char updated;
+extern char DEBUG_ENABLED;
+
 
 void SDK_mainloop(void)
 {
@@ -152,7 +152,7 @@ void SDK_mainloop(void)
 	if ( bytesAvailable() == 0 )
 		return; //Nothing to dFo.
 
-	hdr = getByte(&ub0r);
+	hdr = getByte();
 	if ( hdr <= 200 )
 	{ //Direct motor commands sent.
 
@@ -168,22 +168,23 @@ void SDK_mainloop(void)
 
 		for (i = 1; i < 4; i++ )
 			WO_Direct_Individual_Motor_Control.motor[0] = getByte();
-		WO_Direct_Individual_Motor_Control.motor[4] = RBDequeue();
+		WO_Direct_Individual_Motor_Control.motor[4] = 0;
 		WO_Direct_Individual_Motor_Control.motor[5] = 0;
 	} else {
-		switch (hdr)
+		switch ((int)hdr)
 		{
 			case VERSION:
 				skipBytes(3); // Remove the 3 filler chars.
 				sendText( QUAD_VERSION );
 			break;
 			case DEBUGMODE:
-				DEBUGMODE = ( getBytes() != 0);
+				DEBUG_ENABLED = ( getByte() != 0);
 				skipBytes(2);
 			break;			
 		}
 
-}
+	}
+}	
 
 
 /*
@@ -201,441 +202,4 @@ void SDK_SetEmergencyMode(unsigned char mode) {
 	emergencyMode = mode;
 	emergencyModeUpdate = 1;
 }
-
-/*
- * the following example shows the direct motor command usage by mapping the stick directly to the motor outputs (do NOT try to fly ;-) )
- */
-/*
-void SDK_EXAMPLE_direct_individual_motor_commands(void)
-{
-
-	WO_SDK.ctrl_mode=0x00;	//0x00: direct individual motor control: individual commands for motors 0..3
-							//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
-							//0x02: attitude and throttle control: commands are input for standard attitude controller
-							//0x03: GPS waypoint control
-
-	WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-							//1: enable control by HL processor
-
-	WO_SDK.disable_motor_onoff_by_stick=0;
-
-	unsigned int i;
-
-	//scale throttle stick to [0..200] and map it to all motors
-	if ( RO_ALL_Data.channel[6]>2500)
-		dw = -5;
-	else
-		dw = 5;
-	if ( (loopIteration % 100 )!=0)
-		WO_Direct_Individual_Motor_Control.motor[0] += dw;
-
-	if ( WO_Direct_Individual_Motor_Control.motor[0] > 50)
-	{
-		dw = dw * -1;		
-		WO_Direct_Individual_Motor_Control.motor[0] = 50;
-	}
-	else if ( WO_Direct_Individual_Motor_Control.motor[0] < 0)
-	{
-		WO_Direct_Individual_Motor_Control.motor[0] = 0;
-		dw = dw * -1;
-	}
-//	WO_Direct_Individual_Motor_Control.motor[0]=RO_ALL_Data.channel[2]/21;
-	WO_Direct_Individual_Motor_Control.motor[1]=1;
-	WO_Direct_Individual_Motor_Control.motor[2]=1;
-	WO_Direct_Individual_Motor_Control.motor[3]=1;
-	WO_Direct_Individual_Motor_Control.motor[4]=1;
-	WO_Direct_Individual_Motor_Control.motor[5]=1;
-}
-*/
-
-void SDK_EXAMPLE_direct_motor_commands_with_standard_output_mapping(void)
-{
-	WO_SDK.ctrl_mode=0x01;	//0x00: direct individual motor control: individual commands for motors 0..3
-							//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
-							//0x02: attitude and throttle control: commands are input for standard attitude controller
-							//0x03: GPS waypoint control
-
-	WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-							//1: enable control by HL processor
-
-	/*
-	 *  Stick commands directly mapped to motors, NO attitude control! Do NOT try to fly!
-	 * */
-
-	WO_Direct_Motor_Control.pitch=(4095-RO_ALL_Data.channel[0])/21;
-	WO_Direct_Motor_Control.roll=RO_ALL_Data.channel[1]/21;
-	WO_Direct_Motor_Control.thrust=RO_ALL_Data.channel[2]/21;
-	WO_Direct_Motor_Control.yaw=(4095-RO_ALL_Data.channel[3])/21;
-
-}
-
-
-void SDK_EXAMPLE_attitude_commands(void)
-{
-	WO_SDK.ctrl_mode=0x02;	//0x00: direct individual motor control: individual commands for motors 0..3
-							//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
-							//0x02: attitude and throttle control: commands are input for standard attitude controller
-							//0x03: GPS waypoint control
-
-	WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-							//1: enable control by HL processor
-
-	//with this example the UAV will go to ~10% throttle when SDK control is activated
-	WO_CTRL_Input.ctrl=0x08;	//0x08: enable throttle control by HL. Height control and GPS are deactivated!!
-								//pitch, roll and yaw are still commanded via the remote control
-
-	WO_CTRL_Input.thrust=400;	//10% throttle command
-
-
-}
-
-
-
-/* This function demonstrates a simple waypoint command generation. The switch on Channel 7 is used
- * to activate a 15m by 15m square. Therefore a waypoint is calculated from the current position and
- * height and is transmitted to the low level processor. The waypoint status is monitored to switch to
- * the next waypoint after the current one is reached.
- *
- * wpCtrlWpCmd is used to send a command to the low level processor. Different options like waypoint, launch, land, come home, set home
- * are available. See LL_HL_comm.h for WP_CMD_* defines
- *
- * wpCtrlWpCmdUpdated has to be set to 1 to send the command. When the cmd is sent it is set back to 0 automatically
- *
- * wpCtrlAckTrigger is set to 1 when the LL accepts the waypoint
- *
- * wpCtrlNavStatus gives you a navigation status. See WP_NAVSTAT_* defines in SDK.h for options
- *
- * wpCtrlDistToWp gives you the current distance to the current waypoint in dm (= 10 cm)
- */
-void SDK_EXAMPLE_gps_waypoint_control()
-{
-	static unsigned char wpExampleState=0;
-	static double originLat,originLon;
-
-
-	WO_SDK.ctrl_mode=0x03;
-
-	WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-							//1: enable control by HL processor
-
-	switch (wpExampleState)
-	{
-		//prior to start, the lever on channel 7 has to be in "OFF" position
-		case 0:
-		if ((RO_ALL_Data.channel[6]<1600) || (wpExampleActive))
-			wpExampleState=1;
-		break;
-
-		case 1:
-		if ((RO_ALL_Data.channel[6]>2400) || (wpExampleActive))
-		{
-			double lat,lon;
-			//lever was set to "ON" state -> calculate and send first waypoint and switch state
-
-			//fill waypoint structure
-			wpToLL.max_speed=100;
-			wpToLL.pos_acc=3000; 	//3m accuracy
-			wpToLL.time=400; 		//4 seconds waiting time at each waypoint
-			wpToLL.wp_activated=1;
-
-			//see LL_HL_comm.h for WPPROP defines
-			wpToLL.properties=WPPROP_ABSCOORDS|WPPROP_AUTOMATICGOTO|WPPROP_HEIGHTENABLED|WPPROP_YAWENABLED;
-
-			//use current height and yaw
-			wpToLL.yaw=RO_ALL_Data.angle_yaw; //use current yaw
-			wpToLL.height=RO_ALL_Data.fusion_height; //use current height
-
-			originLat=(double)GPS_Data.latitude/10000000.0;
-			originLon=(double)GPS_Data.longitude/10000000.0;
-
-			//calculate a position 15m north of us
-			xy2latlon(originLat,originLon,0.0,15.0,&lat,&lon);
-
-			wpToLL.X=lon*10000000;
-			wpToLL.Y=lat*10000000;
-
-			//calc chksum
-			wpToLL.chksum = 0xAAAA
-									+ wpToLL.yaw
-									+ wpToLL.height
-									+ wpToLL.time
-									+ wpToLL.X
-									+ wpToLL.Y
-									+ wpToLL.max_speed
-									+ wpToLL.pos_acc
-									+ wpToLL.properties
-									+ wpToLL.wp_activated;
-
-			//send waypoint
-			wpCtrlAckTrigger=0;
-			wpCtrlWpCmd=WP_CMD_SINGLE_WP;
-			wpCtrlWpCmdUpdated=1;
-			wpExampleWpNr=0;
-			wpExampleState=2;
-
-		}
-		break;
-
-		case 2:
-			//wait until cmd is processed and sent to LL processor
-			if ((wpCtrlWpCmdUpdated==0) && (wpCtrlAckTrigger))
-			{
-				//check if waypoint was reached and wait time is over
-				if (wpCtrlNavStatus&(WP_NAVSTAT_REACHED_POS_TIME))
-				{
-					//new waypoint
-					double lat,lon;
-
-					//fill waypoint structure
-					wpToLL.max_speed=100;
-					wpToLL.pos_acc=3000; //3m accuracy
-					wpToLL.time=400; //4 seconds wait time
-					wpToLL.wp_activated=1;
-
-					//see LL_HL_comm.h for WPPROP defines
-					wpToLL.properties=WPPROP_ABSCOORDS|WPPROP_AUTOMATICGOTO|WPPROP_HEIGHTENABLED|WPPROP_YAWENABLED;
-
-					//use current height and yaw
-					wpToLL.yaw=RO_ALL_Data.angle_yaw; //use current yaw
-					wpToLL.height=RO_ALL_Data.fusion_height; //use current height
-
-					//calculate a position 15m north and 15m east of origin
-					xy2latlon(originLat,originLon,15.0,15.0,&lat,&lon);
-
-					wpToLL.X=lon*10000000;
-					wpToLL.Y=lat*10000000;
-
-					//calc chksum
-					wpToLL.chksum = 0xAAAA
-											+ wpToLL.yaw
-											+ wpToLL.height
-											+ wpToLL.time
-											+ wpToLL.X
-											+ wpToLL.Y
-											+ wpToLL.max_speed
-											+ wpToLL.pos_acc
-											+ wpToLL.properties
-											+ wpToLL.wp_activated;
-					//send waypoint
-					wpCtrlAckTrigger=0;
-					wpCtrlWpCmd=WP_CMD_SINGLE_WP;
-					wpCtrlWpCmdUpdated=1;
-					wpExampleWpNr++;
-
-					wpExampleState=3;
-				}
-
-				if (wpCtrlNavStatus&WP_NAVSTAT_PILOT_ABORT)
-				{
-					wpExampleActive=0;
-					wpExampleState=0;
-				}
-
-
-			}
-			if ((RO_ALL_Data.channel[6]<1600) && (wpExampleActive==0))
-						wpExampleState=0;
-		break;
-
-		case 3:
-			//wait until cmd is processed and sent to LL processor
-			if ((wpCtrlWpCmdUpdated==0) && (wpCtrlAckTrigger))
-			{
-				//check if waypoint was reached and wait time is over
-				if (wpCtrlNavStatus&(WP_NAVSTAT_REACHED_POS_TIME))
-				{
-					//new waypoint
-					double lat,lon;
-
-					//fill waypoint structure
-					wpToLL.max_speed=100;
-					wpToLL.pos_acc=3000; //3m accuracy
-					wpToLL.time=400; //4 seconds wait time
-					wpToLL.wp_activated=1;
-
-					//see LL_HL_comm.h for WPPROP defines
-					wpToLL.properties=WPPROP_ABSCOORDS|WPPROP_AUTOMATICGOTO|WPPROP_HEIGHTENABLED|WPPROP_YAWENABLED;
-
-					//use current height and yaw
-					wpToLL.yaw=RO_ALL_Data.angle_yaw; //use current yaw
-					wpToLL.height=RO_ALL_Data.fusion_height; //use current height
-
-					//calculate a position 15m east of origin
-					xy2latlon(originLat,originLon,15.0,0.0,&lat,&lon);
-
-					wpToLL.X=lon*10000000;
-					wpToLL.Y=lat*10000000;
-
-					//calc chksum
-					wpToLL.chksum = 0xAAAA
-											+ wpToLL.yaw
-											+ wpToLL.height
-											+ wpToLL.time
-											+ wpToLL.X
-											+ wpToLL.Y
-											+ wpToLL.max_speed
-											+ wpToLL.pos_acc
-											+ wpToLL.properties
-											+ wpToLL.wp_activated;
-
-					//send waypoint
-					wpCtrlAckTrigger=0;
-					wpCtrlWpCmd=WP_CMD_SINGLE_WP;
-					wpCtrlWpCmdUpdated=1;
-					wpExampleWpNr++;
-
-					wpExampleState=4;
-				}
-
-				if (wpCtrlNavStatus&WP_NAVSTAT_PILOT_ABORT)
-				{
-					wpExampleActive=0;
-					wpExampleState=0;
-				}
-
-
-			}
-			if ((RO_ALL_Data.channel[6]<1600) && (wpExampleActive==0))
-						wpExampleState=0;
-		break;
-
-		case 4:
-			//wait until cmd is processed and sent to LL processor
-			if ((wpCtrlWpCmdUpdated==0) && (wpCtrlAckTrigger))
-			{
-				//check if waypoint was reached and wait time is over
-				if (wpCtrlNavStatus&(WP_NAVSTAT_REACHED_POS_TIME))
-				{
-
-					//fill waypoint structure
-					wpToLL.max_speed=100;
-					wpToLL.pos_acc=3000; //3m accuracy
-					wpToLL.time=400; //4 seconds wait time
-					wpToLL.wp_activated=1;
-
-					//see LL_HL_comm.h for WPPROP defines
-					wpToLL.properties=WPPROP_ABSCOORDS|WPPROP_AUTOMATICGOTO|WPPROP_HEIGHTENABLED|WPPROP_YAWENABLED;
-
-					//use current height and yaw
-					wpToLL.yaw=RO_ALL_Data.angle_yaw; //use current yaw
-					wpToLL.height=RO_ALL_Data.fusion_height; //use current height
-
-					//go to the beginning
-
-					wpToLL.X=originLon*10000000;
-					wpToLL.Y=originLat*10000000;
-
-					//calc chksum
-					wpToLL.chksum = 0xAAAA
-											+ wpToLL.yaw
-											+ wpToLL.height
-											+ wpToLL.time
-											+ wpToLL.X
-											+ wpToLL.Y
-											+ wpToLL.max_speed
-											+ wpToLL.pos_acc
-											+ wpToLL.properties
-											+ wpToLL.wp_activated;
-
-					//send waypoint
-					wpCtrlAckTrigger=0;
-					wpCtrlWpCmd=WP_CMD_SINGLE_WP;
-					wpCtrlWpCmdUpdated=1;
-
-					wpExampleWpNr++;
-
-					wpExampleState=0;
-					wpExampleActive=0;
-				}
-
-				if (wpCtrlNavStatus&WP_NAVSTAT_PILOT_ABORT)
-				{
-					wpExampleActive=0;
-					wpExampleState=0;
-				}
-
-
-			}
-			if ((RO_ALL_Data.channel[6]<1600) && (wpExampleActive==0))
-						wpExampleState=0;
-		break;
-
-		default:
-			wpExampleState=0;
-		break;
-	}
-
-}
-
-int SDK_EXAMPLE_turn_motors_on(void) //hold throttle stick down and yaw stick fully left to turn motors on
-{
-	static int timeout=0;
-
-	WO_SDK.ctrl_mode=0x02;	//0x00: direct individual motor control: individual commands for motors 0..3
-							//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
-							//0x02: attitude and throttle control: commands are input for standard attitude controller
-							//0x03: GPS waypoint control
-
-	WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-							//1: enable control by HL processor
-
-	WO_SDK.disable_motor_onoff_by_stick=0; //make sure stick command is accepted
-
-	if(++timeout>=1000)
-	{
-		timeout=0;
-		return(1); //1 => start sequence completed => motors running => user can stop calling this function
-	}
-	else if(timeout>500) //neutral stick command for 500 ms
-	{
-		WO_CTRL_Input.ctrl=0x0C;	//0x0C: enable throttle control and yaw control
-		WO_CTRL_Input.thrust=0;
-		WO_CTRL_Input.yaw=0;
-		return(0);
-	}
-	else //hold stick command for 500 ms
-	{
-		WO_CTRL_Input.ctrl=0x0C;	//0x0C: enable throttle control and yaw control
-		WO_CTRL_Input.thrust=0;
-		WO_CTRL_Input.yaw=-2047;
-		return(0);
-	}
-
-}
-
-int SDK_EXAMPLE_turn_motors_off(void) //hold throttle stick down and yaw stick fully right to turn motors off
-{
-	static int timeout=0;
-
-	WO_SDK.ctrl_mode=0x02;	//0x00: direct individual motor control: individual commands for motors 0..3
-							//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
-							//0x02: attitude and throttle control: commands are input for standard attitude controller
-							//0x03: GPS waypoint control
-
-	WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-							//1: enable control by HL processor
-
-	WO_SDK.disable_motor_onoff_by_stick=0; //make sure stick command is accepted
-
-	if(++timeout>=1000)
-	{
-		timeout=0;
-		return(1); //1 => stop sequence completed => motors turned off => user can stop calling this function
-	}
-	else if(timeout>500) //neutral stick command for 500 ms
-	{
-		WO_CTRL_Input.ctrl=0x0C;	//0x0C: enable throttle control and yaw control
-		WO_CTRL_Input.thrust=0;
-		WO_CTRL_Input.yaw=0;
-		return(0);
-	}
-	else //hold stick command for 500 ms
-	{
-		WO_CTRL_Input.ctrl=0x0C;	//0x0C: enable throttle control and yaw control
-		WO_CTRL_Input.thrust=0;
-		WO_CTRL_Input.yaw=2047;
-		return(0);
-	}
-}
-
 

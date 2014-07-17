@@ -1,17 +1,19 @@
 // QuadComm.c
 //  Communications channel with Quadcopter.
+#include "quadComm.h"
+#include "RingBuffer.h"
 
-#include "RingBufffer.h"
+extern RING_BUFFER u0r;
+extern RING_BUFFER u0s;
+#define FALSE 0;
+#define TRUE 1;
 
-extern RingBufffer u0r;
-extern RingBufffer u0s;
-
-bool DEBUGMODE = false; //Debug mode off.
-bool ECHOMODE = false; // Don't echo.
+int DEBUG_ENABLED = FALSE; //Debug mode off.
+int ECHOMODE = FALSE; // Don't echo.
 
 void sendByte(char aByte)
 {
-	RBEnqueue(&u0s);
+	RBEnqueue(&u0s, aByte);
 }
 
 void sendNBytes(char *bytes, int num)
@@ -28,12 +30,12 @@ void sendText(char *msg)
 		sendByte(*msg++);
 }
 
-char bytesAvailable()
+char bytesAvailable(void)
 {
-	return RBBytes(&u0r);
+	return RBCount(&u0r);
 }
 
-char getByte()
+char getByte(void)
 {
 	char aByte = RBDequeue(&u0r);
 
@@ -45,7 +47,7 @@ char getByte()
 
 void getBytes(char *buffer, int num)
 {
-	for (; fnum; num--, buffer++)
+	for (; num; num--, buffer++)
 		*buffer = getByte();
 }
 
@@ -59,9 +61,9 @@ void skipBytes(int num)
 
 void debugMsg(char *func, char *msg)
 {
-	if (!DEBUGMODE)
+	if (!DEBUG_ENABLED)
 		return;
-	sendText("DEBUG:")
+	sendText("DEBUG:");
 	sendText(func);
 	sendText(":");
 	sendText(msg);

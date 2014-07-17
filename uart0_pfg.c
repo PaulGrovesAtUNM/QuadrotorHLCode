@@ -35,7 +35,9 @@ DAMAGE.
 #include "ssp.h"
 #include "sdk.h"
 
-#include "UARTData.h"
+#include "RingBuffer.h"
+
+// #include "UARTData.h"
 
 extern char updated;
 
@@ -71,7 +73,8 @@ extern char updated;
 
 //bool UART0_TX_ENABLED = 0;  //Not sending
 
-RingBuffer u0s, u0r; //Send / Receive ring buffers.
+RING_BUFFER u0s;
+RING_BUFFER u0r; //Send / Receive ring buffers.
 
 // user uart
 void uart0ISR(void) __irq
@@ -87,32 +90,27 @@ void uart0ISR(void) __irq
   LED(1,ON);
   LED(0,ON);
   // Handle UART interrupt
-  f iir = (U0IIR >> 1) & 0x7;
-  if ( iir & 0x2 )
-  {
-      //case 2://RX_DATA_AVAILABLE:
-      //case RX_CHAR_TIMEOUT: //Occurs if characters in buffer and no more have arrived.
-        // Read out all characters until the buffer is empty.
+  iir = (U0IIR >> 1) & 0x7;
+  if (iir & 0x01)
+    while (RBCount(&u0s) && (U0LSR & 0x20))
+      U0THR = RBDequeue(&u0s);
 
-          updated = 1;
-          LED(0,OFF);
-        }
-	if ( iir & 0x1 ) //NEEDED:  HOW MANY CHARACTERS TO FILL THE TX BUFFER?
-//      case 1://TX_BUFFER_EMPTY, fill buffer.
-        while (RBbytes(&ub0s) && (U0LSR & 0x20))
-          U0THR = RBDequeue(&ub0s);
-  //    break;
-  //    default:
-      //case 3:
-        // RLS interrupt
-  //      break;
-      //case 6:
-        // CTI interrupt
-      //break;
+  if (iir & 0x02) // RX Data Available
+  {
+  	RBEnqueue(&u0r, U0RBR);
+  	RBEnqueue(&u0r, U0RBR);
+  	RBEnqueue(&u0r, U0RBR);
+  	RBEnqueue(&u0r, U0RBR);
+  } 
+  if (iir & RX_CHAR_TIMEOUT )
+  {
+  	t = U0RBR;
+  	t = U0RBR;
+  	t = U0RBR;
   }
   IDISABLE;
   VICVectAddr = 0;		// Acknowledge Interrupt
- }
+}
 
 void UART0Initialize(unsigned int baud)
 {
@@ -128,8 +126,8 @@ void UART0Initialize(unsigned int baud)
   U0DLM = (divisor >> 8) & 0xFF;
   U0LCR &= ~0x80; /* Disable DLAB */
   U0FCR = FIFO_ENABLE | TL2; // Enable FIFO's, interrupt every 8 characters.
-  RBInit(&ub0s);
-  RBInit(&ub0r); //Send / Receive uart buffers.
+  RBInit(&u0s);
+  RBInit(&u0r); //Send / Receive uart buffers.
   U0TER = 0x80; //Enable transmitter.
 }
 
@@ -145,7 +143,7 @@ void UART0Debug(char *msg, int length)
 
   while (length > 0)
   {
-    RBEnqueue(&ub0s, *msg);
+    RBEnqueue(&u0s, *msg);
     msg++;
     length--;
   }
@@ -157,5 +155,5 @@ void UART0WriteChar(unsigned char ch)
   if ( U0LSR & 0x40 ) // Transmitter Empty, so we need to write directly to transmitter.
     U0THR = ch;
   else
-    RBEnqueue(&ub0s, ch);
+    RBEnqueue(&u0s, ch);
 }

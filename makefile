@@ -75,10 +75,11 @@ SRCARM = LL_HL_comm.c
 SRCARM += mymath.c
 SRCARM += gpsmath.c
 SRCARM += sdk.c
-SRCARM += sdk_telemetry.c
+#SRCARM += sdk_telemetry.c
 SRCARM += buzzer.c
 SRCARM += buildInfoSetup.c
 SRCARM += RingBuffer.c
+SRCARM += quadComm.c
 
 #Sources with interrupt routines in them
 SRCARMINT = $(TARGET).c
@@ -193,10 +194,6 @@ CDEFS += -D__BUILD_CONFIG=0x01
 endif
 endif
 
-ifeq ($(MATLAB),1)
-CDEFS += -DMATLAB
-endif
-
 # Compiler flags.
 #  -g*:          generate debugging information
 #  -O*:          optimization level
@@ -272,7 +269,8 @@ MATH_LIB = -lm
 #    --cref:    add cross reference to  map file
 LDFLAGS = -nostartfiles -Wl,-Map=$(TARGET).map,--cref
 LDFLAGS += -lc
-LDFLAGS += -lc -lgcc -ldeclination -lublox
+LDFLAGS += -lc -lgcc -ldeclination
+#LDFLAGS += -lc -lgcc -ldeclination -lublox
 LDFLAGS += $(NEWLIBLPC) $(MATH_LIB)
 LDFLAGS += $(CPLUSPLUS_LIB)
 LDFLAGS += $(patsubst %,-L%,$(EXTRA_LIBDIRS))

@@ -6,7 +6,7 @@
 
 #define BUFF_LEN 50
 
-typedef struct
+typedef volatile struct
 {
 	unsigned char EOB; //Index to End of Buffer.
 	unsigned char SOB; //Index to the Start of the Buffer

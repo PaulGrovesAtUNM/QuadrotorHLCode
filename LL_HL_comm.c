@@ -158,9 +158,9 @@ void SSP_data_distribution_HL(void) {
 			wpCtrlAckTrigger = LL_1khz_attitude_data.slowDataUpChannelDataShort;
 			break;
 		case SUDC_SENDOMTYPE:
-			if ((LL_1khz_attitude_data.slowDataUpChannelDataShort == OM_HEX)
-					&& (fireflyLedEnabled == 0))
-				fireflyLedEnabled = 1;
+			//if ((LL_1khz_attitude_data.slowDataUpChannelDataShort == OM_HEX)
+			//		&& (fireflyLedEnabled == 0))
+			//	fireflyLedEnabled = 1;
 			break;
 		case SUDC_JETIKEYVAL:
 			if (oldKey != LL_1khz_attitude_data.slowDataUpChannelDataShort)
