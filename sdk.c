@@ -40,6 +40,7 @@ DAMAGE.
 #include "RingBuffer.h"
 #include "quadCommands.h"
 #include "quadComm.h"
+#include "uart.h"
 
 struct WO_SDK_STRUCT WO_SDK;
 struct WO_CTRL_INPUT WO_CTRL_Input;
@@ -139,7 +140,9 @@ extern char newvals;
 
 extern char updated;
 extern char DEBUG_ENABLED;
-
+int loops;
+int firstime = 0;
+int motors[4] = {0,0,0,0};
 
 void SDK_mainloop(void)
 {
@@ -149,7 +152,22 @@ void SDK_mainloop(void)
 	// If <=200 it's a direct motor command.
 	//  Else it's a command command.
 
-	if ( bytesAvailable() == 0 )
+	if (firstime == 0)
+	{
+		LED(0,ON);
+		firstime = 1;
+	}
+
+	loops++;
+	if (loops > 2000)
+	{
+		loops = 0;
+		sprintf(dbgMsg,"Bytes: %i Motors: %i,%i,%i,%i\n\r", bytesAvailable(), 
+			motors[0], motors[1], motors[2], motors[3]);
+		sendText(dbgMsg);
+	}
+
+	if ( bytesAvailable() < 4 )
 		return; //Nothing to dFo.
 
 	hdr = getByte();
@@ -166,8 +184,13 @@ void SDK_mainloop(void)
 
 		WO_SDK.disable_motor_onoff_by_stick = 0;
 
+		motors[0] = hdr;
+		WO_Direct_Individual_Motor_Control.motor[0] = hdr;
 		for (i = 1; i < 4; i++ )
-			WO_Direct_Individual_Motor_Control.motor[0] = getByte();
+		{
+			motors[i] = getByte();
+			WO_Direct_Individual_Motor_Control.motor[i] = motors[i];
+		}
 		WO_Direct_Individual_Motor_Control.motor[4] = 0;
 		WO_Direct_Individual_Motor_Control.motor[5] = 0;
 	} else {

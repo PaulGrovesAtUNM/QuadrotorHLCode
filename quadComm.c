@@ -3,6 +3,8 @@
 #include "quadComm.h"
 #include "RingBuffer.h"
 
+
+
 extern RING_BUFFER u0r;
 extern RING_BUFFER u0s;
 #define FALSE 0;
@@ -13,6 +15,7 @@ int ECHOMODE = FALSE; // Don't echo.
 
 void sendByte(char aByte)
 {
+	UART0WriteChar(aByte);
 	RBEnqueue(&u0s, aByte);
 }
 
@@ -21,28 +24,34 @@ void sendNBytes(char *bytes, int num)
 	int c;
 
 	for (c = 0; c < num; c++)
-		sendByte(bytes[c]);
+		UART0WriteChar(bytes[c]);
 }
 
 void sendText(char *msg)
 {
 	while (*msg)
-		sendByte(*msg++);
+		RBEnqueue(&u0s,*msg++);
+	uart0Prime();
 }
 
 char bytesAvailable(void)
 {
-	return RBCount(&u0r);
+	return RBCount(&u0r); //Groups of 4...
 }
 
 char getByte(void)
 {
-	char aByte = RBDequeue(&u0r);
+	char aByte;
+
+	if ( !RBCount(&u0r) )
+		return 0;
+
+ 	aByte = RBDequeue(&u0r);
 
 	if (ECHOMODE)
 		sendByte(aByte);
 
-	return RBDequeue(&u0r);
+	return aByte;
 }
 
 void getBytes(char *buffer, int num)

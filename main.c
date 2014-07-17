@@ -122,7 +122,6 @@ int	main (void) {
 
   HL_Status.up_time=0;
 
-  LED(1,ON);
 
   //update parameters stored by ACI:
   //...

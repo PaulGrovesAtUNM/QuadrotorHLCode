@@ -4,7 +4,7 @@
 // RingBuffer.h
 //  Ring buffer for UARTs.
 
-#define BUFF_LEN 50
+#define BUFF_LEN 150
 
 typedef volatile struct
 {

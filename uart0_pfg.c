@@ -76,6 +76,9 @@ extern char updated;
 RING_BUFFER u0s;
 RING_BUFFER u0r; //Send / Receive ring buffers.
 
+volatile int toggle = 0;
+volatile int lps = 0;
+
 // user uart
 void uart0ISR(void) __irq
 {
@@ -83,33 +86,33 @@ void uart0ISR(void) __irq
   unsigned char t;
   int i;
   unsigned int iir;
+  char dbg[50];
 
   // Read IIR to clear interrupt and find out the cause
   IENABLE;
-  
-  LED(1,ON);
-  LED(0,ON);
+
   // Handle UART interrupt
   iir = (U0IIR >> 1) & 0x7;
-  if (iir & 0x01)
-    while (RBCount(&u0s) && (U0LSR & 0x20))
-      U0THR = RBDequeue(&u0s);
+  if (iir == 1) // Transmitter is empty
+  {
+	// 0x20 -- On when U0THR (Transmitter Holding Register) is empty...
+  	while (RBCount(&u0s) != 0 && ((U0LSR & 0x20) != 0))
+	{ 
+      		U0THR = RBDequeue(&u0s);
+	}
+  }
 
-  if (iir & 0x02) // RX Data Available
+  if (iir == 2) // RX Data (4 bytes...) Available
   {
   	RBEnqueue(&u0r, U0RBR);
   	RBEnqueue(&u0r, U0RBR);
   	RBEnqueue(&u0r, U0RBR);
   	RBEnqueue(&u0r, U0RBR);
   } 
-  if (iir & RX_CHAR_TIMEOUT )
-  {
-  	t = U0RBR;
-  	t = U0RBR;
-  	t = U0RBR;
-  }
-  IDISABLE;
-  VICVectAddr = 0;		// Acknowledge Interrupt
+  if (iir == 6)
+	RBEnqueue(&u0r, U0RBR);
+	IDISABLE; 
+	VICVectAddr = 0;		// Acknowledge Interrupt
 }
 
 void UART0Initialize(unsigned int baud)
@@ -121,39 +124,44 @@ void UART0Initialize(unsigned int baud)
 //  Bit1: THRE enable
 
   //UART0
+	LED(0,OFF);
+	LED(1,OFF);
+
+  RBInit(&u0s);
+  RBInit(&u0r); //Send / Receive uart buffers.
   U0LCR = 0x83; /* 8 bit, 1 stop bit, no parity, enable DLAB */
   U0DLL = divisor & 0xFF;
   U0DLM = (divisor >> 8) & 0xFF;
   U0LCR &= ~0x80; /* Disable DLAB */
-  U0FCR = FIFO_ENABLE | TL2; // Enable FIFO's, interrupt every 8 characters.
-  RBInit(&u0s);
-  RBInit(&u0r); //Send / Receive uart buffers.
+  U0FCR = FIFO_ENABLE | TL1; // Enable FIFO's, interrupt every 4 characters.
   U0TER = 0x80; //Enable transmitter.
 }
 
 void UART0Debug(char *msg, int length)
 {
 
-  if ( U0LSR & 0x40 ) // Transmitter Empty, so we need to write directly to transmitter.
+  while ( length > 0 )
   {
+    while ( (U0LSR & 0x20) == 0 ); // Wait until we can send...
     length--;
     U0THR = *msg;
     msg++;
   }
 
-  while (length > 0)
-  {
-    RBEnqueue(&u0s, *msg);
-    msg++;
-    length--;
-  }
 }
 
 //Write to UART0
 void UART0WriteChar(unsigned char ch)
 {
-  if ( U0LSR & 0x40 ) // Transmitter Empty, so we need to write directly to transmitter.
+  if ( U0LSR & 0x20 ) // Transmitter Empty, so we need to write directly to transmitter.
     U0THR = ch;
   else
     RBEnqueue(&u0s, ch);
+}
+
+// Primes the UART send buffer.
+void uart0Prime(void)
+{
+	if ( U0LSR & 0x20 )
+		U0THR = RBDequeue(&u0s);
 }
