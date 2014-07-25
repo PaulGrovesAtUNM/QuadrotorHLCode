@@ -2,7 +2,7 @@
 //  Communications channel with Quadcopter.
 #include "quadComm.h"
 #include "RingBuffer.h"
-
+#include "uart.h"
 
 
 extern RING_BUFFER u0r;
@@ -12,6 +12,11 @@ extern RING_BUFFER u0s;
 
 int DEBUG_ENABLED = FALSE; //Debug mode off.
 int ECHOMODE = FALSE; // Don't echo.
+
+void showRBuffer(void)
+{
+	showBuffer(&u0r);
+}
 
 void sendByte(char aByte)
 {
@@ -60,12 +65,33 @@ void getBytes(char *buffer, int num)
 		*buffer = getByte();
 }
 
-void skipBytes(int num)
+// Pushes a byte back onto the Ring Buffer.
+void pushBack(char byte)
 {
-	int i;
+	RBPushBack(&u0r, byte);
+}
 
-	for (i = 0; i < num; i++)
-		RBDequeue(&u0r);
+// skipBytes
+//	Discard num bytes in the buffer.
+int skipBytes(int num)
+{
+	RBDiscard(&u0r, num);
+	return RBCount(&u0r);
+}
+
+// peekByte
+//  Returns the next byte in the buffer w/o consuming it.
+char peekByte()
+{
+	return RBPeek(&u0r);
+}
+
+// Searches the buffer, starting at startIndex, for aByte.
+//  Returns the index in the buffer (from 0) the byte first occurs at.
+//  Returns -1 if there is no occurrence.
+int findInBuffer(int startIndex, int distance, char aByte)
+{
+	return RBfindInBuffer(&u0r, startIndex, distance, aByte); 
 }
 
 void debugMsg(char *func, char *msg)

@@ -79,18 +79,17 @@ char newvals = 0;
 void timer0ISR(void) __irq
 {
   T0IR = 0x01;      //Clear the timer 0 interrupt
-
   IENABLE;
 
   // Performance Counter
   trigger_cnt++;
   if (trigger_cnt == ControllerCyclesPerSecond)
   {
-  	trigger_cnt=0;
+  	trigger_cnt = 0;
   	HL_Status.up_time++;
-  	HL_Status.cpu_load=mainloop_cnt;
+  	HL_Status.cpu_load = mainloop_cnt;
 
-  	mainloop_cnt=0;
+  	mainloop_cnt = 0;
   }
 
   if ( mainloop_trigger < 10 ) 
@@ -108,7 +107,7 @@ int	main (void) {
   static int vbat1; //battery_voltage (lowpass-filtered)
   unsigned int TimerT1, TimerT2;
 
-  init();
+  init(); //system.c
   buzzer(OFF);
   LL_write_init();
 
@@ -116,11 +115,11 @@ int	main (void) {
   I2C1Init();
   I2C1_setRGBLed(255,0,0);
 
-  ADC0triggerSampling(1<<VOLTAGE_1); //activate ADC sampling
+  ADC0triggerSampling( 1<<VOLTAGE_1); //activate ADC sampling
 
   generateBuildInfo();
 
-  HL_Status.up_time=0;
+  HL_Status.up_time = 0;
 
 
   //update parameters stored by ACI:
@@ -128,26 +127,29 @@ int	main (void) {
 
   while(1)
   {
-      if(mainloop_trigger)
+      if (mainloop_trigger)
       {
+	LED(1,ON);
       	TimerT1 =  T0TC;
 
         //battery monitoring
         ADC0getSamplingResults(0xFF,adcChannelValues);
         vbat1=(vbat1*14+(adcChannelValues[VOLTAGE_1]*9872/579))/15;	//voltage in mV
 
-		    HL_Status.battery_voltage_1=vbat1;
+		    HL_Status.battery_voltage_1 = vbat1;
+		
         mainloop_cnt++;
-		    if(!(mainloop_cnt % 10)) 
+		    if (!(mainloop_cnt % 10)) 
           buzzer_handler(HL_Status.battery_voltage_1);
 
-        if(mainloop_trigger) 
+        if (mainloop_trigger) 
           mainloop_trigger--;
-        mainloop();
+		  
+        SDK_mainloop(); //1000 times per second.
 
         // CPU Usage calculation
         TimerT2 = T0TC;
-        if (mainloop_trigger)
+        if ( mainloop_trigger)
         {
         	HL_Status.cpu_load = 1000;
         	mainloop_overflows++;
@@ -156,18 +158,9 @@ int	main (void) {
         	HL_Status.cpu_load = (T0MR0 - TimerT1 + TimerT2)*1000/T0MR0; // load = "timer cycles" / "timer cycles per controller cycle" * 1000
         else
         	HL_Status.cpu_load = (TimerT2 - TimerT1)*1000/T0MR0; // load = "timer cycles" / "timer cycles per controller cycle" * 1000
+	LED(1,OFF);
       }
   }
   return 0;
 }
 
-
-void mainloop(void) //mainloop is triggered at 1 kHz
-{
-
-	//run SDK mainloop. Please put all your data handling / controller code in sdk.c
-	SDK_mainloop();
-
-  //write data to transmit buffer for immediate transfer to LL processor
-  HL2LL_write_cycle();
-}

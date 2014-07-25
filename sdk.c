@@ -35,12 +35,15 @@ DAMAGE.
 #include "sdk_telemetry.h"
 #include "uart.h"
 #include "system.h"
+#include "hardware.h"
 #include "lpc_aci_eeprom.h"
-
+#include "loadFrame.h"
 #include "RingBuffer.h"
 #include "quadCommands.h"
 #include "quadComm.h"
 #include "uart.h"
+
+#include <stdio.h>
 
 struct WO_SDK_STRUCT WO_SDK;
 struct WO_CTRL_INPUT WO_CTRL_Input;
@@ -55,6 +58,7 @@ unsigned char emergencyModeUpdate=0;
 
 int SDK_EXAMPLE_turn_motors_on(void);
 int SDK_EXAMPLE_turn_motors_off(void);
+void emptyUART0(void);
 
 extern char newvals;
 
@@ -140,72 +144,70 @@ extern char newvals;
 
 extern char updated;
 extern char DEBUG_ENABLED;
-int loops;
+int loops = 0;
 int firstime = 0;
 int motors[4] = {0,0,0,0};
+
+extern FRAME frame;
+
+int errs = 0;
+int dmcs = 0;
 
 void SDK_mainloop(void)
 {
 	int i;
-	char dbgMsg[50];
-	char hdr; //Header character.
-	// If <=200 it's a direct motor command.
-	//  Else it's a command command.
+	char dbgMsg[100];
 
-	if (firstime == 0)
-	{
-		LED(0,ON);
-		firstime = 1;
-	}
-
-	loops++;
+	//loops++;
 	if (loops > 2000)
 	{
 		loops = 0;
-		sprintf(dbgMsg,"Bytes: %i Motors: %i,%i,%i,%i\n\r", bytesAvailable(), 
-			motors[0], motors[1], motors[2], motors[3]);
-		sendText(dbgMsg);
+		sprintf(dbgMsg,"%i %i,%i,%i,%i:\n\r", dmcs,   
+					WO_Direct_Individual_Motor_Control.motor[0],
+					WO_Direct_Individual_Motor_Control.motor[1],
+					WO_Direct_Individual_Motor_Control.motor[2],
+					WO_Direct_Individual_Motor_Control.motor[3]);
+	
+		//sendText(dbgMsg);
 	}
+	
+	// Read any characters in the recieve buffer into our RingBuffer
+	emptyUART0();
 
-	if ( bytesAvailable() < 4 )
-		return; //Nothing to dFo.
-
-	hdr = getByte();
-	if ( hdr <= 200 )
-	{ //Direct motor commands sent.
-
-		WO_SDK.ctrl_mode=0x00;	//0x00: direct individual motor control: individual commands for motors 0..3
-								//0x01: direct motor control using standard output mapping: commands are interpreted as pitch, roll, yaw and thrust inputs; no attitude controller active
-								//0x02: attitude and throttle control: commands are input for standard attitude controller
-								//0x03: GPS waypoint control
-
-		WO_SDK.ctrl_enabled=1;  //0: disable control by HL processor
-								//1: enable control by HL processor
-
-		WO_SDK.disable_motor_onoff_by_stick = 0;
-
-		motors[0] = hdr;
-		WO_Direct_Individual_Motor_Control.motor[0] = hdr;
-		for (i = 1; i < 4; i++ )
+	if ( loadFrame() ) //We have received a valid frame...
+	{ 
+		switch (frame.command)
 		{
-			motors[i] = getByte();
-			WO_Direct_Individual_Motor_Control.motor[i] = motors[i];
-		}
-		WO_Direct_Individual_Motor_Control.motor[4] = 0;
-		WO_Direct_Individual_Motor_Control.motor[5] = 0;
-	} else {
-		switch ((int)hdr)
-		{
-			case VERSION:
-				skipBytes(3); // Remove the 3 filler chars.
-				sendText( QUAD_VERSION );
+			case DMC: //Direct Motor Command
+				LED(0,ON);
+				WO_SDK.ctrl_mode=0x00;	//0x00: direct individual motor control: individual commands for motors 0..3
+				WO_SDK.ctrl_enabled = 1;  //0: disable control by HL processor
+				 			  //1: enable control by HL processor
+
+				WO_SDK.disable_motor_onoff_by_stick = 0;
+
+				for (i = 0; i < 4; i++ )
+					WO_Direct_Individual_Motor_Control.motor[i] = frame.data[i];
+				WO_Direct_Individual_Motor_Control.motor[4] = 0;
+				WO_Direct_Individual_Motor_Control.motor[5] = 0;
+				
+				//write data to transmit buffer for immediate transfer to LL processor
+				HL2LL_write_cycle();
+				dmcs++;	
+				LED(0,OFF);	
 			break;
+			case VERSION:
+				sendText( QUAD_VERSION );
+				break;
 			case DEBUGMODE:
-				DEBUG_ENABLED = ( getByte() != 0);
-				skipBytes(2);
-			break;			
+				DEBUG_ENABLED = frame.data[0];
+				debugMsg("SDK","Debug Enabled."); //Only send if debug is enabled.
+			break;
+			default: 
+				sprintf(dbgMsg, "Unknown Command in Frame: %i", frame.command);
+				sendText(dbgMsg);
+			break;
 		}
-
 	}
 }	
 

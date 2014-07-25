@@ -36,6 +36,7 @@ DAMAGE.
 #include "i2c.h"
 #include "ssp.h"
 #include "adc.h"
+#include "options.h" //#defines for irq optoins
 
 void init(void)
 {
@@ -64,12 +65,16 @@ void init_interrupts(void)
   install_irq( TIMER0_INT, (void *) timer0ISR );
 
   //UART1 interrupt
+  #ifdef UART1_IRQ
   install_irq( UART1_INT, (void *) uart1ISR );
   U1IER = 3; //=3; enable THRE and RX interrupt
+  #endif
 
   //UART0 interrupt
+  #ifdef UART0_IRQ
   install_irq( UART0_INT, (void *) uart0ISR );
   U0IER = 3; //=3; enable THRE and RX interrupt
+  #endif
 
   //I2C0 interrupt
 //  install_irq( I2C0_INT, (void *) I2C0MasterHandler );

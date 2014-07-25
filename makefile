@@ -95,6 +95,7 @@ SRCARMINT += adc.c
 SRCARMINT += ssp.c
 SRCARMINT += jetiTelemetry.c
 SRCARMINT += LPC2k_ee.c
+SRCARMINT += loadFrame.c
 
 # List C++ source files here.
 # use file-extension cpp for C++-files (use extension .cpp)

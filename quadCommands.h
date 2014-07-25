@@ -3,10 +3,12 @@
 #ifndef QUADCOMMANDS_H
 #define QUADCOMMANDS_H
 
-#define VERSION   (251)
-#define TERMINAL  (252)
-#define DEBUGMODE (255)
+#define SOF 234 //Start of Frame
+#define EOFm 213 //End of Frame
+#define DMC 201 //Direct Motor Command
+#define VERSION 202 //HL Code Version Number
+#define DEBUGMODE 203 //Debug Mode = data[0]
 
-#define	QUAD_VERSION  ".1"
+#define	QUAD_VERSION  "0.2"
 
 #endif

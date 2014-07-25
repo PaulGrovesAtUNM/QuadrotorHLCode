@@ -29,24 +29,22 @@ DAMAGE.
 #ifndef __UART_H
 #define __UART_H
 
-extern void UART0Initialize(unsigned int baud);
-extern void UART1Initialize(unsigned int baud);
+void UART0Initialize(unsigned int baud);
+void UART1Initialize(unsigned int baud);
 
 void UART0WriteChar(unsigned char);
-extern void UART1WriteChar(unsigned char);
+void UART1WriteChar(unsigned char);
 //extern unsigned char UART0ReadChar(void);
 extern unsigned char UART1ReadChar(void);
-extern void __putchar(int);
+void __putchar(int);
 extern void UART0_send(char *, unsigned char);
-extern void UART1_send(unsigned char *, unsigned char);
-extern void mdv_output(unsigned int);
-extern void UART0_send_ringbuffer(void);
-extern void UART1_send_ringbuffer(void);
-extern void uart0ISR(void);
-extern void uart1ISR(void);
-void check_chksum(void);
-void GPS_configure(void);
+//extern void UART1_send(unsigned char *, unsigned char);
+//extern void mdv_output(unsigned int);
+void uart0ISR(void);
+void uart1ISR(void);
 
+
+void emptyUART0(void);
 void UART0Debug(char *msg, int length);
 void uart0Prime(void);
 
