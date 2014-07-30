@@ -159,17 +159,17 @@ void SDK_mainloop(void)
 	char dbgMsg[100];
 
 	//loops++;
-	if (loops > 2000)
-	{
-		loops = 0;
-		sprintf(dbgMsg,"%i %i,%i,%i,%i:\n\r", dmcs,   
-					WO_Direct_Individual_Motor_Control.motor[0],
-					WO_Direct_Individual_Motor_Control.motor[1],
-					WO_Direct_Individual_Motor_Control.motor[2],
-					WO_Direct_Individual_Motor_Control.motor[3]);
+//	if (loops > 2000)
+//	{
+//		loops = 0;
+		//sprintf(dbgMsg,"%i %i,%i,%i,%i:\n\r", dmcs,   
+		//			WO_Direct_Individual_Motor_Control.motor[0],
+		//			WO_Direct_Individual_Motor_Control.motor[1],
+		//			WO_Direct_Individual_Motor_Control.motor[2],
+		//			WO_Direct_Individual_Motor_Control.motor[3]);
 	
 		//sendText(dbgMsg);
-	}
+//	}
 	
 	// Read any characters in the recieve buffer into our RingBuffer
 	emptyUART0();
