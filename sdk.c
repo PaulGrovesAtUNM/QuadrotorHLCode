@@ -175,11 +175,12 @@ void SDK_mainloop(void)
 	emptyUART0();
 
 	if ( loadFrame() ) //We have received a valid frame...
-	{ 
+	{
+		 
+				LED(0,ON);
 		switch (frame.command)
 		{
 			case DMC: //Direct Motor Command
-				LED(0,ON);
 				WO_SDK.ctrl_mode=0x00;	//0x00: direct individual motor control: individual commands for motors 0..3
 				WO_SDK.ctrl_enabled = 1;  //0: disable control by HL processor
 				 			  //1: enable control by HL processor
@@ -204,8 +205,8 @@ void SDK_mainloop(void)
 				debugMsg("SDK","Debug Enabled."); //Only send if debug is enabled.
 			break;
 			default: 
-				sprintf(dbgMsg, "Unknown Command in Frame: %i", frame.command);
-				sendText(dbgMsg);
+				//sprintf(dbgMsg, "Unknown Command in Frame: %i", frame.command);
+				//sendText(dbgMsg);
 			break;
 		}
 	}
