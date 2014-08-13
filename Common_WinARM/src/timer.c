@@ -25,12 +25,12 @@ volatile DWORD timer_counter = 0;
 **
 ** parameters:			None
 ** Returned value:		None
-** 
+**
 ******************************************************************************/
 // mthomas: static inserted to avoid warning by gcc 4.1.0
 #if 1
 static void /*RAMFUNC*/ Timer0Handler (void) __irq
-{  
+{
     T0IR = 1;			/* clear interrupt flag */
     IENABLE;			/* handles nested interrupt */
 
@@ -45,16 +45,16 @@ static void /*RAMFUNC*/ Timer0Handler (void) __irq
 // mthomas: macro-approach - not needed since there
 // is an assembler-wrapper provided in Startup.S
 static void NACKEDFUNC Timer0Handler (void) __irq
-{  
-	ISR_STORE();
+{
+    ISR_STORE();
     T0IR = 1;			/* clear interrupt flag */
-	ISR_ENABLE_NEST();  /* handles nested interrupt */
+    ISR_ENABLE_NEST();  /* handles nested interrupt */
 
     timer_counter++;
 
-	ISR_DISABLE_NEST();     /* Disable Interrupt nesting */
+    ISR_DISABLE_NEST();     /* Disable Interrupt nesting */
     VICVectAddr = 0;		/* Acknowledge Interrupt */
-	ISR_RESTORE();
+    ISR_RESTORE();
 }
 #endif
 
@@ -65,17 +65,17 @@ static void NACKEDFUNC Timer0Handler (void) __irq
 **
 ** parameters:			timer number: 0 or 1
 ** Returned value:		None
-** 
+**
 ******************************************************************************/
 void enable_timer( BYTE timer_num )
 {
     if ( timer_num == 0 )
     {
-	T0TCR = 1;
+        T0TCR = 1;
     }
     else
     {
-	T1TCR = 1;
+        T1TCR = 1;
     }
     return;
 }
@@ -87,17 +87,17 @@ void enable_timer( BYTE timer_num )
 **
 ** parameters:			timer number: 0 or 1
 ** Returned value:		None
-** 
+**
 ******************************************************************************/
 void disable_timer( BYTE timer_num )
 {
     if ( timer_num == 0 )
     {
-	T0TCR = 0;
+        T0TCR = 0;
     }
     else
     {
-	T1TCR = 0;
+        T1TCR = 0;
     }
     return;
 }
@@ -109,7 +109,7 @@ void disable_timer( BYTE timer_num )
 **
 ** parameters:			timer number: 0 or 1
 ** Returned value:		None
-** 
+**
 ******************************************************************************/
 void reset_timer( BYTE timer_num )
 {
@@ -117,15 +117,15 @@ void reset_timer( BYTE timer_num )
 
     if ( timer_num == 0 )
     {
-	regVal = T0TCR;
-	regVal |= 0x02;
-	T0TCR = regVal;
+        regVal = T0TCR;
+        regVal |= 0x02;
+        T0TCR = regVal;
     }
     else
     {
-	regVal = T1TCR;
-	regVal |= 0x02;
-	T1TCR = regVal;
+        regVal = T1TCR;
+        regVal |= 0x02;
+        T1TCR = regVal;
     }
     return;
 }
@@ -139,20 +139,20 @@ void reset_timer( BYTE timer_num )
 ** parameters:			None
 ** Returned value:		true or false, if the interrupt handler can't be
 **				installed, return false.
-** 
+**
 ******************************************************************************/
-DWORD init_timer (void) 
+DWORD init_timer (void)
 {
     timer_counter = 0;
     T0MR0 = INTERVAL_10MS;	/* 10mSec = 150.000-1 counts */
     T0MCR = 3;			/* Interrupt and Reset on MR0 */
     if ( install_irq( TIMER0_INT, (void *)Timer0Handler ) == FALSE )
     {
-	return (FALSE);
+        return (FALSE);
     }
     else
     {
-	return (TRUE);
+        return (TRUE);
     }
 }
 

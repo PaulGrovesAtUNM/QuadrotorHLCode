@@ -1,7 +1,7 @@
 /*****************************************************************************
 *   swi_handler.s: SWI handler file ARM7TDMI-(S) (not just LPC2000)
 *
-*   by Martin Thomas 
+*   by Martin Thomas
 *   http://www.siwawi.arubi.uni-kl.de/avr_projects
 *   based on information from ARM documents
 *
@@ -35,12 +35,12 @@
 .set VECTREMAPPED, 0
 #endif
 
-  
+
 /*********************************************************************
-*  SWI interrupt handler                                             
-*  Function :  SoftwareInterrupt(SWI_Number)                         
-*              See below "SwiFunction" table                         
-*  Parameters:    None                                               
+*  SWI interrupt handler
+*  Function :  SoftwareInterrupt(SWI_Number)
+*              See below "SwiFunction" table
+*  Parameters:    None
 *  input  :       SWI_Number (extracted from SWI command automaticly)
 *  output :       states for some SWIs - see below
 **********************************************************************/
@@ -59,81 +59,81 @@
 .func   SoftwareInterrupt
 SoftwareInterrupt:
 SWI_HandlerMT:
-	STMFD   sp!, {r4, lr}      /* store regs. */
-	MRS     r4, spsr
-	TST     r4, #T_Bit             /* test for thumb */
-	LDRNEH  r4, [lr, #-2]          /* NE->thumb - get swi instruction code */
-	BICNE   r4, r4, #0xff00        /* NE->thumb - clear top 8 bits leaving swi "comment field"=number */
-	LDREQ   r4, [lr, #-4]          /* EQ->arm - get swi instruction code */
-	BICEQ   r4, r4, #0xff000000    /* EQ->arm - clear top 8 bits leaving swi "comment field"=number */
-	CMP     r4, #MAX_SWI           /* range-check */
-	LDRLS   pc, [pc, r4, LSL #2]   /* jump to routine if <= MAX (LS) */
+STMFD   sp!, {r4, lr}      /* store regs. */
+MRS     r4, spsr
+TST     r4, #T_Bit             /* test for thumb */
+LDRNEH  r4, [lr, #-2]          /* NE->thumb - get swi instruction code */
+BICNE   r4, r4, #0xff00        /* NE->thumb - clear top 8 bits leaving swi "comment field"=number */
+LDREQ   r4, [lr, #-4]          /* EQ->arm - get swi instruction code */
+BICEQ   r4, r4, #0xff000000    /* EQ->arm - clear top 8 bits leaving swi "comment field"=number */
+CMP     r4, #MAX_SWI           /* range-check */
+LDRLS   pc, [pc, r4, LSL #2]   /* jump to routine if <= MAX (LS) */
 SWIOutOfRange:
-	B       SWIOutOfRange
+B       SWIOutOfRange
 
 /* Jump-Table */
 SwiTableStart:
-	.word IRQDisable	// 0
-	.word IRQEnable		// 1
-	.word FIQDisable	// 2
-	.word FIQEnable		// 3
-	.word CPSRget		// 4
-	.word IRQRestore	// 5
-	.word FIQRestore	// 6
+.word IRQDisable	// 0
+.word IRQEnable		// 1
+.word FIQDisable	// 2
+.word FIQEnable		// 3
+.word CPSRget		// 4
+.word IRQRestore	// 5
+.word FIQRestore	// 6
 SwiTableEnd:
 .set MAX_SWI, ((SwiTableEnd-SwiTableStart)/4)-1
 
 IRQDisable:
-	MRS     r0, SPSR                        /* Get SPSR = return value */
-	ORR     r4, r0, #I_Bit                  /* I_Bit set */
-	MSR     SPSR_c, r4                      /* Set SPSR */
-	B       EndofSWI
+MRS     r0, SPSR                        /* Get SPSR = return value */
+ORR     r4, r0, #I_Bit                  /* I_Bit set */
+MSR     SPSR_c, r4                      /* Set SPSR */
+B       EndofSWI
 
 IRQEnable:
-	MRS     r0, SPSR                        /* Get SPSR = return value */
-	BIC     r4, r0, #I_Bit                  /* I_Bit clear */
-	MSR     SPSR_c, r4                      /* Set SPSR */
-	B       EndofSWI                       
+MRS     r0, SPSR                        /* Get SPSR = return value */
+BIC     r4, r0, #I_Bit                  /* I_Bit clear */
+MSR     SPSR_c, r4                      /* Set SPSR */
+B       EndofSWI
 
 FIQDisable:
-	MRS     r0, SPSR
-	ORR     r4, r0, #F_Bit
-	AND     r0, r0, #F_Bit
-	MSR     SPSR_c, r4
-	B       EndofSWI
+MRS     r0, SPSR
+ORR     r4, r0, #F_Bit
+AND     r0, r0, #F_Bit
+MSR     SPSR_c, r4
+B       EndofSWI
 
 FIQEnable:
-	MRS     r0, SPSR
-	BIC     r4, r0, #F_Bit
-	AND     r0, r0, #F_Bit
-	MSR     SPSR_c, r4
-	B       EndofSWI
+MRS     r0, SPSR
+BIC     r4, r0, #F_Bit
+AND     r0, r0, #F_Bit
+MSR     SPSR_c, r4
+B       EndofSWI
 
 CPSRget:
-	// LDR r0, =0xdeadbeef
-	MRS     r0, SPSR                        /* Get SPSR */
-	B       EndofSWI                       
+// LDR r0, =0xdeadbeef
+MRS     r0, SPSR                        /* Get SPSR */
+B       EndofSWI
 
 IRQRestore:
-	MRS     r4, SPSR                        /* Get SPSR */
-	AND     r0, r0, #I_Bit
-	TST     r0, #I_Bit             /* Test input for I_Bit */
-	BICEQ   r4, r4, #I_Bit
-	ORRNE   r4, r4, #I_Bit
-	MSR     SPSR_c, r4
-	B       EndofSWI
+MRS     r4, SPSR                        /* Get SPSR */
+AND     r0, r0, #I_Bit
+TST     r0, #I_Bit             /* Test input for I_Bit */
+BICEQ   r4, r4, #I_Bit
+ORRNE   r4, r4, #I_Bit
+MSR     SPSR_c, r4
+B       EndofSWI
 
 FIQRestore:
-	MRS     r4, SPSR                        /* Get SPSR */
-	AND     r0, r0, #F_Bit
-	TST     r0, #F_Bit             /* Test input for F_Bit */
-	BICEQ   r4, r4, #F_Bit
-	ORRNE   r4, r4, #F_Bit
-	MSR     SPSR_c, r4
-	B       EndofSWI
+MRS     r4, SPSR                        /* Get SPSR */
+AND     r0, r0, #F_Bit
+TST     r0, #F_Bit             /* Test input for F_Bit */
+BICEQ   r4, r4, #F_Bit
+ORRNE   r4, r4, #F_Bit
+MSR     SPSR_c, r4
+B       EndofSWI
 
 EndofSWI:
-	LDMFD   sp!, {r4,pc}^
+LDMFD   sp!, {r4,pc}^
 .endfunc
 
 
@@ -152,8 +152,8 @@ EndofSWI:
 .global IntRestore
 .func   IntRestore
 IntRestore:
-		SWI     SWI_IRQ_REST
-		BX      lr
+SWI     SWI_IRQ_REST
+BX      lr
 .endfunc
 
 /**********************************************************************
@@ -171,8 +171,8 @@ IntRestore:
 .global FiqRestore
 .func   FiqRestore
 FiqRestore:
-		SWI     SWI_FIQ_REST
-		BX      lr
+SWI     SWI_FIQ_REST
+BX      lr
 .endfunc
 
 /**********************************************************************
@@ -188,8 +188,8 @@ FiqRestore:
 .global IntGetCPSR
 .func   IntGetCPSR
 IntGetCPSR:
-		SWI     SWI_GET_CPSR
-		BX      lr
+SWI     SWI_GET_CPSR
+BX      lr
 .endfunc
 
 /**********************************************************************
@@ -207,8 +207,8 @@ IntGetCPSR:
 .global IntEnable
 .func   IntEnable
 IntEnable:
-        SWI     SWI_IRQ_EN
-        BX      lr
+SWI     SWI_IRQ_EN
+BX      lr
 .endfunc /* end of IntEnable */
 
 /**********************************************************************
@@ -225,8 +225,8 @@ IntEnable:
 .section .text, "ax"
 .func   IntDisable
 IntDisable:
-        SWI     SWI_IRQ_DIS
-        BX      lr
+SWI     SWI_IRQ_DIS
+BX      lr
 .endfunc /* end of IntDisable */
 
 /**********************************************************************
@@ -244,8 +244,8 @@ IntDisable:
 .global FiqEnable
 .func   FiqEnable
 FiqEnable:
-        SWI     SWI_FIQ_EN
-        BX      lr
+SWI     SWI_FIQ_EN
+BX      lr
 .endfunc
 
 /**********************************************************************
@@ -262,8 +262,8 @@ FiqEnable:
 .section .text, "ax"
 .func   FiqDisable
 FiqDisable:
-        SWI     SWI_FIQ_DIS
-        BX      lr
+SWI     SWI_FIQ_DIS
+BX      lr
 .endfunc
 
 

@@ -9,36 +9,36 @@
  *  notice remains intact.
  */
 
-/* 
+/*
    Warning: The enable- and disable-functions can not be used
    in USR-mode which is the default for the Philips-examples
-   (see Startup.S). cpsr can not be written in USR-mode. 
-   If you need to enable or disable interrupts use the 
-   SWI-calls (see example SWI/swi.c/swi_handler.S). The 
+   (see Startup.S). cpsr can not be written in USR-mode.
+   If you need to enable or disable interrupts use the
+   SWI-calls (see example SWI/swi.c/swi_handler.S). The
    functions can be used in SYS-mode to start the system
    in SYS-mode the startup-code must be changed.
 
    The macros in this file are useful if interrupt-service-routines
    when using thumb-mode and/or optimisation without an addtional
-   "assembler-wrapper". The gcc-attribute interrupt("IRQ") does 
-   not work reliably here. See timer.c for an example implementation 
-   of an ISR that uses macros. For the gcc-port of the Philips-examples 
-   the macros are not needed, all functionality has been integrated 
+   "assembler-wrapper". The gcc-attribute interrupt("IRQ") does
+   not work reliably here. See timer.c for an example implementation
+   of an ISR that uses macros. For the gcc-port of the Philips-examples
+   the macros are not needed, all functionality has been integrated
    into isr_wrapper (see Startup.S).
 */
 
 #ifndef interrupt_utils_
 #define interrupt_utils_
 
-/* 
-   The following defines are usefull for 
+/*
+   The following defines are usefull for
    interrupt service routine declarations.
 */
 
-/* 
-   RAMFUNC 
-   Attribute which defines a function to be located 
-   in memory section .fastrun and called via "long calls". 
+/*
+   RAMFUNC
+   Attribute which defines a function to be located
+   in memory section .fastrun and called via "long calls".
    See linker-skript and startup-code to see how the
    .fastrun-section is handled.
    The definition is not only useful for ISRs but since
@@ -54,10 +54,10 @@
   a function as ISR (for the VIC). Since gcc seems
   to produce wrong code if this attribute is used in
   thumb/thumb-interwork and/or activated optimisation
-  the attribute should only be used for "pure ARM-mode" 
+  the attribute should only be used for "pure ARM-mode"
   binaries.
 */
-#define INTFUNC __attribute__ ((interrupt("IRQ"))) 
+#define INTFUNC __attribute__ ((interrupt("IRQ")))
 
 
 /*
@@ -75,7 +75,7 @@
  * MACRO Name: ISR_STORE()
  *
  * Description:
- *    This MACRO is used upon entry to an ISR with interrupt nesting.  
+ *    This MACRO is used upon entry to an ISR with interrupt nesting.
  *    Should be used together with ISR_ENABLE_NEST(). The MACRO
  *    performs the following steps:
  *
@@ -84,31 +84,31 @@
  *****************************************************************************/
 #define ISR_STORE() asm volatile( \
  "STMDB SP!,{R0-R12,LR}\n" )
- 
- /******************************************************************************
- *
- * MACRO Name: ISR_RESTORE()
- *
- * Description:
- *    This MACRO is used upon exit from an ISR with interrupt nesting.  
- *    Should be used together with ISR_DISABLE_NEST(). The MACRO
- *    performs the following steps:
- *
- *    1 - Load the non-banked registers r0-r12 and lr from the IRQ stack.
- *    2 - Adjusts resume adress
- *
- *****************************************************************************/
+
+/******************************************************************************
+*
+* MACRO Name: ISR_RESTORE()
+*
+* Description:
+*    This MACRO is used upon exit from an ISR with interrupt nesting.
+*    Should be used together with ISR_DISABLE_NEST(). The MACRO
+*    performs the following steps:
+*
+*    1 - Load the non-banked registers r0-r12 and lr from the IRQ stack.
+*    2 - Adjusts resume adress
+*
+*****************************************************************************/
 #define ISR_RESTORE()  asm volatile( \
  "LDMIA SP!,{R0-R12,LR}\n" \
- "SUBS  R15,R14,#0x0004\n" ) 
+ "SUBS  R15,R14,#0x0004\n" )
 
 /******************************************************************************
  *
  * MACRO Name: ISR_ENABLE_NEST()
  *
  * Description:
- *    This MACRO is used upon entry from an ISR with interrupt nesting.  
- *    Should be used after ISR_STORE. 
+ *    This MACRO is used upon entry from an ISR with interrupt nesting.
+ *    Should be used after ISR_STORE.
  *
  *****************************************************************************/
 #define ISR_ENABLE_NEST() asm volatile( \
@@ -122,8 +122,8 @@
  * MACRO Name: ISR_DISABLE_NEST()
  *
  * Description:
- *    This MACRO is used upon entry from an ISR with interrupt nesting.  
- *    Should be used before ISR_RESTORE. 
+ *    This MACRO is used upon entry from an ISR with interrupt nesting.
+ *    Should be used before ISR_RESTORE.
  *
  *****************************************************************************/
 #define ISR_DISABLE_NEST() asm volatile(  \
@@ -133,7 +133,7 @@
  "MSR     SPSR_cxsf, LR \n" )
 
 
- 
+
 /*
  * The following marcos are from the file "armVIC.h" by:
  *
@@ -141,9 +141,9 @@
  * No guarantees, warrantees, or promises, implied or otherwise.
  * May be used for hobby or commercial purposes provided copyright
  * notice remains intact.
- * 
- */ 
- 
+ *
+ */
+
 /******************************************************************************
  *
  * MACRO Name: ISR_ENTRY()
@@ -176,16 +176,16 @@
  *    routines to operate properly with THUMB code.  The MACRO performs
  *    the following steps:
  *
- *    1 - Recover SPSR value from stack       
- *    2 - and restore  its value                   
+ *    1 - Recover SPSR value from stack
+ *    2 - and restore  its value
  *    3 - Pop the return address & the saved general registers from
  *        the IRQ stack & return
  *
  *****************************************************************************/
 #define ISR_EXIT()  asm volatile(" ldmfd sp!,{r1}\n" \
                                  " msr   spsr_c,r1\n" \
-                                 " ldmfd sp!,{r0-r12,pc}^") 
-  
+                                 " ldmfd sp!,{r0-r12,pc}^")
+
 /******************************************************************************
  *
  * Function Name: disableIRQ()
@@ -193,7 +193,7 @@
  * Description:
  *    This function sets the IRQ disable bit in the status register
  *
- * Calling Sequence: 
+ * Calling Sequence:
  *    void
  *
  * Returns:
@@ -209,7 +209,7 @@ unsigned disableIRQ(void);
  * Description:
  *    This function clears the IRQ disable bit in the status register
  *
- * Calling Sequence: 
+ * Calling Sequence:
  *    void
  *
  * Returns:
@@ -226,7 +226,7 @@ unsigned enableIRQ(void);
  *    This function restores the IRQ disable bit in the status register
  *    to the value contained within passed oldCPSR
  *
- * Calling Sequence: 
+ * Calling Sequence:
  *    void
  *
  * Returns:
@@ -242,7 +242,7 @@ unsigned restoreIRQ(unsigned oldCPSR);
  * Description:
  *    This function sets the FIQ disable bit in the status register
  *
- * Calling Sequence: 
+ * Calling Sequence:
  *    void
  *
  * Returns:
@@ -258,7 +258,7 @@ unsigned disableFIQ(void);
  * Description:
  *    This function clears the FIQ disable bit in the status register
  *
- * Calling Sequence: 
+ * Calling Sequence:
  *    void
  *
  * Returns:
@@ -275,7 +275,7 @@ unsigned enableFIQ(void);
  *    This function restores the FIQ disable bit in the status register
  *    to the value contained within passed oldCPSR
  *
- * Calling Sequence: 
+ * Calling Sequence:
  *    void
  *
  * Returns:

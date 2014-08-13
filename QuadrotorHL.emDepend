@@ -1,0 +1,232 @@
+# depslib dependency file v1.0
+1407902061 source:c:\users\txt07\documents\github\quadrotorhlcode\setup\startup.s
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\buzzer.c
+	"buzzer.h"
+	"main.h"
+	"hardware.h"
+	"system.h"
+	"LL_HL_comm.h"
+	"LPC214x.h"
+	"i2c1.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\buzzer.h
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\src\main.h
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\hardware.h
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\src\system.h
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\src\ll_hl_comm.h
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\lpc214x.h
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\i2c1.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\src\swi_handler.s
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\src\interrupt_utils.c
+	"interrupt_utils.h"
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\inc\interrupt_utils.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\src\irq.c
+	"LPC214x.h"
+	"irq.h"
+
+1407894126 c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\inc\lpc214x.h
+
+1407902061 c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\inc\irq.h
+
+1407894126 source:c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\src\target.c
+	"LPC214x.h"
+	"type.h"
+	"irq.h"
+	"target.h"
+
+1407894126 c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\inc\type.h
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\inc\target.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\src\timer.c
+	"LPC214x.h"
+	"type.h"
+	"irq.h"
+	"timer.h"
+	"interrupt_utils.h"
+
+1407894126 c:\users\txt07\documents\github\quadrotorhlcode\common_winarm\inc\timer.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\hardware.c
+	"LPC214x.h"
+	"main.h"
+	"system.h"
+	"uart.h"
+	"hardware.h"
+	"irq.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\uart.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\i2c.c
+	"LPC214x.h"
+	"type.h"
+	"irq.h"
+	"i2c.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\i2c.h
+
+1407902137 source:c:\users\txt07\documents\github\quadrotorhlcode\src\i2c1.c
+	"LPC214x.h"
+	"type.h"
+	"irq.h"
+	"i2c1.h"
+	"main.h"
+	"LL_HL_comm.h"
+	"system.h"
+
+1407902263 source:c:\users\txt07\documents\github\quadrotorhlcode\src\buildinfosetup.c
+	"LPC214x.h"
+	"main.h"
+	"buildInfoSetup.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\buildinfosetup.h
+
+1407902811 source:c:\users\txt07\documents\github\quadrotorhlcode\src\ll_hl_comm.c
+	"main.h"
+	"LL_HL_comm.h"
+	"system.h"
+	"sdk.h"
+	"buildInfoSetup.h"
+	<string.h>
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\src\sdk.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\loadframe.c
+	"quadComm.h"
+	"quadCommands.h"
+	"loadFrame.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\quadcomm.h
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\quadcommands.h
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\src\loadframe.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\lpc2k_ee.c
+	"LPC214x.h"
+	"LPC2k_ee.h"
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\src\lpc2k_ee.h
+
+1407894127 source:c:\users\txt07\documents\github\quadrotorhlcode\src\adc.c
+	"LPC214x.h"
+	"type.h"
+	"irq.h"
+	"target.h"
+	"adc.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\adc.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\main.c
+	"LPC214x.h"
+	"main.h"
+	"system.h"
+	"uart.h"
+	"hardware.h"
+	"irq.h"
+	"i2c.h"
+	"i2c1.h"
+	"adc.h"
+	"uart.h"
+	"ssp.h"
+	"LL_HL_comm.h"
+	"sdk.h"
+	"buzzer.h"
+	"lpc_aci_eeprom.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\ssp.h
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\lpc_aci_eeprom.h
+	"LPC2k_ee.h"
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\quadcomm.c
+	"quadComm.h"
+	"RingBuffer.h"
+	"uart.h"
+
+1407899861 c:\users\txt07\documents\github\quadrotorhlcode\src\ringbuffer.h
+
+1407902908 source:c:\users\txt07\documents\github\quadrotorhlcode\src\ringbuffer.c
+	<stdio.h>
+	"RingBuffer.h"
+	"quadComm.h"
+	"irq.h"
+	"uart.h"
+
+1407902936 source:c:\users\txt07\documents\github\quadrotorhlcode\src\sdk.c
+	"main.h"
+	"sdk.h"
+	"LL_HL_comm.h"
+	"uart.h"
+	"system.h"
+	"hardware.h"
+	"loadFrame.h"
+	"RingBuffer.h"
+	"quadCommands.h"
+	"quadComm.h"
+	"uart.h"
+	<stdio.h>
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\ssp.c
+	"LPC214x.h"
+	"type.h"
+	"irq.h"
+	"ssp.h"
+	"main.h"
+	"system.h"
+	"LL_HL_comm.h"
+	"sdk.h"
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\syscalls.c
+	<stdlib.h>
+	<reent.h>
+	<sys/stat.h>
+	"uart.h"
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\system.c
+	"LPC214x.h"
+	"system.h"
+	"uart.h"
+	"main.h"
+	"hardware.h"
+	"type.h"
+	"irq.h"
+	"i2c.h"
+	"ssp.h"
+	"adc.h"
+	"options.h"
+
+1407894127 c:\users\txt07\documents\github\quadrotorhlcode\src\options.h
+
+1407899861 source:c:\users\txt07\documents\github\quadrotorhlcode\src\uart0_pfg.c
+	"LPC214x.h"
+	"system.h"
+	"main.h"
+	"uart.h"
+	"irq.h"
+	"hardware.h"
+	"ssp.h"
+	"sdk.h"
+	"RingBuffer.h"
+
+1407902976 source:c:\users\txt07\documents\github\quadrotorhlcode\src\uart1_pfg.c
+	"LPC214x.h"
+	"system.h"
+	"main.h"
+	"uart.h"
+	"irq.h"
+	"hardware.h"
+	"ssp.h"
+	"sdk.h"
+

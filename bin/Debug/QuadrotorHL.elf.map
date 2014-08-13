@@ -1,0 +1,1305 @@
+Archive member included because of file (symbol)
+
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+                              obj\Debug\Src\adc.o (__aeabi_uidiv)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_dvmd_tls.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o (__register_exitproc)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o (exit)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o (__libc_fini_array)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o) (_global_impure_ptr)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o (__libc_init_array)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+                              obj\Debug\Src\buildInfoSetup.o (memcpy)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o (memset)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o) (__call_exitprocs)
+c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o) (atexit)
+
+Allocating common symbols
+Common symbol       size              file
+
+LL_1khz_attitude_data
+                    0x5c              obj\Debug\Src\LL_HL_comm.o
+WO_CTRL_Input       0xa               obj\Debug\Src\sdk.o
+I2CReadLength       0x4               obj\Debug\Src\i2c.o
+buildInfo           0x53              obj\Debug\Src\buildInfoSetup.o
+I2CSlaveBuffer      0x20              obj\Debug\Src\i2c.o
+GPS_timeout         0x4               obj\Debug\Src\buildInfoSetup.o
+transmission_running
+                    0x1               obj\Debug\Src\uart1_pfg.o
+CurrentRxIndex      0x4               obj\Debug\Src\ssp.o
+trigger_transmission
+                    0x1               obj\Debug\Src\uart1_pfg.o
+WO_Direct_Motor_Control
+                    0x4               obj\Debug\Src\sdk.o
+SPIWR_num_bytes     0x4               obj\Debug\Src\ssp.o
+txBuffLen           0x4               obj\Debug\Src\uart1_pfg.o
+u0r                 0xa0              obj\Debug\Src\uart0_pfg.o
+CurrentTxIndex      0x4               obj\Debug\Src\ssp.o
+WO_Direct_Individual_Motor_Control
+                    0x9               obj\Debug\Src\sdk.o
+WO_SDK              0x3               obj\Debug\Src\sdk.o
+u0s                 0xa0              obj\Debug\Src\uart0_pfg.o
+I2C1WriteLength     0x4               obj\Debug\Src\i2c1.o
+I2CMode             0x4               obj\Debug\Src\i2c.o
+LL_1khz_control_input
+                    0x38              obj\Debug\Src\LL_HL_comm.o
+I2CMasterBuffer     0x20              obj\Debug\Src\i2c.o
+I2CCmd              0x4               obj\Debug\Src\i2c.o
+send_buffer         0x10              obj\Debug\Src\uart1_pfg.o
+iap_entry           0x4               obj\Debug\Src\LPC2k_ee.o
+RO_RC_Data          0x10              obj\Debug\Src\sdk.o
+txBuffer            0x32              obj\Debug\Src\uart1_pfg.o
+I2CWriteLength      0x4               obj\Debug\Src\i2c.o
+wpToLL              0x1c              obj\Debug\Src\LL_HL_comm.o
+SPIWRData           0x80              obj\Debug\Src\ssp.o
+frame               0x8               obj\Debug\Src\loadFrame.o
+RO_ALL_Data         0x98              obj\Debug\Src\sdk.o
+chksum_trigger      0x1               obj\Debug\Src\uart1_pfg.o
+HL_Status           0x18              obj\Debug\Src\main.o
+I2C1MasterBuffer    0x20              obj\Debug\Src\i2c1.o
+SPIRDData           0x80              obj\Debug\Src\ssp.o
+transmission1_running
+                    0x1               obj\Debug\Src\uart1_pfg.o
+ADC0Value           0x20              obj\Debug\Src\adc.o
+ADC1Value           0x20              obj\Debug\Src\adc.o
+adcChannelValues    0x20              obj\Debug\Src\adc.o
+UART_CalibDoneFlag  0x1               obj\Debug\Src\uart1_pfg.o
+emergencyMode       0x1               obj\Debug\Src\sdk.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+ .data          0x00000000        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+ .text          0x00000000       0xf8 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+ .ARM.attributes
+                0x00000000       0x16 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+ .text          0x00000000      0x1bc obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .data          0x00000000        0x0 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .bss           0x00000000        0x0 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .debug_info    0x00000000      0x1aa obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .debug_abbrev  0x00000000       0xb2 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .debug_loc     0x00000000      0x160 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .debug_aranges
+                0x00000000       0x20 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .debug_line    0x00000000       0xa7 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .debug_str     0x00000000      0x127 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .comment       0x00000000       0x71 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .ARM.attributes
+                0x00000000       0x32 obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .debug_frame   0x00000000       0xec obj\Debug\Common_WinARM\src\interrupt_utils.o
+ .data          0x00000000        0x0 obj\Debug\Common_WinARM\src\irq.o
+ .bss           0x00000000        0x0 obj\Debug\Common_WinARM\src\irq.o
+ .text          0x00000000       0x38 obj\Debug\Common_WinARM\src\swi_handler.o
+ .data          0x00000000        0x0 obj\Debug\Common_WinARM\src\swi_handler.o
+ .bss           0x00000000        0x0 obj\Debug\Common_WinARM\src\swi_handler.o
+ .vectorg       0x00000000       0xd0 obj\Debug\Common_WinARM\src\swi_handler.o
+ .ARM.attributes
+                0x00000000       0x22 obj\Debug\Common_WinARM\src\swi_handler.o
+ .debug_line    0x00000000       0xd6 obj\Debug\Common_WinARM\src\swi_handler.o
+ .debug_info    0x00000000       0xa4 obj\Debug\Common_WinARM\src\swi_handler.o
+ .debug_abbrev  0x00000000       0x12 obj\Debug\Common_WinARM\src\swi_handler.o
+ .debug_aranges
+                0x00000000       0x28 obj\Debug\Common_WinARM\src\swi_handler.o
+ .debug_ranges  0x00000000       0x20 obj\Debug\Common_WinARM\src\swi_handler.o
+ .text          0x00000000       0xfc obj\Debug\Common_WinARM\src\target.o
+ .data          0x00000000        0x0 obj\Debug\Common_WinARM\src\target.o
+ .bss           0x00000000        0x0 obj\Debug\Common_WinARM\src\target.o
+ .debug_info    0x00000000       0x96 obj\Debug\Common_WinARM\src\target.o
+ .debug_abbrev  0x00000000       0x35 obj\Debug\Common_WinARM\src\target.o
+ .debug_loc     0x00000000       0xb0 obj\Debug\Common_WinARM\src\target.o
+ .debug_aranges
+                0x00000000       0x20 obj\Debug\Common_WinARM\src\target.o
+ .debug_line    0x00000000       0xa7 obj\Debug\Common_WinARM\src\target.o
+ .debug_str     0x00000000      0x10b obj\Debug\Common_WinARM\src\target.o
+ .comment       0x00000000       0x71 obj\Debug\Common_WinARM\src\target.o
+ .ARM.attributes
+                0x00000000       0x32 obj\Debug\Common_WinARM\src\target.o
+ .debug_frame   0x00000000       0x70 obj\Debug\Common_WinARM\src\target.o
+ .text          0x00000000      0x1ec obj\Debug\Common_WinARM\src\timer.o
+ .data          0x00000000        0x0 obj\Debug\Common_WinARM\src\timer.o
+ .bss           0x00000000        0x4 obj\Debug\Common_WinARM\src\timer.o
+ .debug_info    0x00000000      0x123 obj\Debug\Common_WinARM\src\timer.o
+ .debug_abbrev  0x00000000       0xaa obj\Debug\Common_WinARM\src\timer.o
+ .debug_loc     0x00000000       0xdc obj\Debug\Common_WinARM\src\timer.o
+ .debug_aranges
+                0x00000000       0x20 obj\Debug\Common_WinARM\src\timer.o
+ .debug_line    0x00000000       0xf2 obj\Debug\Common_WinARM\src\timer.o
+ .debug_str     0x00000000      0x13d obj\Debug\Common_WinARM\src\timer.o
+ .comment       0x00000000       0x71 obj\Debug\Common_WinARM\src\timer.o
+ .ARM.attributes
+                0x00000000       0x32 obj\Debug\Common_WinARM\src\timer.o
+ .debug_frame   0x00000000       0x8c obj\Debug\Common_WinARM\src\timer.o
+ .data          0x00000000        0x0 obj\Debug\Setup\startup.o
+ .bss           0x00000000        0x0 obj\Debug\Setup\startup.o
+ .data          0x00000000        0x0 obj\Debug\Src\adc.o
+ .bss           0x00000000        0x8 obj\Debug\Src\adc.o
+ .data          0x00000000        0x0 obj\Debug\Src\buildInfoSetup.o
+ .bss           0x00000000        0x0 obj\Debug\Src\buildInfoSetup.o
+ .data          0x00000000        0x0 obj\Debug\Src\hardware.o
+ .bss           0x00000000        0x0 obj\Debug\Src\hardware.o
+ .text          0x00000000      0x6cc obj\Debug\Src\i2c.o
+ .data          0x00000000        0x0 obj\Debug\Src\i2c.o
+ .bss           0x00000000       0x14 obj\Debug\Src\i2c.o
+ .debug_info    0x00000000      0x209 obj\Debug\Src\i2c.o
+ .debug_abbrev  0x00000000       0xed obj\Debug\Src\i2c.o
+ .debug_loc     0x00000000      0x108 obj\Debug\Src\i2c.o
+ .debug_aranges
+                0x00000000       0x20 obj\Debug\Src\i2c.o
+ .debug_line    0x00000000      0x139 obj\Debug\Src\i2c.o
+ .debug_str     0x00000000      0x1c7 obj\Debug\Src\i2c.o
+ .comment       0x00000000       0x71 obj\Debug\Src\i2c.o
+ .ARM.attributes
+                0x00000000       0x32 obj\Debug\Src\i2c.o
+ .debug_frame   0x00000000       0xa8 obj\Debug\Src\i2c.o
+ COMMON         0x00000000       0x50 obj\Debug\Src\i2c.o
+ .data          0x00000000        0x0 obj\Debug\Src\i2c1.o
+ .data          0x00000000        0x0 obj\Debug\Src\LL_HL_comm.o
+ .data          0x00000000        0x0 obj\Debug\Src\loadFrame.o
+ .bss           0x00000000        0x0 obj\Debug\Src\loadFrame.o
+ .text          0x00000000      0x65c obj\Debug\Src\LPC2k_ee.o
+ .data          0x00000000        0x0 obj\Debug\Src\LPC2k_ee.o
+ .bss           0x00000000        0x0 obj\Debug\Src\LPC2k_ee.o
+ .debug_info    0x00000000      0x336 obj\Debug\Src\LPC2k_ee.o
+ .debug_abbrev  0x00000000      0x126 obj\Debug\Src\LPC2k_ee.o
+ .debug_loc     0x00000000      0x134 obj\Debug\Src\LPC2k_ee.o
+ .debug_aranges
+                0x00000000       0x20 obj\Debug\Src\LPC2k_ee.o
+ .debug_line    0x00000000      0x123 obj\Debug\Src\LPC2k_ee.o
+ .debug_str     0x00000000      0x193 obj\Debug\Src\LPC2k_ee.o
+ .comment       0x00000000       0x71 obj\Debug\Src\LPC2k_ee.o
+ .ARM.attributes
+                0x00000000       0x32 obj\Debug\Src\LPC2k_ee.o
+ .debug_frame   0x00000000       0xcc obj\Debug\Src\LPC2k_ee.o
+ COMMON         0x00000000        0x4 obj\Debug\Src\LPC2k_ee.o
+ .data          0x00000000        0x1 obj\Debug\Src\main.o
+ .data          0x00000000        0x0 obj\Debug\Src\quadComm.o
+ .data          0x00000000        0x0 obj\Debug\Src\RingBuffer.o
+ .bss           0x00000000        0x0 obj\Debug\Src\RingBuffer.o
+ .data          0x00000000        0x0 obj\Debug\Src\sdk.o
+ .bss           0x00000000        0x4 obj\Debug\Src\ssp.o
+ .text          0x00000000      0x268 obj\Debug\Src\syscalls.o
+ .data          0x00000000        0x0 obj\Debug\Src\syscalls.o
+ .bss           0x00000000        0x4 obj\Debug\Src\syscalls.o
+ .debug_info    0x00000000      0xd4e obj\Debug\Src\syscalls.o
+ .debug_abbrev  0x00000000      0x1d3 obj\Debug\Src\syscalls.o
+ .debug_loc     0x00000000      0x134 obj\Debug\Src\syscalls.o
+ .debug_aranges
+                0x00000000       0x20 obj\Debug\Src\syscalls.o
+ .debug_line    0x00000000      0x232 obj\Debug\Src\syscalls.o
+ .debug_str     0x00000000      0x62f obj\Debug\Src\syscalls.o
+ .comment       0x00000000       0x71 obj\Debug\Src\syscalls.o
+ .ARM.attributes
+                0x00000000       0x32 obj\Debug\Src\syscalls.o
+ .debug_frame   0x00000000       0xbc obj\Debug\Src\syscalls.o
+ .data          0x00000000        0x0 obj\Debug\Src\system.o
+ .bss           0x00000000        0x0 obj\Debug\Src\system.o
+ .data          0x00000000        0x0 obj\Debug\Src\uart0_pfg.o
+ .bss           0x00000000        0x8 obj\Debug\Src\uart0_pfg.o
+ .data          0x00000000        0x1 obj\Debug\Src\uart1_pfg.o
+ .bss           0x00000000        0x1 obj\Debug\Src\uart1_pfg.o
+ COMMON         0x00000000       0x4d obj\Debug\Src\uart1_pfg.o
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_dvmd_tls.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x28 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000000       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+ .debug_frame   0x00000000       0x28 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x00000000        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+ .text.__libc_init_array
+                0x00000000       0x54 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000000       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+ .debug_frame   0x00000000       0x2c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+ .text.memset   0x00000000       0x98 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000000       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+ .debug_frame   0x00000000       0x2c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x00000000      0x10c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtend.o
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtend.o
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtend.o
+ .eh_frame      0x00000000        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtend.o
+ .jcr           0x00000000        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtend.o
+ .ARM.attributes
+                0x00000000       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtend.o
+ .text          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtn.o
+ .data          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtn.o
+ .bss           0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x00000000         0x00040000         xr
+RAM              0x40000000         0x00008000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+LOAD c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+LOAD c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+LOAD obj\Debug\Common_WinARM\src\interrupt_utils.o
+LOAD obj\Debug\Common_WinARM\src\irq.o
+LOAD obj\Debug\Common_WinARM\src\swi_handler.o
+LOAD obj\Debug\Common_WinARM\src\target.o
+LOAD obj\Debug\Common_WinARM\src\timer.o
+LOAD obj\Debug\Setup\startup.o
+LOAD obj\Debug\Src\adc.o
+LOAD obj\Debug\Src\buildInfoSetup.o
+LOAD obj\Debug\Src\buzzer.o
+LOAD obj\Debug\Src\hardware.o
+LOAD obj\Debug\Src\i2c.o
+LOAD obj\Debug\Src\i2c1.o
+LOAD obj\Debug\Src\LL_HL_comm.o
+LOAD obj\Debug\Src\loadFrame.o
+LOAD obj\Debug\Src\LPC2k_ee.o
+LOAD obj\Debug\Src\main.o
+LOAD obj\Debug\Src\quadComm.o
+LOAD obj\Debug\Src\RingBuffer.o
+LOAD obj\Debug\Src\sdk.o
+LOAD obj\Debug\Src\ssp.o
+LOAD obj\Debug\Src\syscalls.o
+LOAD obj\Debug\Src\system.o
+LOAD obj\Debug\Src\uart0_pfg.o
+LOAD obj\Debug\Src\uart1_pfg.o
+START GROUP
+LOAD c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a
+LOAD c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a
+END GROUP
+LOAD c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtend.o
+LOAD c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtn.o
+                0x00000000                FIQ_STACK_SIZE = 0x0
+                0x00000100                IRQ_STACK_SIZE = 0x100
+                0x00000000                ABT_STACK_SIZE = 0x0
+                0x00000000                UND_STACK_SIZE = 0x0
+                0x00000800                SVC_STACK_SIZE = 0x800
+                0x00001000                _Min_Heap_Size = 0x1000
+
+.vectors        0x00000000       0xd8
+                0x00000000                . = ALIGN (0x4)
+ *(.vectors)
+ .vectors       0x00000000       0xd8 obj\Debug\Setup\startup.o
+                0x00000000                __vector
+                0x000000b8                __low_level_init
+                0x000000d8                . = ALIGN (0x4)
+
+.text           0x000000d8     0x5428
+                0x000000d8                . = ALIGN (0x4)
+ *(.text)
+ .text          0x000000d8       0x6c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+ .text          0x00000144      0x2c8 obj\Debug\Common_WinARM\src\irq.o
+                0x00000168                init_VIC
+                0x00000234                install_irq
+                0x0000031c                uninstall_irq
+ .text          0x0000040c       0x50 obj\Debug\Setup\startup.o
+                0x0000040c                Reset_Handler
+                0x00000440                end
+ .text          0x0000045c      0x3a0 obj\Debug\Src\adc.o
+                0x0000045c                ADCInit
+                0x000004dc                ADC0Read
+                0x00000600                ADC1Read
+                0x000006f0                ADC0triggerSampling
+                0x0000072c                ADC0getSamplingResults
+ .text          0x000007fc      0x2c4 obj\Debug\Src\buildInfoSetup.o
+                0x000007fc                generateBuildInfo
+ .text          0x00000ac0     0x11f4 obj\Debug\Src\buzzer.o
+                0x00000ac0                buzzer_handler
+                0x00001c64                buzzer
+ .text          0x00001cb4       0x84 obj\Debug\Src\hardware.o
+                0x00001cb4                LED
+ .text          0x00001d38      0xec8 obj\Debug\Src\i2c1.o
+                0x00001d38                I2C1MasterHandler
+                0x00001fe0                fireFlyLedHandler
+                0x00002a18                I2C1_setRGBLed
+                0x00002b0c                I2C1Init
+                0x00002b70                I2C1Engine
+                0x00002bd8                I2C1State
+ .text          0x00002c00      0x6e0 obj\Debug\Src\LL_HL_comm.o
+                0x00002c00                SSP_data_distribution_HL
+                0x00002c30                HL2LL_write_cycle
+                0x00002e14                LL_write_ctrl_data
+                0x000030a8                SSP_rx_handler_HL
+ .text          0x000032e0      0x15c obj\Debug\Src\loadFrame.o
+                0x000032e0                loadFrame
+ .text          0x0000343c      0x3d4 obj\Debug\Src\main.o
+                0x0000343c                timer0ISR
+                0x00003520                main
+ .text          0x00003810      0x368 obj\Debug\Src\quadComm.o
+                0x00003810                showRBuffer
+                0x00003830                sendByte
+                0x00003870                sendNBytes
+                0x000038d0                sendText
+                0x00003928                bytesAvailable
+                0x00003954                getByte
+                0x000039c4                getBytes
+                0x00003a20                pushBack
+                0x00003a54                skipBytes
+                0x00003a98                peekByte
+                0x00003ac0                findInBuffer
+                0x00003b08                debugMsg
+ .text          0x00003b78      0x498 obj\Debug\Src\RingBuffer.o
+                0x00003b78                RBInit
+                0x00003bb8                showBuffer
+                0x00003bd4                RBEnqueue
+                0x00003c8c                RBDequeue
+                0x00003d48                RBDiscard
+                0x00003de8                RBPushBack
+                0x00003e78                RBPeek
+                0x00003ef8                RBfindInBuffer
+                0x00003fe4                RBCount
+ .text          0x00004010      0x17c obj\Debug\Src\sdk.o
+                0x00004010                SDK_mainloop
+                0x00004168                SDK_SetEmergencyMode
+ .text          0x0000418c      0x3dc obj\Debug\Src\ssp.o
+                0x0000418c                SSPHandler
+                0x0000433c                LL_write_init
+                0x00004378                LL_write
+ .text          0x00004568      0x4f0 obj\Debug\Src\system.o
+                0x00004568                init
+                0x000045e8                init_interrupts
+                0x00004688                init_ports
+                0x00004720                init_timer0
+                0x000047b4                PWM_Init
+                0x00004848                init_spi
+                0x0000487c                init_spi1
+                0x00004910                pll_init
+                0x00004944                pll_feed
+                0x00004974                processorClockFrequency
+                0x00004990                peripheralClockFrequency
+                0x00004a14                delay
+ .text          0x00004a58      0x340 obj\Debug\Src\uart0_pfg.o
+                0x00004a58                uart0ISR
+                0x00004b18                emptyUART0
+                0x00004b7c                UART0Initialize
+                0x00004c5c                UART0Debug
+                0x00004cd4                UART0WriteChar
+                0x00004d34                uart0Prime
+ .text          0x00004d98      0x3d8 obj\Debug\Src\uart1_pfg.o
+                0x00004d98                uart1ISR
+                0x00004e04                UART1Initialize
+                0x00004ea4                UART1WriteChar
+                0x00004ef0                UART1ReadChar
+                0x00004f34                __putchar
+                0x00004f74                UART1_send
+                0x00005010                crc_update
+                0x000050e0                crc16
+ .text          0x00005170      0x11c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+                0x00005170                __aeabi_uidiv
+                0x00005170                __udivsi3
+                0x0000526c                __aeabi_uidivmod
+ .text          0x0000528c        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_dvmd_tls.o)
+                0x0000528c                __aeabi_idiv0
+                0x0000528c                __aeabi_ldiv0
+ *(.text*)
+ .text.__register_exitproc
+                0x00005290       0xc8 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+                0x00005290                __register_exitproc
+ .text.__libc_fini_array
+                0x00005358       0x38 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+                0x00005358                __libc_fini_array
+ .text.memcpy   0x00005390       0x90 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+                0x00005390                memcpy
+ .text.startup.register_fini
+                0x00005420       0x1c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x0000543c       0x14 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+                0x0000543c                atexit
+ *(.rodata)
+ .rodata        0x00005450       0x30 obj\Debug\Src\buildInfoSetup.o
+ .rodata        0x00005480       0x10 obj\Debug\Src\quadComm.o
+ .rodata        0x00005490       0x2c obj\Debug\Src\RingBuffer.o
+ .rodata        0x000054bc       0x18 obj\Debug\Src\sdk.o
+ *(.rodata*)
+ .rodata.str1.4
+                0x000054d4        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x000054d8        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                0x000054d8                _global_impure_ptr
+ *(.glue_4)
+ *(.glue_4t)
+ *(.init)
+ .init          0x000054dc        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+                0x000054dc                _init
+ .init          0x000054e0        0x8 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtn.o
+ *(.fini)
+ .fini          0x000054e8        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+                0x000054e8                _fini
+ .fini          0x000054ec        0x8 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtn.o
+ *fill*         0x000054f4        0x4 00
+ .fini.stub     0x000054f8        0x8 linker stubs
+                0x00005500                . = ALIGN (0x4)
+
+.eh_frame       0x00005500        0x0
+ .eh_frame      0x00005500        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+
+.glue_7         0x00005500        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x00005500        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x00005500        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00005500        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00005500        0x0
+ .iplt          0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+
+.rel.dyn        0x00005500        0x0
+ .rel.iplt      0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x00005500                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00005500                __exidx_end = .
+
+.ARM.attributes
+                0x00005500       0x2c
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00005500       0x16 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+ .ARM.attributes
+                0x00005516       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+ .ARM.attributes
+                0x00005546       0x32 obj\Debug\Common_WinARM\src\irq.o
+ .ARM.attributes
+                0x00005578       0x22 obj\Debug\Setup\startup.o
+ .ARM.attributes
+                0x0000559a       0x32 obj\Debug\Src\adc.o
+ .ARM.attributes
+                0x000055cc       0x32 obj\Debug\Src\buildInfoSetup.o
+ .ARM.attributes
+                0x000055fe       0x32 obj\Debug\Src\buzzer.o
+ .ARM.attributes
+                0x00005630       0x32 obj\Debug\Src\hardware.o
+ .ARM.attributes
+                0x00005662       0x32 obj\Debug\Src\i2c1.o
+ .ARM.attributes
+                0x00005694       0x32 obj\Debug\Src\LL_HL_comm.o
+ .ARM.attributes
+                0x000056c6       0x32 obj\Debug\Src\loadFrame.o
+ .ARM.attributes
+                0x000056f8       0x32 obj\Debug\Src\main.o
+ .ARM.attributes
+                0x0000572a       0x32 obj\Debug\Src\quadComm.o
+ .ARM.attributes
+                0x0000575c       0x32 obj\Debug\Src\RingBuffer.o
+ .ARM.attributes
+                0x0000578e       0x32 obj\Debug\Src\sdk.o
+ .ARM.attributes
+                0x000057c0       0x32 obj\Debug\Src\ssp.o
+ .ARM.attributes
+                0x000057f2       0x32 obj\Debug\Src\system.o
+ .ARM.attributes
+                0x00005824       0x32 obj\Debug\Src\uart0_pfg.o
+ .ARM.attributes
+                0x00005856       0x32 obj\Debug\Src\uart1_pfg.o
+ .ARM.attributes
+                0x00005888       0x18 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000058a0       0x16 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x000058b6       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x000058e6       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x00005916       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00005946       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x00005976       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x000059a6       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x000059d6       0x16 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtn.o
+
+.preinit_array  0x00005500        0x0
+                0x00005500                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array*)
+                0x00005500                PROVIDE (__preinit_array_end, .)
+
+.init_array     0x00005500        0x8
+                0x00005500                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ .init_array.00000
+                0x00005500        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ *(.init_array*)
+ .init_array    0x00005504        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+                0x00005508                PROVIDE (__init_array_end, .)
+
+.fini_array     0x00005508        0x4
+                0x00005508                PROVIDE (__fini_array_start, .)
+ *(.fini_array*)
+ .fini_array    0x00005508        0x4 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x0000550c                PROVIDE (__fini_array_end, .)
+                0x00005510                . = ALIGN (0x8)
+                0x00005510                __etext = .
+
+.data           0x40000000      0x438 load address 0x00005510
+                0x40000000                . = ALIGN (0x4)
+                0x40000000                __data_start__ = .
+ *(.data)
+ .data          0x40000000        0xc obj\Debug\Src\buzzer.o
+                0x40000000                buzzer_warnings
+                0x40000002                ALARM_battery_warning_voltage_high
+                0x40000004                ALARM_battery_warning_voltage_low
+ .data          0x4000000c        0x3 obj\Debug\Src\ssp.o
+                0x4000000c                data_sent_to_LL
+                0x4000000d                SSP_receiption_complete
+                0x4000000e                data_sent_to_HL
+ *(.data*)
+ *fill*         0x4000000f        0x1 00
+ .data.impure_data
+                0x40000010      0x428 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                0x40000438                . = ALIGN (0x4)
+                0x40000438                __data_end__ = .
+
+.jcr            0x40000438        0x0 load address 0x00005948
+ .jcr           0x40000438        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+
+.igot.plt       0x40000438        0x0 load address 0x00005948
+ .igot.plt      0x00000000        0x0 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+                0x40000438                . = ALIGN (0x4)
+
+.bss            0x40000438      0x574 load address 0x00005948
+                0x40000438                _sbss = .
+                0x40000438                __bss_start__ = _sbss
+ *(.bss)
+ .bss           0x40000438       0x1c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+ .bss           0x40000454       0x14 obj\Debug\Src\buzzer.o
+ .bss           0x40000468       0x14 obj\Debug\Src\i2c1.o
+                0x40000468                I2C1MasterState
+                0x4000046c                I2C1Count
+                0x40000470                WrIndex1
+                0x40000474                lastI2c1Error
+ .bss           0x4000047c       0x20 obj\Debug\Src\LL_HL_comm.o
+                0x4000047c                SSP_ack
+                0x4000047e                wpCtrlWpCmd
+                0x4000047f                wpCtrlWpCmdUpdated
+                0x40000480                wpCtrlAckTrigger
+                0x40000482                wpCtrlNavStatus
+                0x40000484                wpCtrlDistToWp
+                0x40000486                transmitBuildInfoTrigger
+ .bss           0x4000049c       0x20 obj\Debug\Src\main.o
+                0x4000049c                SYSTEM_initialized
+                0x400004a0                int_cnt
+                0x400004a4                cnt
+                0x400004a8                mainloop_cnt
+                0x400004ac                mainloop_trigger
+                0x400004b0                trigger_cnt
+                0x400004b4                mainloop_overflows
+ .bss           0x400004bc        0x8 obj\Debug\Src\quadComm.o
+                0x400004bc                DEBUG_ENABLED
+                0x400004c0                ECHOMODE
+ .bss           0x400004c4       0x24 obj\Debug\Src\sdk.o
+                0x400004c4                emergencyModeUpdate
+                0x400004c8                loops
+                0x400004cc                firstime
+                0x400004d0                motors
+                0x400004e0                errs
+                0x400004e4                dmcs
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x400004e8       0x60 obj\Debug\Src\adc.o
+                0x400004e8                ADC0Value
+                0x40000508                ADC1Value
+                0x40000528                adcChannelValues
+ COMMON         0x40000548       0x58 obj\Debug\Src\buildInfoSetup.o
+                0x40000548                buildInfo
+                0x4000059c                GPS_timeout
+ COMMON         0x400005a0       0x24 obj\Debug\Src\i2c1.o
+                0x400005a0                I2C1WriteLength
+                0x400005a4                I2C1MasterBuffer
+ COMMON         0x400005c4       0xb0 obj\Debug\Src\LL_HL_comm.o
+                0x400005c4                LL_1khz_attitude_data
+                0x40000620                LL_1khz_control_input
+                0x40000658                wpToLL
+ COMMON         0x40000674        0x8 obj\Debug\Src\loadFrame.o
+                0x40000674                frame
+ COMMON         0x4000067c       0x18 obj\Debug\Src\main.o
+                0x4000067c                HL_Status
+ COMMON         0x40000694       0xc9 obj\Debug\Src\sdk.o
+                0x40000694                WO_CTRL_Input
+                0x400006a0                WO_Direct_Motor_Control
+                0x400006a4                WO_Direct_Individual_Motor_Control
+                0x400006b0                WO_SDK
+                0x400006b4                RO_RC_Data
+                0x400006c4                RO_ALL_Data
+                0x4000075c                emergencyMode
+ *fill*         0x4000075d        0x3 00
+ COMMON         0x40000760      0x10c obj\Debug\Src\ssp.o
+                0x40000760                CurrentRxIndex
+                0x40000764                SPIWR_num_bytes
+                0x40000768                CurrentTxIndex
+                0x4000076c                SPIWRData
+                0x400007ec                SPIRDData
+ COMMON         0x4000086c      0x140 obj\Debug\Src\uart0_pfg.o
+                0x4000086c                u0r
+                0x4000090c                u0s
+                0x400009ac                . = ALIGN (0x4)
+                0x400009ac                _ebss = .
+                0x400009ac                __bss_end__ = _ebss
+
+._user_heap_stack
+                0x400009ac     0x1904 load address 0x00005ebc
+                0x400009b0                . = ALIGN (0x8)
+ *fill*         0x400009ac        0x4 00
+                0x400009b0                __heap_start__ = .
+                0x400019b0                . = (. + _Min_Heap_Size)
+ *fill*         0x400009b0     0x1000 00
+                0x400019b0                __heap_end__ = .
+                0x400019b0                . = ALIGN (0x8)
+                0x400019b0                PROVIDE (__stack_fiq_start__, .)
+                0x400019b0                . = (. + FIQ_STACK_SIZE)
+                0x400019b0                . = ALIGN (0x8)
+                0x400019b0                PROVIDE (__stack_fiq_end__, .)
+                0x400019b0                PROVIDE (__stack_irq_start__, .)
+                0x40001ab0                . = (. + IRQ_STACK_SIZE)
+ *fill*         0x400019b0      0x100 00
+                0x40001ab0                . = ALIGN (0x8)
+                0x40001ab0                PROVIDE (__stack_irq_end__, .)
+                0x40001ab0                PROVIDE (__stack_abt_start__, .)
+                0x40001ab0                . = (. + ABT_STACK_SIZE)
+                0x40001ab0                . = ALIGN (0x8)
+                0x40001ab0                PROVIDE (__stack_abt_end__, .)
+                0x40001ab0                PROVIDE (__stack_und_start__, .)
+                0x40001ab0                . = (. + UND_STACK_SIZE)
+                0x40001ab0                . = ALIGN (0x8)
+                0x40001ab0                PROVIDE (__stack_und_end__, .)
+                0x40001ab0                __stack_start__ = .
+                0x40001ab0                PROVIDE (__stack_svc_start__, .)
+                0x400022b0                . = (. + SVC_STACK_SIZE)
+ *fill*         0x40001ab0      0x800 00
+                0x400022b0                . = ALIGN (0x8)
+                0x400022b0                PROVIDE (__stack_svc_end__, .)
+                0x400022b0                __stack_end__ = .
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+OUTPUT(bin\Debug\QuadrotorHL.elf elf32-littlearm)
+
+.debug_info     0x00000000     0x2f84
+ .debug_info    0x00000000      0x13d obj\Debug\Common_WinARM\src\irq.o
+ .debug_info    0x0000013d       0x94 obj\Debug\Setup\startup.o
+ .debug_info    0x000001d1      0x22c obj\Debug\Src\adc.o
+ .debug_info    0x000003fd      0x1d3 obj\Debug\Src\buildInfoSetup.o
+ .debug_info    0x000005d0      0x3b5 obj\Debug\Src\buzzer.o
+ .debug_info    0x00000985       0xa9 obj\Debug\Src\hardware.o
+ .debug_info    0x00000a2e      0x520 obj\Debug\Src\i2c1.o
+ .debug_info    0x00000f4e      0x77e obj\Debug\Src\LL_HL_comm.o
+ .debug_info    0x000016cc       0xfb obj\Debug\Src\loadFrame.o
+ .debug_info    0x000017c7      0x24f obj\Debug\Src\main.o
+ .debug_info    0x00001a16      0x2fc obj\Debug\Src\quadComm.o
+ .debug_info    0x00001d12      0x329 obj\Debug\Src\RingBuffer.o
+ .debug_info    0x0000203b      0x601 obj\Debug\Src\sdk.o
+ .debug_info    0x0000263c      0x1e1 obj\Debug\Src\ssp.o
+ .debug_info    0x0000281d      0x1fd obj\Debug\Src\system.o
+ .debug_info    0x00002a1a      0x245 obj\Debug\Src\uart0_pfg.o
+ .debug_info    0x00002c5f      0x325 obj\Debug\Src\uart1_pfg.o
+
+.debug_abbrev   0x00000000     0x100f
+ .debug_abbrev  0x00000000       0xc0 obj\Debug\Common_WinARM\src\irq.o
+ .debug_abbrev  0x000000c0       0x12 obj\Debug\Setup\startup.o
+ .debug_abbrev  0x000000d2       0xf2 obj\Debug\Src\adc.o
+ .debug_abbrev  0x000001c4       0xb1 obj\Debug\Src\buildInfoSetup.o
+ .debug_abbrev  0x00000275       0xf1 obj\Debug\Src\buzzer.o
+ .debug_abbrev  0x00000366       0x78 obj\Debug\Src\hardware.o
+ .debug_abbrev  0x000003de      0x146 obj\Debug\Src\i2c1.o
+ .debug_abbrev  0x00000524      0x150 obj\Debug\Src\LL_HL_comm.o
+ .debug_abbrev  0x00000674       0xae obj\Debug\Src\loadFrame.o
+ .debug_abbrev  0x00000722       0xeb obj\Debug\Src\main.o
+ .debug_abbrev  0x0000080d      0x148 obj\Debug\Src\quadComm.o
+ .debug_abbrev  0x00000955      0x153 obj\Debug\Src\RingBuffer.o
+ .debug_abbrev  0x00000aa8      0x100 obj\Debug\Src\sdk.o
+ .debug_abbrev  0x00000ba8       0xe5 obj\Debug\Src\ssp.o
+ .debug_abbrev  0x00000c8d      0x125 obj\Debug\Src\system.o
+ .debug_abbrev  0x00000db2      0x12c obj\Debug\Src\uart0_pfg.o
+ .debug_abbrev  0x00000ede      0x131 obj\Debug\Src\uart1_pfg.o
+
+.debug_loc      0x00000000      0xd68
+ .debug_loc     0x00000000       0xb0 obj\Debug\Common_WinARM\src\irq.o
+ .debug_loc     0x000000b0       0xdc obj\Debug\Src\adc.o
+ .debug_loc     0x0000018c       0x2c obj\Debug\Src\buildInfoSetup.o
+ .debug_loc     0x000001b8       0x58 obj\Debug\Src\buzzer.o
+ .debug_loc     0x00000210       0x2c obj\Debug\Src\hardware.o
+ .debug_loc     0x0000023c      0x108 obj\Debug\Src\i2c1.o
+ .debug_loc     0x00000344       0xb0 obj\Debug\Src\LL_HL_comm.o
+ .debug_loc     0x000003f4       0x2c obj\Debug\Src\loadFrame.o
+ .debug_loc     0x00000420       0x58 obj\Debug\Src\main.o
+ .debug_loc     0x00000478      0x210 obj\Debug\Src\quadComm.o
+ .debug_loc     0x00000688      0x18c obj\Debug\Src\RingBuffer.o
+ .debug_loc     0x00000814       0x58 obj\Debug\Src\sdk.o
+ .debug_loc     0x0000086c       0x84 obj\Debug\Src\ssp.o
+ .debug_loc     0x000008f0      0x210 obj\Debug\Src\system.o
+ .debug_loc     0x00000b00      0x108 obj\Debug\Src\uart0_pfg.o
+ .debug_loc     0x00000c08      0x160 obj\Debug\Src\uart1_pfg.o
+
+.debug_aranges  0x00000000      0x228
+ .debug_aranges
+                0x00000000       0x20 obj\Debug\Common_WinARM\src\irq.o
+ .debug_aranges
+                0x00000020       0x28 obj\Debug\Setup\startup.o
+ .debug_aranges
+                0x00000048       0x20 obj\Debug\Src\adc.o
+ .debug_aranges
+                0x00000068       0x20 obj\Debug\Src\buildInfoSetup.o
+ .debug_aranges
+                0x00000088       0x20 obj\Debug\Src\buzzer.o
+ .debug_aranges
+                0x000000a8       0x20 obj\Debug\Src\hardware.o
+ .debug_aranges
+                0x000000c8       0x20 obj\Debug\Src\i2c1.o
+ .debug_aranges
+                0x000000e8       0x20 obj\Debug\Src\LL_HL_comm.o
+ .debug_aranges
+                0x00000108       0x20 obj\Debug\Src\loadFrame.o
+ .debug_aranges
+                0x00000128       0x20 obj\Debug\Src\main.o
+ .debug_aranges
+                0x00000148       0x20 obj\Debug\Src\quadComm.o
+ .debug_aranges
+                0x00000168       0x20 obj\Debug\Src\RingBuffer.o
+ .debug_aranges
+                0x00000188       0x20 obj\Debug\Src\sdk.o
+ .debug_aranges
+                0x000001a8       0x20 obj\Debug\Src\ssp.o
+ .debug_aranges
+                0x000001c8       0x20 obj\Debug\Src\system.o
+ .debug_aranges
+                0x000001e8       0x20 obj\Debug\Src\uart0_pfg.o
+ .debug_aranges
+                0x00000208       0x20 obj\Debug\Src\uart1_pfg.o
+
+.debug_line     0x00000000     0x121a
+ .debug_line    0x00000000       0xde obj\Debug\Common_WinARM\src\irq.o
+ .debug_line    0x000000de       0xce obj\Debug\Setup\startup.o
+ .debug_line    0x000001ac       0xc6 obj\Debug\Src\adc.o
+ .debug_line    0x00000272       0xca obj\Debug\Src\buildInfoSetup.o
+ .debug_line    0x0000033c      0x370 obj\Debug\Src\buzzer.o
+ .debug_line    0x000006ac       0x82 obj\Debug\Src\hardware.o
+ .debug_line    0x0000072e      0x22c obj\Debug\Src\i2c1.o
+ .debug_line    0x0000095a      0x140 obj\Debug\Src\LL_HL_comm.o
+ .debug_line    0x00000a9a       0xa2 obj\Debug\Src\loadFrame.o
+ .debug_line    0x00000b3c       0xc9 obj\Debug\Src\main.o
+ .debug_line    0x00000c05       0xd7 obj\Debug\Src\quadComm.o
+ .debug_line    0x00000cdc       0xd6 obj\Debug\Src\RingBuffer.o
+ .debug_line    0x00000db2       0xbb obj\Debug\Src\sdk.o
+ .debug_line    0x00000e6d       0xd6 obj\Debug\Src\ssp.o
+ .debug_line    0x00000f43      0x102 obj\Debug\Src\system.o
+ .debug_line    0x00001045       0xed obj\Debug\Src\uart0_pfg.o
+ .debug_line    0x00001132       0xe8 obj\Debug\Src\uart1_pfg.o
+
+.debug_str      0x00000000     0x1427
+ .debug_str     0x00000000       0xe4 obj\Debug\Common_WinARM\src\irq.o
+                                0x102 (size before relaxing)
+ .debug_str     0x000000e4      0x126 obj\Debug\Src\adc.o
+                                0x196 (size before relaxing)
+ .debug_str     0x0000020a      0x108 obj\Debug\Src\buildInfoSetup.o
+                                0x18d (size before relaxing)
+ .debug_str     0x00000312      0x2b0 obj\Debug\Src\buzzer.o
+                                0x394 (size before relaxing)
+ .debug_str     0x000005c2       0x45 obj\Debug\Src\hardware.o
+                                 0xd7 (size before relaxing)
+ .debug_str     0x00000607      0x16f obj\Debug\Src\i2c1.o
+                                0x3f8 (size before relaxing)
+ .debug_str     0x00000776      0x389 obj\Debug\Src\LL_HL_comm.o
+                                0x686 (size before relaxing)
+ .debug_str     0x00000aff       0x7f obj\Debug\Src\loadFrame.o
+                                 0xdb (size before relaxing)
+ .debug_str     0x00000b7e       0xc8 obj\Debug\Src\main.o
+                                0x220 (size before relaxing)
+ .debug_str     0x00000c46       0xf4 obj\Debug\Src\quadComm.o
+                                0x173 (size before relaxing)
+ .debug_str     0x00000d3a       0xf2 obj\Debug\Src\RingBuffer.o
+                                0x1f7 (size before relaxing)
+ .debug_str     0x00000e2c      0x283 obj\Debug\Src\sdk.o
+                                0x502 (size before relaxing)
+ .debug_str     0x000010af       0xc0 obj\Debug\Src\ssp.o
+                                0x1bd (size before relaxing)
+ .debug_str     0x0000116f       0xd7 obj\Debug\Src\system.o
+                                0x1a1 (size before relaxing)
+ .debug_str     0x00001246       0xa9 obj\Debug\Src\uart0_pfg.o
+                                0x17e (size before relaxing)
+ .debug_str     0x000012ef      0x138 obj\Debug\Src\uart1_pfg.o
+                                0x214 (size before relaxing)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 obj\Debug\Common_WinARM\src\irq.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 obj\Debug\Src\adc.o
+ .comment       0x00000000       0x71 obj\Debug\Src\buildInfoSetup.o
+ .comment       0x00000000       0x71 obj\Debug\Src\buzzer.o
+ .comment       0x00000000       0x71 obj\Debug\Src\hardware.o
+ .comment       0x00000000       0x71 obj\Debug\Src\i2c1.o
+ .comment       0x00000000       0x71 obj\Debug\Src\LL_HL_comm.o
+ .comment       0x00000000       0x71 obj\Debug\Src\loadFrame.o
+ .comment       0x00000000       0x71 obj\Debug\Src\main.o
+ .comment       0x00000000       0x71 obj\Debug\Src\quadComm.o
+ .comment       0x00000000       0x71 obj\Debug\Src\RingBuffer.o
+ .comment       0x00000000       0x71 obj\Debug\Src\sdk.o
+ .comment       0x00000000       0x71 obj\Debug\Src\ssp.o
+ .comment       0x00000000       0x71 obj\Debug\Src\system.o
+ .comment       0x00000000       0x71 obj\Debug\Src\uart0_pfg.o
+ .comment       0x00000000       0x71 obj\Debug\Src\uart1_pfg.o
+
+.debug_frame    0x00000000      0xa2c
+ .debug_frame   0x00000000       0x70 obj\Debug\Common_WinARM\src\irq.o
+ .debug_frame   0x00000070       0x90 obj\Debug\Src\adc.o
+ .debug_frame   0x00000100       0x2c obj\Debug\Src\buildInfoSetup.o
+ .debug_frame   0x0000012c       0x48 obj\Debug\Src\buzzer.o
+ .debug_frame   0x00000174       0x28 obj\Debug\Src\hardware.o
+ .debug_frame   0x0000019c       0xac obj\Debug\Src\i2c1.o
+ .debug_frame   0x00000248       0x78 obj\Debug\Src\LL_HL_comm.o
+ .debug_frame   0x000002c0       0x2c obj\Debug\Src\loadFrame.o
+ .debug_frame   0x000002ec       0x44 obj\Debug\Src\main.o
+ .debug_frame   0x00000330      0x160 obj\Debug\Src\quadComm.o
+ .debug_frame   0x00000490       0xf0 obj\Debug\Src\RingBuffer.o
+ .debug_frame   0x00000580       0x44 obj\Debug\Src\sdk.o
+ .debug_frame   0x000005c4       0x5c obj\Debug\Src\ssp.o
+ .debug_frame   0x00000620      0x144 obj\Debug\Src\system.o
+ .debug_frame   0x00000764       0xbc obj\Debug\Src\uart0_pfg.o
+ .debug_frame   0x00000820       0xdc obj\Debug\Src\uart1_pfg.o
+ .debug_frame   0x000008fc       0x20 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000091c       0x38 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00000954       0x2c c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+ .debug_frame   0x00000980       0x30 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+ .debug_frame   0x000009b0       0x54 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000a04       0x28 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+
+.debug_ranges   0x00000000       0x20
+ .debug_ranges  0x00000000       0x20 obj\Debug\Setup\startup.o
+
+Cross Reference Table
+
+Symbol                                            File
+ADC0IntDone                                       obj\Debug\Src\adc.o
+ADC0Read                                          obj\Debug\Src\adc.o
+ADC0Value                                         obj\Debug\Src\adc.o
+ADC0getSamplingResults                            obj\Debug\Src\adc.o
+                                                  obj\Debug\Src\main.o
+ADC0triggerSampling                               obj\Debug\Src\adc.o
+                                                  obj\Debug\Src\main.o
+ADC1IntDone                                       obj\Debug\Src\adc.o
+ADC1Read                                          obj\Debug\Src\adc.o
+ADC1Value                                         obj\Debug\Src\adc.o
+ADCInit                                           obj\Debug\Src\adc.o
+                                                  obj\Debug\Src\system.o
+ALARM_battery_warning_voltage_high                obj\Debug\Src\buzzer.o
+ALARM_battery_warning_voltage_low                 obj\Debug\Src\buzzer.o
+CurrentRxIndex                                    obj\Debug\Src\ssp.o
+CurrentTxIndex                                    obj\Debug\Src\ssp.o
+DEBUG_ENABLED                                     obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\sdk.o
+DataOutputsPerSecond                              obj\Debug\Src\main.o
+ECHOMODE                                          obj\Debug\Src\quadComm.o
+FIQ_Exception                                     obj\Debug\Common_WinARM\src\target.o
+FiqDisable                                        obj\Debug\Common_WinARM\src\swi_handler.o
+FiqEnable                                         obj\Debug\Common_WinARM\src\swi_handler.o
+FiqRestore                                        obj\Debug\Common_WinARM\src\swi_handler.o
+GPS_timeout                                       obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\system.o
+                                                  obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\sdk.o
+                                                  obj\Debug\Src\main.o
+                                                  obj\Debug\Src\LL_HL_comm.o
+                                                  obj\Debug\Src\i2c1.o
+                                                  obj\Debug\Src\hardware.o
+                                                  obj\Debug\Src\buzzer.o
+                                                  obj\Debug\Src\buildInfoSetup.o
+HL2LL_write_cycle                                 obj\Debug\Src\LL_HL_comm.o
+                                                  obj\Debug\Src\sdk.o
+HL_Status                                         obj\Debug\Src\main.o
+                                                  obj\Debug\Src\i2c1.o
+I2C0MasterHandler                                 obj\Debug\Src\i2c.o
+I2C0_send_motordata                               obj\Debug\Src\i2c.o
+I2C1Count                                         obj\Debug\Src\i2c1.o
+I2C1Engine                                        obj\Debug\Src\i2c1.o
+I2C1Init                                          obj\Debug\Src\i2c1.o
+                                                  obj\Debug\Src\main.o
+I2C1MasterBuffer                                  obj\Debug\Src\i2c1.o
+I2C1MasterHandler                                 obj\Debug\Src\i2c1.o
+I2C1MasterState                                   obj\Debug\Src\i2c1.o
+I2C1State                                         obj\Debug\Src\i2c1.o
+I2C1WriteLength                                   obj\Debug\Src\i2c1.o
+I2C1_setRGBLed                                    obj\Debug\Src\i2c1.o
+                                                  obj\Debug\Src\main.o
+                                                  obj\Debug\Src\buzzer.o
+I2CCmd                                            obj\Debug\Src\i2c.o
+I2CCount                                          obj\Debug\Src\i2c.o
+I2CEngine                                         obj\Debug\Src\i2c.o
+I2CInit                                           obj\Debug\Src\i2c.o
+I2CMasterBuffer                                   obj\Debug\Src\i2c.o
+I2CMasterState                                    obj\Debug\Src\i2c.o
+I2CMode                                           obj\Debug\Src\i2c.o
+I2CReadLength                                     obj\Debug\Src\i2c.o
+I2CSlaveBuffer                                    obj\Debug\Src\i2c.o
+I2CSlaveState                                     obj\Debug\Src\i2c.o
+I2CStart                                          obj\Debug\Src\i2c.o
+I2CStop                                           obj\Debug\Src\i2c.o
+I2CWriteLength                                    obj\Debug\Src\i2c.o
+IRQ_Exception                                     obj\Debug\Common_WinARM\src\target.o
+IntDisable                                        obj\Debug\Common_WinARM\src\swi_handler.o
+IntEnable                                         obj\Debug\Common_WinARM\src\swi_handler.o
+IntGetCPSR                                        obj\Debug\Common_WinARM\src\swi_handler.o
+IntRestore                                        obj\Debug\Common_WinARM\src\swi_handler.o
+LED                                               obj\Debug\Src\hardware.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\sdk.o
+                                                  obj\Debug\Src\main.o
+LL_1khz_attitude_data                             obj\Debug\Src\LL_HL_comm.o
+                                                  obj\Debug\Src\i2c1.o
+                                                  obj\Debug\Src\buzzer.o
+LL_1khz_control_input                             obj\Debug\Src\LL_HL_comm.o
+LL_write                                          obj\Debug\Src\ssp.o
+LL_write_ctrl_data                                obj\Debug\Src\LL_HL_comm.o
+LL_write_init                                     obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\main.o
+PWM_Init                                          obj\Debug\Src\system.o
+RBCount                                           obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\quadComm.o
+RBDequeue                                         obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\quadComm.o
+RBDiscard                                         obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\quadComm.o
+RBEnqueue                                         obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\quadComm.o
+RBInit                                            obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\uart0_pfg.o
+RBPeek                                            obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\quadComm.o
+RBPushBack                                        obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\quadComm.o
+RBfindInBuffer                                    obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\quadComm.o
+RO_ALL_Data                                       obj\Debug\Src\sdk.o
+RO_RC_Data                                        obj\Debug\Src\sdk.o
+RdIndex                                           obj\Debug\Src\i2c.o
+Reset_Handler                                     obj\Debug\Setup\startup.o
+SDK_SetEmergencyMode                              obj\Debug\Src\sdk.o
+SDK_mainloop                                      obj\Debug\Src\sdk.o
+                                                  obj\Debug\Src\main.o
+SPIRDData                                         obj\Debug\Src\ssp.o
+SPIWRData                                         obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\LL_HL_comm.o
+SPIWR_num_bytes                                   obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\LL_HL_comm.o
+SSPHandler                                        obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\system.o
+SSP_ack                                           obj\Debug\Src\LL_HL_comm.o
+SSP_data_distribution_HL                          obj\Debug\Src\LL_HL_comm.o
+SSP_receiption_complete                           obj\Debug\Src\ssp.o
+SSP_rx_handler_HL                                 obj\Debug\Src\LL_HL_comm.o
+                                                  obj\Debug\Src\ssp.o
+SSP_trans_cnt                                     obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\system.o
+                                                  obj\Debug\Src\main.o
+SYSTEM_initialized                                obj\Debug\Src\main.o
+                                                  obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\system.o
+                                                  obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\sdk.o
+                                                  obj\Debug\Src\LL_HL_comm.o
+                                                  obj\Debug\Src\i2c1.o
+                                                  obj\Debug\Src\hardware.o
+                                                  obj\Debug\Src\buzzer.o
+                                                  obj\Debug\Src\buildInfoSetup.o
+SoftwareInterrupt                                 obj\Debug\Common_WinARM\src\swi_handler.o
+TargetInit                                        obj\Debug\Common_WinARM\src\target.o
+TargetResetInit                                   obj\Debug\Common_WinARM\src\target.o
+UART0Debug                                        obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\RingBuffer.o
+UART0Initialize                                   obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\system.o
+UART0WriteChar                                    obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\syscalls.o
+                                                  obj\Debug\Src\quadComm.o
+UART0_TX_ENABLED                                  obj\Debug\Src\uart1_pfg.o
+UART1Initialize                                   obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\system.o
+UART1ReadChar                                     obj\Debug\Src\uart1_pfg.o
+UART1WriteChar                                    obj\Debug\Src\uart1_pfg.o
+UART1_send                                        obj\Debug\Src\uart1_pfg.o
+UART_CalibDoneFlag                                obj\Debug\Src\uart1_pfg.o
+WO_CTRL_Input                                     obj\Debug\Src\sdk.o
+WO_Direct_Individual_Motor_Control                obj\Debug\Src\sdk.o
+                                                  obj\Debug\Src\LL_HL_comm.o
+WO_Direct_Motor_Control                           obj\Debug\Src\sdk.o
+WO_SDK                                            obj\Debug\Src\sdk.o
+                                                  obj\Debug\Src\LL_HL_comm.o
+WrIndex                                           obj\Debug\Src\i2c.o
+WrIndex1                                          obj\Debug\Src\i2c1.o
+_Jv_RegisterClasses                               c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+__aeabi_idiv0                                     c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_dvmd_tls.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+__aeabi_ldiv0                                     c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_dvmd_tls.o)
+__aeabi_uidiv                                     c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+                                                  obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\system.o
+                                                  obj\Debug\Src\main.o
+                                                  obj\Debug\Src\buzzer.o
+                                                  obj\Debug\Src\adc.o
+__aeabi_uidivmod                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+__bss_end__                                       obj\Debug\Setup\startup.o
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+__bss_start__                                     obj\Debug\Setup\startup.o
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+__call_exitprocs                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+__change_mode                                     c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+__data_end__                                      obj\Debug\Setup\startup.o
+__data_start__                                    obj\Debug\Setup\startup.o
+__deregister_frame_info                           c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+__dso_handle                                      c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+__etext                                           obj\Debug\Setup\startup.o
+__fini_array_end                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+__fini_array_start                                c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+__init_array_end                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+__init_array_start                                c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+__libc_fini                                       c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+__libc_fini_array                                 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+__libc_init_array                                 c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+__low_level_init                                  obj\Debug\Setup\startup.o
+__preinit_array_end                               c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+__preinit_array_start                             c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+__putchar                                         obj\Debug\Src\uart1_pfg.o
+__register_exitproc                               c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+__register_frame_info                             c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crtbegin.o
+__stack                                           c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+__stack_abt_end__                                 obj\Debug\Setup\startup.o
+__stack_fiq_end__                                 obj\Debug\Setup\startup.o
+__stack_irq_end__                                 obj\Debug\Setup\startup.o
+__stack_svc_end__                                 obj\Debug\Setup\startup.o
+__stack_und_end__                                 obj\Debug\Setup\startup.o
+__udivsi3                                         c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb\libgcc.a(_udivsi3.o)
+__vector                                          obj\Debug\Setup\startup.o
+_close_r                                          obj\Debug\Src\syscalls.o
+_end                                              obj\Debug\Src\syscalls.o
+_exit                                             c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+_fini                                             c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-fini.o)
+_fstat_r                                          obj\Debug\Src\syscalls.o
+_global_impure_ptr                                c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+_impure_ptr                                       c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+_init                                             c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/thumb/crti.o
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-init.o)
+_lseek_r                                          obj\Debug\Src\syscalls.o
+_mainCRTStartup                                   c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+_read_r                                           obj\Debug\Src\syscalls.o
+_sbrk_r                                           obj\Debug\Src\syscalls.o
+_start                                            c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+_write_r                                          obj\Debug\Src\syscalls.o
+adcChannelValues                                  obj\Debug\Src\main.o
+                                                  obj\Debug\Src\adc.o
+atexit                                            c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-atexit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+buildInfo                                         obj\Debug\Src\buildInfoSetup.o
+buzzer                                            obj\Debug\Src\buzzer.o
+                                                  obj\Debug\Src\main.o
+buzzer_handler                                    obj\Debug\Src\buzzer.o
+                                                  obj\Debug\Src\main.o
+buzzer_warnings                                   obj\Debug\Src\buzzer.o
+bytesAvailable                                    obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\loadFrame.o
+change_back                                       c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+chksum_trigger                                    obj\Debug\Src\uart1_pfg.o
+cnt                                               obj\Debug\Src\main.o
+crc16                                             obj\Debug\Src\uart1_pfg.o
+crc_update                                        obj\Debug\Src\uart1_pfg.o
+data_sent_to_HL                                   obj\Debug\Src\ssp.o
+data_sent_to_LL                                   obj\Debug\Src\ssp.o
+                                                  obj\Debug\Src\LL_HL_comm.o
+debugChar                                         obj\Debug\Src\uart1_pfg.o
+debugMsg                                          obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\sdk.o
+delay                                             obj\Debug\Src\system.o
+disableFIQ                                        obj\Debug\Common_WinARM\src\interrupt_utils.o
+disableIRQ                                        obj\Debug\Common_WinARM\src\interrupt_utils.o
+disable_timer                                     obj\Debug\Common_WinARM\src\timer.o
+dmcs                                              obj\Debug\Src\sdk.o
+ee_count                                          obj\Debug\Src\LPC2k_ee.o
+ee_erase                                          obj\Debug\Src\LPC2k_ee.o
+ee_locate                                         obj\Debug\Src\LPC2k_ee.o
+ee_read                                           obj\Debug\Src\LPC2k_ee.o
+ee_readn                                          obj\Debug\Src\LPC2k_ee.o
+ee_write                                          obj\Debug\Src\LPC2k_ee.o
+emergencyMode                                     obj\Debug\Src\sdk.o
+emergencyModeUpdate                               obj\Debug\Src\sdk.o
+emptyUART0                                        obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\sdk.o
+enableFIQ                                         obj\Debug\Common_WinARM\src\interrupt_utils.o
+enableIRQ                                         obj\Debug\Common_WinARM\src\interrupt_utils.o
+enable_timer                                      obj\Debug\Common_WinARM\src\timer.o
+end                                               obj\Debug\Setup\startup.o
+enter_isp                                         obj\Debug\Src\LPC2k_ee.o
+errs                                              obj\Debug\Src\sdk.o
+exit                                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-exit.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+findInBuffer                                      obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\loadFrame.o
+fireFlyLedHandler                                 obj\Debug\Src\i2c1.o
+firstime                                          obj\Debug\Src\sdk.o
+frame                                             obj\Debug\Src\sdk.o
+                                                  obj\Debug\Src\loadFrame.o
+free                                              c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__call_atexit.o)
+generateBuildInfo                                 obj\Debug\Src\buildInfoSetup.o
+                                                  obj\Debug\Src\main.o
+getByte                                           obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\loadFrame.o
+getBytes                                          obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\loadFrame.o
+hardware_init_hook                                c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+iap_entry                                         obj\Debug\Src\LPC2k_ee.o
+init                                              obj\Debug\Src\system.o
+                                                  obj\Debug\Src\main.o
+init_VIC                                          obj\Debug\Common_WinARM\src\irq.o
+                                                  obj\Debug\Src\system.o
+init_interrupts                                   obj\Debug\Src\system.o
+init_ports                                        obj\Debug\Src\system.o
+init_spi                                          obj\Debug\Src\system.o
+init_spi1                                         obj\Debug\Src\system.o
+init_timer                                        obj\Debug\Common_WinARM\src\timer.o
+init_timer0                                       obj\Debug\Src\system.o
+install_irq                                       obj\Debug\Common_WinARM\src\irq.o
+                                                  obj\Debug\Src\system.o
+                                                  obj\Debug\Src\i2c1.o
+                                                  obj\Debug\Common_WinARM\src\timer.o
+int_cnt                                           obj\Debug\Src\main.o
+isatty                                            obj\Debug\Src\syscalls.o
+lastI2c1Error                                     obj\Debug\Src\i2c1.o
+loadFrame                                         obj\Debug\Src\loadFrame.o
+                                                  obj\Debug\Src\sdk.o
+loops                                             obj\Debug\Src\sdk.o
+lps                                               obj\Debug\Src\uart0_pfg.o
+main                                              obj\Debug\Src\main.o
+                                                  obj\Debug\Setup\startup.o
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+mainloop_cnt                                      obj\Debug\Src\main.o
+mainloop_overflows                                obj\Debug\Src\main.o
+mainloop_trigger                                  obj\Debug\Src\main.o
+malloc                                            c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-__atexit.o)
+memcpy                                            c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+                                                  obj\Debug\Src\buildInfoSetup.o
+memset                                            c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+                                                  c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+motors                                            obj\Debug\Src\sdk.o
+peekByte                                          obj\Debug\Src\quadComm.o
+peripheralClockFrequency                          obj\Debug\Src\system.o
+                                                  obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\uart0_pfg.o
+pll_feed                                          obj\Debug\Src\system.o
+pll_init                                          obj\Debug\Src\system.o
+processorClockFrequency                           obj\Debug\Src\system.o
+pushBack                                          obj\Debug\Src\quadComm.o
+reset_timer                                       obj\Debug\Common_WinARM\src\timer.o
+restoreFIQ                                        obj\Debug\Common_WinARM\src\interrupt_utils.o
+restoreIRQ                                        obj\Debug\Common_WinARM\src\interrupt_utils.o
+sendByte                                          obj\Debug\Src\quadComm.o
+sendNBytes                                        obj\Debug\Src\quadComm.o
+sendText                                          obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\sdk.o
+send_buffer                                       obj\Debug\Src\uart1_pfg.o
+showBuffer                                        obj\Debug\Src\RingBuffer.o
+                                                  obj\Debug\Src\quadComm.o
+showRBuffer                                       obj\Debug\Src\quadComm.o
+skipBytes                                         obj\Debug\Src\quadComm.o
+                                                  obj\Debug\Src\loadFrame.o
+software_init_hook                                c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+start                                             c:/program files/emide/emide v2.20/arm/bin/../lib/gcc/arm-none-eabi/4.7.4/../../../../arm-none-eabi/lib/thumb/crt0.o
+timer0ISR                                         obj\Debug\Src\main.o
+                                                  obj\Debug\Src\system.o
+timer_counter                                     obj\Debug\Common_WinARM\src\timer.o
+toggle                                            obj\Debug\Src\uart0_pfg.o
+transmission1_running                             obj\Debug\Src\uart1_pfg.o
+transmission_running                              obj\Debug\Src\uart1_pfg.o
+transmitBuildInfoTrigger                          obj\Debug\Src\LL_HL_comm.o
+trigger_cnt                                       obj\Debug\Src\main.o
+trigger_transmission                              obj\Debug\Src\uart1_pfg.o
+txBuffLen                                         obj\Debug\Src\uart1_pfg.o
+txBuffer                                          obj\Debug\Src\uart1_pfg.o
+u0r                                               obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\quadComm.o
+u0s                                               obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\quadComm.o
+uart0ISR                                          obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\system.o
+uart0Prime                                        obj\Debug\Src\uart0_pfg.o
+                                                  obj\Debug\Src\quadComm.o
+uart1ISR                                          obj\Debug\Src\uart1_pfg.o
+                                                  obj\Debug\Src\system.o
+uninstall_irq                                     obj\Debug\Common_WinARM\src\irq.o
+wpCtrlAckTrigger                                  obj\Debug\Src\LL_HL_comm.o
+wpCtrlDistToWp                                    obj\Debug\Src\LL_HL_comm.o
+wpCtrlNavStatus                                   obj\Debug\Src\LL_HL_comm.o
+wpCtrlWpCmd                                       obj\Debug\Src\LL_HL_comm.o
+wpCtrlWpCmdUpdated                                obj\Debug\Src\LL_HL_comm.o
+wpToLL                                            obj\Debug\Src\LL_HL_comm.o
