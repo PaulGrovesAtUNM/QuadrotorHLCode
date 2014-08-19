@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<emIDE_project_file>
+	<FileVersion major="1" minor="7" />
+	<Project>
+		<Option title="QuadrotorHL" />
+		<Option makefile="makefile" />
+		<Option pch_mode="2" />
+		<Option compiler="armelfgcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/QuadrotorHL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-mcpu=arm7tdmi-s" />
+					<Add option="-DDEBUG=1" />
+					<Add option="-DROM_RUN" />
+					<Add directory="Inc" />
+					<Add directory="C:/Users/TXT07/Documents/GitHub/QuadrotorHLCode/Common_WinARM/inc" />
+				</Compiler>
+				<Linker>
+					<Add option="-Wl,-Map" />
+					<Add option="-Wl,${TARGET_OUTPUT_FILE}.map" />
+					<Add option="-Wl,--gc-sections" />
+					<Add option="-n" />
+					<Add option="-Wl,-cref" />
+					<Add option="-mcpu=arm7tdmi-s" />
+					<Add option="-mthumb" />
+					<Add option="-TSetup/Flash.ld" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="0" />
+					<ConvertedOutput PostOutputType="HEX" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/QuadrotorHL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-mcpu=arm7tdmi-s" />
+					<Add option="-mthumb" />
+					<Add option="-g" />
+					<Add option="-O2" />
+					<Add directory="Inc" />
+				</Compiler>
+				<Linker>
+					<Add option="-Wl,-Map" />
+					<Add option="-Wl,${TARGET_OUTPUT_FILE}.map" />
+					<Add option="-Wl,--gc-sections" />
+					<Add option="-n" />
+					<Add option="-Wl,-cref" />
+					<Add option="-mcpu=arm7tdmi-s" />
+					<Add option="-mthumb" />
+					<Add option=" -TSetup/Flash.ld" />
+					<Add option="-s" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="0" />
+					<ConvertedOutput PostOutputType="HEX" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+		</Build>
+		<PostOutput>
+			<ConvertedOutput PostOutputCreate="0" />
+			<ConvertedOutput PostOutputType="HEX" />
+			<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+		</PostOutput>
+		<Unit filename="Common_WinARM/inc/LPC214x.h" />
+		<Unit filename="Common_WinARM/inc/interrupt_utils.h" />
+		<Unit filename="Common_WinARM/inc/irq.h" />
+		<Unit filename="Common_WinARM/inc/swi.h" />
+		<Unit filename="Common_WinARM/inc/target.h" />
+		<Unit filename="Common_WinARM/inc/timer.h" />
+		<Unit filename="Common_WinARM/inc/type.h" />
+		<Unit filename="Common_WinARM/src/interrupt_utils.c">
+			<Option compilerVar="CC" />
+			<Option compiler="armelfgcc" use="0" buildCommand="$compiler -mcpu=arm7tdmi-s -mthumb-interwork -g  -DDEBUG=1  $includes -c $file -o $object" />
+		</Unit>
+		<Unit filename="Common_WinARM/src/irq.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Common_WinARM/src/swi_handler.S">
+			<Option compiler="armelfgcc" use="0" buildCommand="-Wa,-adhlns=$(&lt;:.S=.lst),-g$(DEBUG) $file -o $object" />
+		</Unit>
+		<Unit filename="Common_WinARM/src/target.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Common_WinARM/src/timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Doc/README.txt" />
+		<Unit filename="Setup/Flash.ld" />
+		<Unit filename="Setup/startup.S" />
+		<Unit filename="Src/LL_HL_comm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/LL_HL_comm.h" />
+		<Unit filename="Src/LPC214x.h" />
+		<Unit filename="Src/LPC2k_ee.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/LPC2k_ee.h" />
+		<Unit filename="Src/RingBuffer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/RingBuffer.h" />
+		<Unit filename="Src/adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/adc.h" />
+		<Unit filename="Src/buildInfoSetup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/buildInfoSetup.h" />
+		<Unit filename="Src/buzzer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/buzzer.h" />
+		<Unit filename="Src/hardware.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/hardware.h" />
+		<Unit filename="Src/i2c.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/i2c.h" />
+		<Unit filename="Src/i2c1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/i2c1.h" />
+		<Unit filename="Src/loadFrame.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/loadFrame.h" />
+		<Unit filename="Src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/main.h" />
+		<Unit filename="Src/options.h" />
+		<Unit filename="Src/quadComm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/quadComm.h" />
+		<Unit filename="Src/quadCommands.h" />
+		<Unit filename="Src/sdk.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/sdk.h" />
+		<Unit filename="Src/ssp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/ssp.h" />
+		<Unit filename="Src/syscalls.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/system.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/system.h" />
+		<Unit filename="Src/uart.h" />
+		<Unit filename="Src/uart0_pfg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Src/uart1_pfg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<projectwizard TargetDevice="LPC2146" />
+			<code_completion />
+			<debugger>
+				<remote_debugging>
+					<options conn_type="1806320574" Break_at_Main="0" />
+				</remote_debugging>
+				<remote_debugging target="Debug">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="2331" remote_server="Other (External tool)" Break_at_Main="1" Break_at_Main_Symbol="main" additional_cmds="monitor reset&#x0A;load" />
+				</remote_debugging>
+			</debugger>
+			<J-Link>
+				<GDBServer TargetName="Debug">
+					<CmdOption UseGDBServer="0" />
+					<CmdOption TargetDevice="LPC2146" />
+					<CmdOption TargetInterface="0" />
+					<CmdOption InterfaceSpeed="4000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="C:\Program Files\SEGGER\JLink_V490\JLinkGDBServer.exe" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="2331" />
+					<CmdOption UseAdvancedOptions="0" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="0" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+			</J-Link>
+		</Extensions>
+	</Project>
+</emIDE_project_file>
