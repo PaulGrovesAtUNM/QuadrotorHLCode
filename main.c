@@ -127,25 +127,25 @@ int	main (void) {
 
   while(1)
   {
-      if (mainloop_trigger)
-      {
-	LED(1,ON);
-      	TimerT1 =  T0TC;
+	if (mainloop_trigger)
+	{
+		TimerT1 =  T0TC;
 
-        //battery monitoring
-        ADC0getSamplingResults(0xFF,adcChannelValues);
+		//battery monitoring
+		ADC0getSamplingResults(0xFF,adcChannelValues);
         vbat1=(vbat1*14+(adcChannelValues[VOLTAGE_1]*9872/579))/15;	//voltage in mV
-
-		    HL_Status.battery_voltage_1 = vbat1;
+	HL_Status.battery_voltage_1 = vbat1;
 		
         mainloop_cnt++;
-		    if (!(mainloop_cnt % 10)) 
-          buzzer_handler(HL_Status.battery_voltage_1);
+	if (!(mainloop_cnt % 10)) 
+        	buzzer_handler(HL_Status.battery_voltage_1);
 
         if (mainloop_trigger) 
-          mainloop_trigger--;
+		mainloop_trigger--;
 		  
+        LED(1,ON);
         SDK_mainloop(); //1000 times per second.
+        LED(1,OFF);
 
         // CPU Usage calculation
         TimerT2 = T0TC;
@@ -154,11 +154,11 @@ int	main (void) {
         	HL_Status.cpu_load = 1000;
         	mainloop_overflows++;
         }
-        else if (TimerT2 < TimerT1)
-        	HL_Status.cpu_load = (T0MR0 - TimerT1 + TimerT2)*1000/T0MR0; // load = "timer cycles" / "timer cycles per controller cycle" * 1000
         else
-        	HL_Status.cpu_load = (TimerT2 - TimerT1)*1000/T0MR0; // load = "timer cycles" / "timer cycles per controller cycle" * 1000
-	LED(1,OFF);
+		if (TimerT2 < TimerT1)
+        		HL_Status.cpu_load = (T0MR0 - TimerT1 + TimerT2)*1000/T0MR0; // load = "timer cycles" / "timer cycles per controller cycle" * 1000
+        	else
+        		HL_Status.cpu_load = (TimerT2 - TimerT1)*1000/T0MR0; // load = "timer cycles" / "timer cycles per controller cycle" * 1000
       }
   }
   return 0;

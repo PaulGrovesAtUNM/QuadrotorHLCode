@@ -119,7 +119,7 @@ void emptyUART0(void)
 	{
 		rcvd = U0RBR;
 		RBEnqueue(&u0r, rcvd);
-		UART0WriteChar(rcvd);
+		//UART0WriteChar(rcvd);
 	}
 }
 
@@ -162,9 +162,9 @@ void UART0Debug(char *msg, int length)
 void UART0WriteChar(unsigned char ch)
 {
   if ( U0LSR & 0x20 ) // Transmitter Empty, so we need to write directly to transmitter.
-	U0THR = ch;
+    U0THR = ch;
   else
-	RBEnqueue(&u0s, ch);
+    RBEnqueue(&u0s, ch);
 }
 
 // Primes the UART send buffer.

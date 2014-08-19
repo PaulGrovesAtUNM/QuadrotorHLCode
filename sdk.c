@@ -172,12 +172,14 @@ void SDK_mainloop(void)
 //	}
 	
 	// Read any characters in the recieve buffer into our RingBuffer
+	
+	LED(0,ON);
 	emptyUART0();
+	LED(0,OFF);
 
 	if ( loadFrame() ) //We have received a valid frame...
 	{
 		 
-				LED(0,ON);
 		switch (frame.command)
 		{
 			case DMC: //Direct Motor Command
@@ -195,16 +197,19 @@ void SDK_mainloop(void)
 				//write data to transmit buffer for immediate transfer to LL processor
 				HL2LL_write_cycle();
 				dmcs++;	
-				LED(0,OFF);	
+			break;
+			case GPIO: //GPIO Pin P1.16
+				GPIO_P1_B16(frame.data[0]);
 			break;
 			case VERSION:
-				sendText( QUAD_VERSION );
+				//sendText( QUAD_VERSION );
 				break;
 			case DEBUGMODE:
-				DEBUG_ENABLED = frame.data[0];
-				debugMsg("SDK","Debug Enabled."); //Only send if debug is enabled.
+				//DEBUG_ENABLED = frame.data[0];
+				//debugMsg("SDK","Debug Enabled."); //Only send if debug is enabled.
 			break;
 			default: 
+				return;
 				//sprintf(dbgMsg, "Unknown Command in Frame: %i", frame.command);
 				//sendText(dbgMsg);
 			break;

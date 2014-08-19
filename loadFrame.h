@@ -3,10 +3,10 @@
 
 typedef struct FRAME 
 {
-	char prefix;	
-	char command;
-	char data[5];
-	char suffix;
+	unsigned char prefix;	
+	unsigned char command;
+	unsigned char data[5];
+	unsigned char suffix;
 } FRAME;
 
 char loadFrame(void);

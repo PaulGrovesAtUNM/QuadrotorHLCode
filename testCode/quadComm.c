@@ -1,5 +1,7 @@
 // QuadComm.c
 //  Communications channel with Quadcopter.
+#include <stdio.h>
+
 #include "quadComm.h"
 #include "RingBuffer.h"
 #include "uart.h"
@@ -74,7 +76,7 @@ char peekByte()
 // Searches the buffer, starting at startIndex, for aByte.
 //  Returns the index in the buffer (from 0) the byte first occurs at.
 //  Returns -1 if there is no occurrence.
-int findInBuffer(int startIndex, int distance, char aByte)
+int findInBuffer(int startIndex, int distance, unsigned char aByte)
 {
 	return RBfindInBuffer(&u0r, startIndex, distance, aByte); 
 }

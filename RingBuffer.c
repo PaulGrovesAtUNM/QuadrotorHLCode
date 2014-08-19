@@ -1,9 +1,18 @@
 // UARTData.c
 
+// #define DEBUGGING
+
+#ifdef DEBUGGING
 #include <stdio.h>
+#endif
+
 #include "RingBuffer.h"
 #include "quadComm.h"
+
+#ifndef DEBUGGING
 #include "irq.h"
+#endif
+
 #include "uart.h";
 
 
@@ -67,6 +76,7 @@ char RBDequeue(RING_BUFFER *aBuffer)
 
 void RBDiscard(RING_BUFFER *aBuffer, char numToDiscard)
 {
+	int i;
 	
 	if ( aBuffer->bytes <= numToDiscard )
 	{
@@ -75,13 +85,8 @@ void RBDiscard(RING_BUFFER *aBuffer, char numToDiscard)
 		aBuffer->SOB = -1;		
 	}
 	else
-	{
-		aBuffer->SOB += numToDiscard;
-		if (aBuffer->SOB >= BUFF_LEN)
-			aBuffer->SOB = aBuffer->SOB - BUFF_LEN;
-		
-	}
-	
+		for ( i = 0; i < numToDiscard; i++)
+			RBDequeue(aBuffer);
 }
 
 void RBPushBack(RING_BUFFER *aBuffer, char aByte)
@@ -110,7 +115,7 @@ char RBPeek(RING_BUFFER *aBuffer)
 
 // Searches the Ring Buffer for a specific character within searchLen characters of start.
 //  Returns index if found, -1 if not.
-int RBfindInBuffer(RING_BUFFER *aBuffer, int startIndex, int searchLen, char aByte)
+int RBfindInBuffer(RING_BUFFER *aBuffer, int startIndex, int searchLen, unsigned char aByte)
 {
 	int x, idx;
 	int hit = -1;

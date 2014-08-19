@@ -20,7 +20,7 @@ char RBDequeue(RING_BUFFER *aBuffer);
 char RBPeek(RING_BUFFER *aBuffer);
 int RBCount(RING_BUFFER *aBuffer);
 void RBPushBack(RING_BUFFER *aBuffer, char aByte);
-int RBfindInBuffer(RING_BUFFER *aBuffer, int startIndex, int searchLen, char aByte);
+int RBfindInBuffer(RING_BUFFER *aBuffer, int startIndex, int searchLen, unsigned char aByte);
 void RBDiscard(RING_BUFFER *aBuffer, char numToDiscard);
 void showBuffer(RING_BUFFER *aBuffer);
 #endif

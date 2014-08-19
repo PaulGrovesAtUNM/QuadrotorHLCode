@@ -1,12 +1,22 @@
 // UARTData.c
 
+// #define DEBUGGING
+
+#ifdef DEBUGGING
 #include <stdio.h>
+#endif
+
 #include "RingBuffer.h"
 #include "quadComm.h"
-//#include "uart.h"
 
-//void UART0Debug(char *msg, int length);
+#ifndef DEBUGGING
+#include "irq.h"
+#endif
 
+#include "uart.h";
+
+
+void UART0Debug(char *msg, int length);
 
 void RBInit(RING_BUFFER *aBuffer)
 {
@@ -20,6 +30,7 @@ void showBuffer(RING_BUFFER *aBuffer)
 	int i;
 	char msg[25];
 
+	return;
 	for (i = 0; i < aBuffer->bytes; i++)
 	{
 		sprintf(msg, "Byte %i:%i\n\r", i, aBuffer->buffer[ aBuffer->SOB + i + 1]);
@@ -31,7 +42,7 @@ void RBEnqueue(RING_BUFFER *aBuffer, char x)
 {
 	if ( aBuffer->bytes >= BUFF_LEN )
 	{
-//		UART0Debug("1Buffer FULL!\n",13);
+		//UART0Debug("1Buffer FULL!\n",13);
 		return;
 	}
 	aBuffer->buffer[ aBuffer->EOB ] = x;
@@ -47,7 +58,7 @@ char RBDequeue(RING_BUFFER *aBuffer)
 	
 	if ( aBuffer->bytes == 0 )
 	{
-//		UART0Debug("RBDequeue: Buffer Empty!\n",25);
+		//UART0Debug("RBDequeue: Buffer Empty!\n",25);
 		return 0; //Empty buffer!
 	}
 	
@@ -65,6 +76,7 @@ char RBDequeue(RING_BUFFER *aBuffer)
 
 void RBDiscard(RING_BUFFER *aBuffer, char numToDiscard)
 {
+	int i;
 	
 	if ( aBuffer->bytes <= numToDiscard )
 	{
@@ -73,11 +85,8 @@ void RBDiscard(RING_BUFFER *aBuffer, char numToDiscard)
 		aBuffer->SOB = -1;		
 	}
 	else
-	{
-		aBuffer->SOB += numToDiscard;
-		
-	}
-	
+		for ( i = 0; i < numToDiscard; i++)
+			RBDequeue(aBuffer);
 }
 
 void RBPushBack(RING_BUFFER *aBuffer, char aByte)
@@ -106,20 +115,13 @@ char RBPeek(RING_BUFFER *aBuffer)
 
 // Searches the Ring Buffer for a specific character within searchLen characters of start.
 //  Returns index if found, -1 if not.
-int RBfindInBuffer(RING_BUFFER *aBuffer, int startIndex, int searchLen, char aByte)
+int RBfindInBuffer(RING_BUFFER *aBuffer, int startIndex, int searchLen, unsigned char aByte)
 {
 	int x, idx;
 	int hit = -1;
 
-	char msg[50];
-
-	sprintf(msg,"Find: SI:%i, sl:%i, byte:%i\n\r",startIndex, searchLen, aByte);
-	sendText(msg);
-	
 	idx = aBuffer->SOB + startIndex + 1;
 
-	sprintf(msg,"Find: SI:%i, sl:%i, byte:%i\n\r",startIndex, searchLen, aByte);
-	sendText(msg);
 	if ( idx >= BUFF_LEN )
 		idx = idx - BUFF_LEN;
 	

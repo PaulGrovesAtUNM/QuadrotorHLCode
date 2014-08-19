@@ -24,7 +24,7 @@ char loadFrame(void)
 		if ( sIndex == -1 ) //No SOF in the entire buffer?
 		{
 			skipBytes(nBuf); //Discard the entire buffer.
-			continue;        //And try again.
+			return 0;
 		}
 	
 		// Make sure the SOF is the first entry in our Ring Buffer
@@ -39,7 +39,7 @@ char loadFrame(void)
 		sIndex = findInBuffer( 1, 7, SOF );
 		if ( sIndex != -1 ) // We have another SOF in the next 7 characters.
 		{
-			skipBytes( sIndex ); //Skip up until then
+			skipBytes( sIndex + 1 ); //Skip up until then
 			continue;
 		}
 		
@@ -52,7 +52,7 @@ char loadFrame(void)
 			if ( eIndex >= 0 )
 				skipBytes( eIndex + 1 ); //Discard up to and including the EOF.
 			else
-				skipBytes( 8 ); //No EOF was found at all. Discard next 8 bytes.
+				skipBytes( 8 ); //No EOF was found at all. Discard all 8 in frame.
 			continue;
 		}		
 		// We have a valid frame.

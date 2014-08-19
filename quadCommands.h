@@ -8,6 +8,7 @@
 #define DMC 201 //Direct Motor Command
 #define VERSION 202 //HL Code Version Number
 #define DEBUGMODE 203 //Debug Mode = data[0]
+#define GPIO 204 //GPIO SSSS (0 = off, !0 = on)
 
 #define	QUAD_VERSION  "0.2"
 

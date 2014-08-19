@@ -3,8 +3,6 @@
 
 #include "loadFrame.h"
 
-#define sendFrame printf
-
 FRAME frame;
 
 // Processes bytes in our ring buffer and pulls out a frame.
@@ -19,16 +17,14 @@ char loadFrame(void)
 	// Loop through the available data while we have enough bytes to form a frame.
 	while ( bytesAvailable() >= 8 )
 	{
-		sendText("loadFrame\n\r");			
 		nBuf = bytesAvailable();
 	
 		// Find our first SOF byte.
 		sIndex = findInBuffer(  0, nBuf, SOF );
 		if ( sIndex == -1 ) //No SOF in the entire buffer?
 		{
-			sendText("SOF Not Found Skipping...\n\r");
 			skipBytes(nBuf); //Discard the entire buffer.
-			continue;        //And try again.
+			return 0;
 		}
 	
 		// Make sure the SOF is the first entry in our Ring Buffer
@@ -40,29 +36,25 @@ char loadFrame(void)
 			
 		// Now we need to make sure we don't have another SOF.
 		// We shouldn't have another for at least 8 bytes.
-		sendText("Searching...\n");
 		sIndex = findInBuffer( 1, 7, SOF );
 		if ( sIndex != -1 ) // We have another SOF in the next 7 characters.
 		{
-			sendText("Search Skipping...");
-			skipBytes( sIndex ); //Skip up until then
+			skipBytes( sIndex + 1 ); //Skip up until then
 			continue;
 		}
 		
 		// We don't have another SOF, do we have a valid EOF?
-		sendText("EOF searching\n");
 		eIndex = findInBuffer( 1, 7, EOFm );
+
 		if (eIndex != 6) //EOF should be the 8th byte out. Bad Frame! Bad!
 		{
 			// We will discard byte up to the EOF if it was found...
-			sendText("EOF Skipping\n");
 			if ( eIndex >= 0 )
 				skipBytes( eIndex + 1 ); //Discard up to and including the EOF.
 			else
-				skipBytes( 8 ); //No EOF was found at all. Discard next 8 bytes.
+				skipBytes( 8 ); //No EOF was found at all. Discard all 8 in frame.
 			continue;
 		}		
-		sendText("Valid\n");
 		// We have a valid frame.
 		frame.prefix = getByte(); //SOF byte
 		// Get the command byte
