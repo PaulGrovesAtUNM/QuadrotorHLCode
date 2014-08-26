@@ -201,6 +201,9 @@ void SDK_mainloop(void)
 			case GPIO: //GPIO Pin P1.16
 				GPIO_P1_B16(frame.data[0]);
 			break;
+			case GPIOTOGGLE:
+				GPIO_P1_B16_TOGGLE();
+			break;
 			case VERSION:
 				//sendText( QUAD_VERSION );
 				break;

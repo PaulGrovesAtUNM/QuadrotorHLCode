@@ -55,3 +55,20 @@ void GPIO_P1_B16(unsigned char onoff)
 	else
 		IOSET1 = (1 << 16);
 }
+
+int GPIO_STATE = 0;
+
+void GPIO_P1_B16_TOGGLE()
+{
+	if ( GPIO_STATE )
+	{
+		GPIO_STATE = 0;
+		IOCLR1 = (1 << 16);
+	}
+	else
+	{
+		GPIO_STATE = 1;
+		IOSET1 = (1 << 16);
+	}
+}
+

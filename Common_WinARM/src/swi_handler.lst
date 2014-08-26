@@ -4,7 +4,7 @@
    0              	
    2              	*   swi_handler.s: SWI handler file ARM7TDMI-(S) (not just LPC2000)
    3              	*
-   4              	*   by Martin Thomas 
+   4              	*   by Martin Thomas
    5              	*   http://www.siwawi.arubi.uni-kl.de/avr_projects
    6              	*   based on information from ARM documents
    7              	*
@@ -38,12 +38,12 @@
   35              	.set VECTREMAPPED, 0
   36              	#endif
   37              	
-  38              	  
+  38              	
   39              	/*********************************************************************
-  40              	*  SWI interrupt handler                                             
-  41              	*  Function :  SoftwareInterrupt(SWI_Number)                         
-  42              	*              See below "SwiFunction" table                         
-  43              	*  Parameters:    None                                               
+  40              	*  SWI interrupt handler
+  41              	*  Function :  SoftwareInterrupt(SWI_Number)
+  42              	*              See below "SwiFunction" table
+  43              	*  Parameters:    None
   44              	*  input  :       SWI_Number (extracted from SWI command automaticly)
   45              	*  output :       states for some SWIs - see below
   46              	**********************************************************************/
@@ -62,81 +62,81 @@
   59              	.func   SoftwareInterrupt
   60              	SoftwareInterrupt:
   61              	SWI_HandlerMT:
-  62 0000 10402DE9 		STMFD   sp!, {r4, lr}      /* store regs. */
-  63 0004 00404FE1 		MRS     r4, spsr
-  64 0008 200014E3 		TST     r4, #T_Bit             /* test for thumb */
-  65 000c B2405E11 		LDRNEH  r4, [lr, #-2]          /* NE->thumb - get swi instruction code */
-  66 0010 FF4CC413 		BICNE   r4, r4, #0xff00        /* NE->thumb - clear top 8 bits leaving swi "comment field"=number 
-  67 0014 04401E05 		LDREQ   r4, [lr, #-4]          /* EQ->arm - get swi instruction code */
-  68 0018 FF44C403 		BICEQ   r4, r4, #0xff000000    /* EQ->arm - clear top 8 bits leaving swi "comment field"=number */
-  69 001c 060054E3 		CMP     r4, #MAX_SWI           /* range-check */
-  70 0020 04F19F97 		LDRLS   pc, [pc, r4, LSL #2]   /* jump to routine if <= MAX (LS) */
+  62 0000 10402DE9 	STMFD   sp!, {r4, lr}      /* store regs. */
+  63 0004 00404FE1 	MRS     r4, spsr
+  64 0008 200014E3 	TST     r4, #T_Bit             /* test for thumb */
+  65 000c B2405E11 	LDRNEH  r4, [lr, #-2]          /* NE->thumb - get swi instruction code */
+  66 0010 FF4CC413 	BICNE   r4, r4, #0xff00        /* NE->thumb - clear top 8 bits leaving swi "comment field"=number *
+  67 0014 04401E05 	LDREQ   r4, [lr, #-4]          /* EQ->arm - get swi instruction code */
+  68 0018 FF44C403 	BICEQ   r4, r4, #0xff000000    /* EQ->arm - clear top 8 bits leaving swi "comment field"=number */
+  69 001c 060054E3 	CMP     r4, #MAX_SWI           /* range-check */
+  70 0020 04F19F97 	LDRLS   pc, [pc, r4, LSL #2]   /* jump to routine if <= MAX (LS) */
   71              	SWIOutOfRange:
-  72 0024 FEFFFFEA 		B       SWIOutOfRange
+  72 0024 FEFFFFEA 	B       SWIOutOfRange
   73              	
   74              	/* Jump-Table */
   75              	SwiTableStart:
-  76 0028 44000000 		.word IRQDisable	// 0
-  77 002c 54000000 		.word IRQEnable		// 1
-  78 0030 64000000 		.word FIQDisable	// 2
-  79 0034 78000000 		.word FIQEnable		// 3
-  80 0038 8C000000 		.word CPSRget		// 4
-  81 003c 94000000 		.word IRQRestore	// 5
-  82 0040 B0000000 		.word FIQRestore	// 6
+  76 0028 44000000 	.word IRQDisable	// 0
+  77 002c 54000000 	.word IRQEnable		// 1
+  78 0030 64000000 	.word FIQDisable	// 2
+  79 0034 78000000 	.word FIQEnable		// 3
+  80 0038 8C000000 	.word CPSRget		// 4
+  81 003c 94000000 	.word IRQRestore	// 5
+  82 0040 B0000000 	.word FIQRestore	// 6
   83              	SwiTableEnd:
   84              	.set MAX_SWI, ((SwiTableEnd-SwiTableStart)/4)-1
   85              	
   86              	IRQDisable:
-  87 0044 00004FE1 		MRS     r0, SPSR                        /* Get SPSR = return value */
-  88 0048 804080E3 		ORR     r4, r0, #I_Bit                  /* I_Bit set */
-  89 004c 04F061E1 		MSR     SPSR_c, r4                      /* Set SPSR */
-  90 0050 1D0000EA 		B       EndofSWI
+  87 0044 00004FE1 	MRS     r0, SPSR                        /* Get SPSR = return value */
+  88 0048 804080E3 	ORR     r4, r0, #I_Bit                  /* I_Bit set */
+  89 004c 04F061E1 	MSR     SPSR_c, r4                      /* Set SPSR */
+  90 0050 1D0000EA 	B       EndofSWI
   91              	
   92              	IRQEnable:
-  93 0054 00004FE1 		MRS     r0, SPSR                        /* Get SPSR = return value */
-  94 0058 8040C0E3 		BIC     r4, r0, #I_Bit                  /* I_Bit clear */
-  95 005c 04F061E1 		MSR     SPSR_c, r4                      /* Set SPSR */
-  96 0060 190000EA 		B       EndofSWI                       
+  93 0054 00004FE1 	MRS     r0, SPSR                        /* Get SPSR = return value */
+  94 0058 8040C0E3 	BIC     r4, r0, #I_Bit                  /* I_Bit clear */
+  95 005c 04F061E1 	MSR     SPSR_c, r4                      /* Set SPSR */
+  96 0060 190000EA 	B       EndofSWI
   97              	
   98              	FIQDisable:
-  99 0064 00004FE1 		MRS     r0, SPSR
- 100 0068 404080E3 		ORR     r4, r0, #F_Bit
- 101 006c 400000E2 		AND     r0, r0, #F_Bit
- 102 0070 04F061E1 		MSR     SPSR_c, r4
- 103 0074 140000EA 		B       EndofSWI
+  99 0064 00004FE1 	MRS     r0, SPSR
+ 100 0068 404080E3 	ORR     r4, r0, #F_Bit
+ 101 006c 400000E2 	AND     r0, r0, #F_Bit
+ 102 0070 04F061E1 	MSR     SPSR_c, r4
+ 103 0074 140000EA 	B       EndofSWI
  104              	
  105              	FIQEnable:
- 106 0078 00004FE1 		MRS     r0, SPSR
- 107 007c 4040C0E3 		BIC     r4, r0, #F_Bit
- 108 0080 400000E2 		AND     r0, r0, #F_Bit
- 109 0084 04F061E1 		MSR     SPSR_c, r4
- 110 0088 0F0000EA 		B       EndofSWI
+ 106 0078 00004FE1 	MRS     r0, SPSR
+ 107 007c 4040C0E3 	BIC     r4, r0, #F_Bit
+ 108 0080 400000E2 	AND     r0, r0, #F_Bit
+ 109 0084 04F061E1 	MSR     SPSR_c, r4
+ 110 0088 0F0000EA 	B       EndofSWI
  111              	
  112              	CPSRget:
- 113              		// LDR r0, =0xdeadbeef
- 114 008c 00004FE1 		MRS     r0, SPSR                        /* Get SPSR */
- 115 0090 0D0000EA 		B       EndofSWI                       
+ 113              	// LDR r0, =0xdeadbeef
+ 114 008c 00004FE1 	MRS     r0, SPSR                        /* Get SPSR */
+ 115 0090 0D0000EA 	B       EndofSWI
  116              	
  117              	IRQRestore:
- 118 0094 00404FE1 		MRS     r4, SPSR                        /* Get SPSR */
- 119 0098 800000E2 		AND     r0, r0, #I_Bit
- 120 009c 800010E3 		TST     r0, #I_Bit             /* Test input for I_Bit */
- 121 00a0 8040C403 		BICEQ   r4, r4, #I_Bit
- 122 00a4 80408413 		ORRNE   r4, r4, #I_Bit
- 123 00a8 04F061E1 		MSR     SPSR_c, r4
- 124 00ac 060000EA 		B       EndofSWI
+ 118 0094 00404FE1 	MRS     r4, SPSR                        /* Get SPSR */
+ 119 0098 800000E2 	AND     r0, r0, #I_Bit
+ 120 009c 800010E3 	TST     r0, #I_Bit             /* Test input for I_Bit */
+ 121 00a0 8040C403 	BICEQ   r4, r4, #I_Bit
+ 122 00a4 80408413 	ORRNE   r4, r4, #I_Bit
+ 123 00a8 04F061E1 	MSR     SPSR_c, r4
+ 124 00ac 060000EA 	B       EndofSWI
  125              	
  126              	FIQRestore:
- 127 00b0 00404FE1 		MRS     r4, SPSR                        /* Get SPSR */
- 128 00b4 400000E2 		AND     r0, r0, #F_Bit
- 129 00b8 400010E3 		TST     r0, #F_Bit             /* Test input for F_Bit */
- 130 00bc 4040C403 		BICEQ   r4, r4, #F_Bit
- 131 00c0 40408413 		ORRNE   r4, r4, #F_Bit
- 132 00c4 04F061E1 		MSR     SPSR_c, r4
- 133 00c8 FFFFFFEA 		B       EndofSWI
+ 127 00b0 00404FE1 	MRS     r4, SPSR                        /* Get SPSR */
+ 128 00b4 400000E2 	AND     r0, r0, #F_Bit
+ 129 00b8 400010E3 	TST     r0, #F_Bit             /* Test input for F_Bit */
+ 130 00bc 4040C403 	BICEQ   r4, r4, #F_Bit
+ 131 00c0 40408413 	ORRNE   r4, r4, #F_Bit
+ 132 00c4 04F061E1 	MSR     SPSR_c, r4
+ 133 00c8 FFFFFFEA 	B       EndofSWI
  134              	
  135              	EndofSWI:
- 136 00cc 1080FDE8 		LDMFD   sp!, {r4,pc}^
+ 136 00cc 1080FDE8 	LDMFD   sp!, {r4,pc}^
  137              	.endfunc
  138              	
  139              	
@@ -155,8 +155,8 @@
  152              	.global IntRestore
  153              	.func   IntRestore
  154              	IntRestore:
- 155 0000 050000EF 			SWI     SWI_IRQ_REST
- 156 0004 1EFF2FE1 			BX      lr
+ 155 0000 050000EF 	SWI     SWI_IRQ_REST
+ 156 0004 1EFF2FE1 	BX      lr
  157              	.endfunc
  158              	
  159              	/**********************************************************************
@@ -174,8 +174,8 @@
  171              	.global FiqRestore
  172              	.func   FiqRestore
  173              	FiqRestore:
- 174 0008 060000EF 			SWI     SWI_FIQ_REST
- 175 000c 1EFF2FE1 			BX      lr
+ 174 0008 060000EF 	SWI     SWI_FIQ_REST
+ 175 000c 1EFF2FE1 	BX      lr
  176              	.endfunc
  177              	
  178              	/**********************************************************************
@@ -191,8 +191,8 @@
  188              	.global IntGetCPSR
  189              	.func   IntGetCPSR
  190              	IntGetCPSR:
- 191 0010 040000EF 			SWI     SWI_GET_CPSR
- 192 0014 1EFF2FE1 			BX      lr
+ 191 0010 040000EF 	SWI     SWI_GET_CPSR
+ 192 0014 1EFF2FE1 	BX      lr
  193              	.endfunc
  194              	
  195              	/**********************************************************************
@@ -210,8 +210,8 @@
  207              	.global IntEnable
  208              	.func   IntEnable
  209              	IntEnable:
- 210 0018 010000EF 	        SWI     SWI_IRQ_EN
- 211 001c 1EFF2FE1 	        BX      lr
+ 210 0018 010000EF 	SWI     SWI_IRQ_EN
+ 211 001c 1EFF2FE1 	BX      lr
  212              	.endfunc /* end of IntEnable */
  213              	
  214              	/**********************************************************************
@@ -228,8 +228,8 @@
  225              	.section .text, "ax"
  226              	.func   IntDisable
  227              	IntDisable:
- 228 0020 000000EF 	        SWI     SWI_IRQ_DIS
- 229 0024 1EFF2FE1 	        BX      lr
+ 228 0020 000000EF 	SWI     SWI_IRQ_DIS
+ 229 0024 1EFF2FE1 	BX      lr
  230              	.endfunc /* end of IntDisable */
  231              	
  232              	/**********************************************************************
@@ -247,8 +247,8 @@
  244              	.global FiqEnable
  245              	.func   FiqEnable
  246              	FiqEnable:
- 247 0028 030000EF 	        SWI     SWI_FIQ_EN
- 248 002c 1EFF2FE1 	        BX      lr
+ 247 0028 030000EF 	SWI     SWI_FIQ_EN
+ 248 002c 1EFF2FE1 	BX      lr
  249              	.endfunc
  250              	
  251              	/**********************************************************************
@@ -265,8 +265,8 @@
  262              	.section .text, "ax"
  263              	.func   FiqDisable
  264              	FiqDisable:
- 265 0030 020000EF 	        SWI     SWI_FIQ_DIS
- 266 0034 1EFF2FE1 	        BX      lr
+ 265 0030 020000EF 	SWI     SWI_FIQ_DIS
+ 266 0034 1EFF2FE1 	BX      lr
  267              	.endfunc
  268              	
  269              	

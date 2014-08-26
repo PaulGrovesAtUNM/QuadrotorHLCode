@@ -37,5 +37,7 @@ DAMAGE.
 
 extern void LED(unsigned char, unsigned char);
 void GPIO_P1_B16(unsigned char onoff);
+void GPIO_P1_B16_TOGGLE(void);
+
 //extern void ledInit(void);
 
