@@ -158,19 +158,6 @@ void SDK_mainloop(void)
 	int i;
 	char dbgMsg[100];
 
-	//loops++;
-//	if (loops > 2000)
-//	{
-//		loops = 0;
-		//sprintf(dbgMsg,"%i %i,%i,%i,%i:\n\r", dmcs,   
-		//			WO_Direct_Individual_Motor_Control.motor[0],
-		//			WO_Direct_Individual_Motor_Control.motor[1],
-		//			WO_Direct_Individual_Motor_Control.motor[2],
-		//			WO_Direct_Individual_Motor_Control.motor[3]);
-	
-		//sendText(dbgMsg);
-//	}
-	
 	// Read any characters in the recieve buffer into our RingBuffer
 	
 	LED(0,ON);
@@ -183,6 +170,7 @@ void SDK_mainloop(void)
 		switch (frame.command)
 		{
 			case DMC: //Direct Motor Command
+				GPIO_P1_B16_TOGGLE(); // Toggle when we get a motor command.
 				WO_SDK.ctrl_mode=0x00;	//0x00: direct individual motor control: individual commands for motors 0..3
 				WO_SDK.ctrl_enabled = 1;  //0: disable control by HL processor
 				 			  //1: enable control by HL processor
