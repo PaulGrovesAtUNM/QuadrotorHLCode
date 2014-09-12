@@ -46,8 +46,6 @@ void uart1ISR(void);
 
 void emptyUART0(void);
 void UART0Debug(char *msg, int length);
-void uart0Prime(void);
-
 
 extern unsigned char send_buffer[16];
 extern unsigned short crc16(void *, unsigned short);

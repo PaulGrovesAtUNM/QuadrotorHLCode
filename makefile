@@ -80,6 +80,7 @@ SRCARM += buzzer.c
 SRCARM += buildInfoSetup.c
 SRCARM += RingBuffer.c
 SRCARM += quadComm.c
+SRCARM += transmitter.c
 
 #Sources with interrupt routines in them
 SRCARMINT = $(TARGET).c

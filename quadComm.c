@@ -36,7 +36,7 @@ void sendText(char *msg)
 {
 	while (*msg)
 		RBEnqueue(&u0s,*msg++);
-	uart0Prime();
+//	uart0Prime();
 }
 
 char bytesAvailable(void)

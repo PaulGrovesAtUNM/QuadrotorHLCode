@@ -45,6 +45,7 @@ DAMAGE.
 #include "uart.h"
 #include "ssp.h"
 #include "LL_HL_comm.h"
+#include "transmitter.h"
 #include "sdk.h"
 #include "buzzer.h"
 #include "ublox.h"
@@ -95,6 +96,8 @@ void timer0ISR(void) __irq
   if ( mainloop_trigger < 10 ) 
     mainloop_trigger++;
 
+  transmitter();
+
   IDISABLE;
   VICVectAddr = 0;		// Acknowledge Interrupt
 }
@@ -143,9 +146,7 @@ int	main (void) {
         if (mainloop_trigger) 
 		mainloop_trigger--;
 		  
-        LED(1,ON);
         SDK_mainloop(); //1000 times per second.
-        LED(1,OFF);
 
         // CPU Usage calculation
         TimerT2 = T0TC;

@@ -94,7 +94,7 @@ void uart0ISR(void) __irq
 	// 0x20 -- On when U0THR (Transmitter Holding Register) is empty...
 	while (RBCount(&u0s) != 0 && ((U0LSR & 0x20) != 0))
 	{ 
-			U0THR = RBDequeue(&u0s);
+		U0THR = RBDequeue(&u0s);
 	}
   }
 
@@ -119,7 +119,6 @@ void emptyUART0(void)
 	{
 		rcvd = U0RBR;
 		RBEnqueue(&u0r, rcvd);
-		//UART0WriteChar(rcvd);
 	}
 }
 
@@ -167,13 +166,3 @@ void UART0WriteChar(unsigned char ch)
     RBEnqueue(&u0s, ch);
 }
 
-// Primes the UART send buffer.
-void uart0Prime(void)
-{
-	while ( RBCount(&u0s) > 0 )
-	{
-		while (!(U0LSR & 0x20));
-	//if ( U0LSR & 0x20 ) //If transmitter is empty
-		U0THR = RBDequeue(&u0s); //Write to the transmitter
-	}
-}

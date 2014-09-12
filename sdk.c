@@ -43,6 +43,8 @@ DAMAGE.
 #include "quadComm.h"
 #include "uart.h"
 
+#include "transmitter.h"
+
 #include <stdio.h>
 
 struct WO_SDK_STRUCT WO_SDK;
@@ -58,7 +60,6 @@ unsigned char emergencyModeUpdate=0;
 
 int SDK_EXAMPLE_turn_motors_on(void);
 int SDK_EXAMPLE_turn_motors_off(void);
-void emptyUART0(void);
 
 extern char newvals;
 
@@ -157,12 +158,17 @@ void SDK_mainloop(void)
 {
 	int i;
 	char dbgMsg[100];
+	QUADFRAME af;
+	uint32_t tdata[3] = {1, 1000, 50000};
 
 	// Read any characters in the recieve buffer into our RingBuffer
 	
-	LED(0,ON);
 	emptyUART0();
-	LED(0,OFF);
+
+	loops++;
+
+	initFrame(&af, 0x01, (unsigned char)loops, tdata );
+	setFrame(&af);
 
 	if ( loadFrame() ) //We have received a valid frame...
 	{
@@ -206,6 +212,7 @@ void SDK_mainloop(void)
 			break;
 		}
 	}
+	
 }	
 
 
