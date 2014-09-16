@@ -159,16 +159,13 @@ void SDK_mainloop(void)
 	int i;
 	char dbgMsg[100];
 	QUADFRAME af;
-	uint32_t tdata[3] = {1, 1000, 50000};
+	signed int tdata[3] = {1, 1000, 50000};
 
 	// Read any characters in the recieve buffer into our RingBuffer
 	
 	emptyUART0();
 
 	loops++;
-
-	initFrame(&af, 0x01, (unsigned char)loops, tdata );
-	setFrame(&af);
 
 	if ( loadFrame() ) //We have received a valid frame...
 	{
@@ -188,8 +185,6 @@ void SDK_mainloop(void)
 				WO_Direct_Individual_Motor_Control.motor[4] = 0;
 				WO_Direct_Individual_Motor_Control.motor[5] = 0;
 				
-				//write data to transmit buffer for immediate transfer to LL processor
-				HL2LL_write_cycle();
 				dmcs++;	
 			break;
 			case GPIO: //GPIO Pin P1.16
@@ -212,7 +207,15 @@ void SDK_mainloop(void)
 			break;
 		}
 	}
-	
+//write data to transmit buffer for immediate transfer to LL processor
+
+
+	HL2LL_write_cycle();
+	tdata[0] = RO_ALL_Data.angvel_pitch;
+	tdata[1] = RO_ALL_Data.angvel_roll;
+	tdata[2] = RO_ALL_Data.angvel_yaw;
+	initFrame(&af, 0x01, (unsigned char)loops, tdata );
+	setFrame(&af);
 }	
 
 

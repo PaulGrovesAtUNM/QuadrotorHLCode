@@ -13,23 +13,32 @@ int currentFrame = 2;
 int nextFrame = 2;
 int nextByte = 0;
 
-void initFrame(QUADFRAME *frame, unsigned char command, unsigned char count, uint32_t *data)
+void initFrame(QUADFRAME *frame, unsigned char command, unsigned char count, signed int *data)
 {
+	int i;
 	frame->StartOfFrame = SOF;
 	frame->EndOfFrame = EOFm;
 	frame->cmd = command;
 	frame->count = count;
-	memcpy( frame->data, data, 12);
+	
+	//memcpy( frame->data, data, 12);
+	frame->data[0] = (unsigned char)( (data[0] & 0xFF000000 ) >> 24 ); 
+	frame->data[1] = (unsigned char)( (data[0] & 0x00FF0000 ) >> 16 );
+	frame->data[2] = (unsigned char)( (data[0] & 0x0000FF00 ) >> 8 );
+	frame->data[3] = (unsigned char)( (data[0] & 0x000000FF ));
+ 	frame->data[4] = (unsigned char)( (data[1] & 0xFF000000 ) >> 24 ); 
+	frame->data[5] = (unsigned char)( (data[1] & 0x00FF0000 ) >> 16 );
+	frame->data[6] = (unsigned char)( (data[1] & 0x0000FF00 ) >> 8 );
+	frame->data[7] = (unsigned char)( (data[1] & 0x000000FF ));
+ 	frame->data[8] = (unsigned char)( (data[2] & 0xFF000000 ) >> 24 ); 
+	frame->data[9] = (unsigned char)( (data[2] & 0x00FF0000 ) >> 16 );
+	frame->data[10] = (unsigned char)((data[2] & 0x0000FF00 ) >> 8 );
+	frame->data[11] = (unsigned char)((data[2] & 0x000000FF ));
 }
 
 void transmitterInit(void)
 {
-	unsigned char data[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
 
-	initFrame(frames, 1, 13, data); 
-	currentFrame = 0;
-	nextFrame = 1;
-	nextByte = 0;
 }
 
 // This should only be called from the timer interrupt
