@@ -211,8 +211,8 @@ void SDK_mainloop(void)
 
 
 	HL2LL_write_cycle();
-	tdata[0] = RO_ALL_Data.angvel_pitch;
-	tdata[1] = RO_ALL_Data.angvel_roll;
+	tdata[0] = RO_ALL_Data.angvel_roll;
+	tdata[1] = RO_ALL_Data.angvel_pitch;
 	tdata[2] = RO_ALL_Data.angvel_yaw;
 	initFrame(&af, 0x01, (unsigned char)loops, tdata );
 	setFrame(&af);
