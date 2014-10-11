@@ -214,7 +214,7 @@ void SDK_mainloop(void)
 	tdata[0] = RO_ALL_Data.angvel_roll;
 	tdata[1] = RO_ALL_Data.angvel_pitch;
 	tdata[2] = RO_ALL_Data.angvel_yaw;
-	initFrame(&af, 0x01, (unsigned char)loops, tdata );
+	initFrame(&af, 0x00, (unsigned char)loops, tdata );
 	setFrame(&af);
 }	
 

@@ -4,9 +4,9 @@
 typedef struct QUADFRAME
 {
 	unsigned char StartOfFrame;
-	unsigned char cmd;
-	unsigned char data[12];
 	unsigned char count;
+	unsigned char data[12];
+	unsigned char cmd;
 	unsigned char EndOfFrame;
 } QUADFRAME;
 
