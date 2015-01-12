@@ -159,7 +159,8 @@ void SDK_mainloop(void)
 	int i;
 	char dbgMsg[100];
 	QUADFRAME af;
-	signed int tdata[3] = {1, 1000, 50000};
+	//signed int tdata[3] = {1, 1000, 50000};
+	unsigned int tdata[3] = {processorClockFrequency(), peripheralClockFrequency(), peripheralClockFrequency() / (16 * 57600)};
 
 	// Read any characters in the recieve buffer into our RingBuffer
 	
@@ -211,10 +212,10 @@ void SDK_mainloop(void)
 
 
 	HL2LL_write_cycle();
-	tdata[0] = RO_ALL_Data.angvel_roll;
-	tdata[1] = RO_ALL_Data.angvel_pitch;
-	tdata[2] = RO_ALL_Data.angvel_yaw;
-	initFrame(&af, 0x00, (unsigned char)loops, tdata );
+	//tdata[0] = RO_ALL_Data.angvel_roll;
+	//tdata[1] = RO_ALL_Data.angvel_pitch;
+	//tdata[2] = RO_ALL_Data.angvel_yaw;
+	initFrame(&af, 0x00, (unsigned char)loops, (signed int *)tdata );
 	setFrame(&af);
 }	
 

@@ -294,13 +294,13 @@
  425              	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 irq.c
-     /tmp/ccmTb7uK.s:10     .text:00000000 $a
-     /tmp/ccmTb7uK.s:12     .text:00000000 DefaultVICHandler
-     /tmp/ccmTb7uK.s:38     .text:00000028 init_VIC
-     /tmp/ccmTb7uK.s:113    .text:000000e8 $d
-     /tmp/ccmTb7uK.s:116    .text:000000ec $a
-     /tmp/ccmTb7uK.s:119    .text:000000ec install_irq
-     /tmp/ccmTb7uK.s:215    .text:000001e0 uninstall_irq
-     /tmp/ccmTb7uK.s:322    .debug_frame:00000010 $d
+     /tmp/ccLWgwu8.s:10     .text:00000000 $a
+     /tmp/ccLWgwu8.s:12     .text:00000000 DefaultVICHandler
+     /tmp/ccLWgwu8.s:38     .text:00000028 init_VIC
+     /tmp/ccLWgwu8.s:113    .text:000000e8 $d
+     /tmp/ccLWgwu8.s:116    .text:000000ec $a
+     /tmp/ccLWgwu8.s:119    .text:000000ec install_irq
+     /tmp/ccLWgwu8.s:215    .text:000001e0 uninstall_irq
+     /tmp/ccLWgwu8.s:322    .debug_frame:00000010 $d
 
 NO UNDEFINED SYMBOLS

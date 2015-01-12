@@ -46,7 +46,7 @@ void init(void)
   pll_init();
   pll_feed();
   init_ports();
-  UART0Initialize(57600);	//debug / command
+  UART0Initialize(57600);	//debug / command; 57600 default; try 115200, 224000, and 448000.
   UART1Initialize(57600);	//57600 Servo / GPS, 38400 "indoor GPS"
   init_spi();
   init_spi1();
