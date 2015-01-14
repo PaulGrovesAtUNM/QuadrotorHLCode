@@ -29,6 +29,8 @@ DAMAGE.
 #ifndef SYSTEM_H_
 #define SYSTEM_H_
 
+# define baud_rate 1843200
+
 extern unsigned int processorClockFrequency(void);
 extern unsigned int peripheralClockFrequency(void);
 extern void delay(int);

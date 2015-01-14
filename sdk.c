@@ -160,7 +160,7 @@ void SDK_mainloop(void)
 	char dbgMsg[100];
 	QUADFRAME af;
 	//signed int tdata[3] = {1, 1000, 50000};
-	unsigned int tdata[3] = {processorClockFrequency(), peripheralClockFrequency(), peripheralClockFrequency() / (16 * 57600)};
+	unsigned int tdata[3] = {processorClockFrequency(), peripheralClockFrequency(), peripheralClockFrequency() / (16 * baud_rate)};  // baud_rate defined in "system.h"
 
 	// Read any characters in the recieve buffer into our RingBuffer
 	

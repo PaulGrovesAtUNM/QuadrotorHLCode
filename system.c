@@ -46,7 +46,8 @@ void init(void)
   pll_init();
   pll_feed();
   init_ports();
-  UART0Initialize(57600);	//debug / command; 57600 default; try 115200, 224000, and 448000.
+  //UART0Initialize(57600);	//debug / command; 57600 default; try 115200, 224000, and 448000.
+  UART0Initialize(baud_rate); // baud_rate defined in "system.h"
   UART1Initialize(57600);	//57600 Servo / GPS, 38400 "indoor GPS"
   init_spi();
   init_spi1();
