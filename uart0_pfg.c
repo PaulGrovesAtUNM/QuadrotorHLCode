@@ -124,44 +124,7 @@ void emptyUART0(void)
 
 void UART0Initialize(unsigned int baud)
 {
-	// CHANGES MADE BY WILLIAM NEELEY, JANUARY 2015
-	// based on datasheet for the LPC2146 Microcontroller
   unsigned int divisor = peripheralClockFrequency() / (16 * baud);
-  /*unsigned int divisor;
-  //unsigned char mulval;
-  //unsigned char divaddval;
-  
-  // Given values for a clock rate of 20 MHz
-  /*if(baud == 57600)
-  {
-	divisor = 19;
-	mulval = 7;
-	divaddval = 1;
-  }
-  else if(baud == 115200)
-  {
-	divisor = 4;
-	mulval = 7;
-	divaddval = 12;
-  }
-  else if(baud == 224000)
-  {
-	divisor = 3;
-	mulval = 7;
-	divaddval = 6;
-  }
-  else if(baud == 448000)
-  {
-	divisor = 2;
-	mulval = 5;
-	divaddval = 2;
-  }
-  else
-  {
-	divisor = peripheralClockFrequency() / (16 * baud);
-	//mulval = 1;
-	//divaddval = 0;
-  }*/
 
 // U0IER
 //  Bit0: RBR enable
@@ -176,10 +139,6 @@ void UART0Initialize(unsigned int baud)
   U0LCR = 0x83; /* 8 bit, 1 stop bit, no parity, enable DLAB */
   U0DLL = divisor & 0xFF;
   U0DLM = (divisor >> 8) & 0xFF;
-  
-  // ANOTHER CHANGE MADE BY WILLIAM NEELEY, JANUARY 2015
-  //U0FDR = ((mulval << 4) & 0xF0) & (divaddval & 0x0F); // helps scale the UART clock
-  
   U0LCR &= ~0x80; /* Disable DLAB */
   U0FCR = FIFO_ENABLE | TL3; // Enable FIFO's, interrupt every 14 characters.
   U0TER = 0x80; //Enable transmitter.
