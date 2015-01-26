@@ -13,7 +13,7 @@ int currentFrame = 2;
 int nextFrame = 2;
 int nextByte = 0;
 
-void initFrame(QUADFRAME *frame, unsigned char command, unsigned char count, signed int *data)
+void initFrame(QUADFRAME *frame, unsigned char command, unsigned char count, signed short *data)
 {
 	int i;
 	frame->StartOfFrame = SOF;
@@ -22,18 +22,19 @@ void initFrame(QUADFRAME *frame, unsigned char command, unsigned char count, sig
 	frame->count = count;
 	
 	//memcpy( frame->data, data, 12);
-	frame->data[0] = (unsigned char)( (data[0] & 0xFF000000 ) >> 24 ); 
-	frame->data[1] = (unsigned char)( (data[0] & 0x00FF0000 ) >> 16 );
-	frame->data[2] = (unsigned char)( (data[0] & 0x0000FF00 ) >> 8 );
-	frame->data[3] = (unsigned char)( (data[0] & 0x000000FF ));
- 	frame->data[4] = (unsigned char)( (data[1] & 0xFF000000 ) >> 24 ); 
-	frame->data[5] = (unsigned char)( (data[1] & 0x00FF0000 ) >> 16 );
-	frame->data[6] = (unsigned char)( (data[1] & 0x0000FF00 ) >> 8 );
-	frame->data[7] = (unsigned char)( (data[1] & 0x000000FF ));
- 	frame->data[8] = (unsigned char)( (data[2] & 0xFF000000 ) >> 24 ); 
-	frame->data[9] = (unsigned char)( (data[2] & 0x00FF0000 ) >> 16 );
-	frame->data[10] = (unsigned char)((data[2] & 0x0000FF00 ) >> 8 );
-	frame->data[11] = (unsigned char)((data[2] & 0x000000FF ));
+	// ensures the data goes into Network Short format
+	frame->data[0] =  (unsigned char)((data[0] & 0xFF00 ) >> 8 ); 
+	frame->data[1] =  (unsigned char)((data[0] & 0x00FF ));
+	frame->data[2] =  (unsigned char)((data[1] & 0xFF00 ) >> 8 );
+	frame->data[3] =  (unsigned char)((data[1] & 0x00FF ));
+ 	frame->data[4] =  (unsigned char)((data[2] & 0xFF00 ) >> 8 ); 
+	frame->data[5] =  (unsigned char)((data[2] & 0x00FF ));
+	frame->data[6] =  (unsigned char)((data[3] & 0xFF00 ) >> 8 );
+	frame->data[7] =  (unsigned char)((data[3] & 0x00FF ));
+ 	frame->data[8] =  (unsigned char)((data[4] & 0xFF00 ) >> 8 ); 
+	frame->data[9] =  (unsigned char)((data[4] & 0x00FF ));
+	frame->data[10] = (unsigned char)((data[5] & 0xFF00 ) >> 8 );
+	frame->data[11] = (unsigned char)((data[5] & 0x00FF ));
 }
 
 void transmitterInit(void)

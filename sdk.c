@@ -145,7 +145,6 @@ extern char newvals;
 
 extern char updated;
 extern char DEBUG_ENABLED;
-int loops = 0;
 int firstime = 0;
 int motors[4] = {0,0,0,0};
 
@@ -154,19 +153,27 @@ extern FRAME frame;
 int errs = 0;
 int dmcs = 0;
 
+// Loop counting variables
+unsigned char loopCount = 0;
+const int clocksBetweenTransmissions = 5;
+int imuCounter = 0;
+int statCounter = 3;
+
 void SDK_mainloop(void)
 {
 	int i;
 	char dbgMsg[100];
 	QUADFRAME af;
 	//signed int tdata[3] = {1, 1000, 50000};
-	unsigned int tdata[3] = {processorClockFrequency(), peripheralClockFrequency(), peripheralClockFrequency() / (16 * baud_rate)};  // baud_rate defined in "system.h"
+	//unsigned int tdata[3] = {processorClockFrequency(), peripheralClockFrequency(), peripheralClockFrequency() / (16 * baud_rate)};  // baud_rate defined in "system.h"
+	signed short tdata[6] = { 1, 2, 3, 4, 5, 6};
+	int echoing = 0;
 
 	// Read any characters in the recieve buffer into our RingBuffer
 	
 	emptyUART0();
 
-	loops++;
+	loopCount++;
 
 	if ( loadFrame() ) //We have received a valid frame...
 	{
@@ -201,6 +208,12 @@ void SDK_mainloop(void)
 				//DEBUG_ENABLED = frame.data[0];
 				//debugMsg("SDK","Debug Enabled."); //Only send if debug is enabled.
 			break;
+			case ECHO:
+				echoing = 1;
+				tdata[0] = ((short)frame.data[0] << 8) & (short)frame.data[1];
+				tdata[1] = ((short)frame.data[2] << 8) & (short)frame.data[3];
+				tdata[2] = ((short)frame.data[4] << 8);
+			break;
 			default: 
 				return;
 				//sprintf(dbgMsg, "Unknown Command in Frame: %i", frame.command);
@@ -209,14 +222,38 @@ void SDK_mainloop(void)
 		}
 	}
 //write data to transmit buffer for immediate transfer to LL processor
-
-
 	HL2LL_write_cycle();
-	//tdata[0] = RO_ALL_Data.angvel_roll;
-	//tdata[1] = RO_ALL_Data.angvel_pitch;
-	//tdata[2] = RO_ALL_Data.angvel_yaw;
-	initFrame(&af, 0x00, (unsigned char)loops, (signed int *)tdata );
-	setFrame(&af);
+
+	imuCounter++;
+	statCounter++;
+
+	if(echoing)
+	{
+		initFrame(&af, ECHOFRAME, loopCount, tdata );
+	}
+	else if(imuCounter >= clocksBetweenTransmissions)
+	{
+		imuCounter = 0;	// resets the clock counter
+		tdata[0] = RO_ALL_Data.angvel_roll;
+		tdata[1] = RO_ALL_Data.angvel_pitch;
+		tdata[2] = RO_ALL_Data.angvel_yaw;
+		tdata[3] = RO_ALL_Data.acc_x;
+		tdata[4] = RO_ALL_Data.acc_y;
+		tdata[5] = RO_ALL_Data.acc_z;
+		initFrame(&af, IMUFRAME, loopCount, tdata );
+		setFrame(&af);
+	}
+	else if(statCounter >= clocksBetweenTransmissions)
+	{
+		statCounter = 0;
+		tdata[0] = RO_ALL_Data.UAV_status;
+		tdata[1] = RO_ALL_Data.battery_voltage;
+		tdata[2] = RO_ALL_Data.HL_cpu_load;
+		tdata[3] = 0;
+		tdata[4] = 0;
+		tdata[5] = 0;
+		initFrame(&af, STATUSFRAME, loopCount, tdata );
+	}
 }	
 
 

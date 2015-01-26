@@ -14,7 +14,7 @@ void transmitterInit(void);
 void transmitter(void); // Sends the current frame.
 void setFrame(QUADFRAME *data);  //Swaps the current frame and the next frame
 
-void initFrame(QUADFRAME *frame, unsigned char command, unsigned char count, signed int  *data);
+void initFrame(QUADFRAME *frame, unsigned char command, unsigned char count, signed short  *data);
 #endif
 
 
