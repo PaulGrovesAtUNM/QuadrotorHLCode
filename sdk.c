@@ -231,6 +231,7 @@ void SDK_mainloop(void)
 	if(echoing)
 	{
 		initFrame(&af, ECHOFRAME, loopCount, tdata );
+		setFrame(&af);
 	}
 	else if(imuCounter >= imuCounterMax)
 	{
@@ -254,6 +255,7 @@ void SDK_mainloop(void)
 		tdata[4] = 0;
 		tdata[5] = 0;
 		initFrame(&af, STATUSFRAME, loopCount, tdata );
+		setFrame(&af);
 	}
 }	
 
