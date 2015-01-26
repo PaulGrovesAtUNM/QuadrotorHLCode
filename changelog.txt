@@ -1,0 +1,15 @@
+CHANGELOG
+
+*** v0.3.1 (1/25/2015) ***
+- Slowed STATUS frame transmission rate to 20 Hz/once every 50 loops (down from 100 Hz)
+
+*** v0.3.0 (1/25/2015) ***
+- Started Logging Various Changes
+- Increased UART0 baud rate to 921,600
+- Converted IMU frame values from 3 32-bit ints to 6 16-bit shorts (angular velocities are only recorded with 16 bits of accuracy)
+- Added translational accelerations to IMU frame (originally just angular velocities)
+- Added a STATUS frame for reporting "status" variable, battery voltage, and CPU load
+- Added an ECHOFRAME frame for returning five characters received in a given ECHO frame
+
+
+	

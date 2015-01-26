@@ -155,7 +155,8 @@ int dmcs = 0;
 
 // Loop counting variables
 unsigned char loopCount = 0;
-const int clocksBetweenTransmissions = 5;
+const int imuCounterMax = 5;
+const int statCounterMax = 50;
 int imuCounter = 0;
 int statCounter = 3;
 
@@ -231,7 +232,7 @@ void SDK_mainloop(void)
 	{
 		initFrame(&af, ECHOFRAME, loopCount, tdata );
 	}
-	else if(imuCounter >= clocksBetweenTransmissions)
+	else if(imuCounter >= imuCounterMax)
 	{
 		imuCounter = 0;	// resets the clock counter
 		tdata[0] = RO_ALL_Data.angvel_roll;
@@ -243,7 +244,7 @@ void SDK_mainloop(void)
 		initFrame(&af, IMUFRAME, loopCount, tdata );
 		setFrame(&af);
 	}
-	else if(statCounter >= clocksBetweenTransmissions)
+	else if(statCounter >= statCounterMax)
 	{
 		statCounter = 0;
 		tdata[0] = RO_ALL_Data.UAV_status;
