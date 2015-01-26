@@ -157,8 +157,8 @@ int dmcs = 0;
 unsigned char loopCount = 0;
 const int imuCounterMax = 5;
 const int statCounterMax = 50;
-int imuCounter = 0;
-int statCounter = 3;
+char imuCounter = 0;
+char statCounter = 3;
 
 void SDK_mainloop(void)
 {
@@ -235,7 +235,7 @@ void SDK_mainloop(void)
 	}
 	else if(imuCounter >= imuCounterMax)
 	{
-		imuCounter = 0;	// resets the clock counter
+		imuCounter = 0;	// resets the clock counter for IMU data
 		tdata[0] = RO_ALL_Data.angvel_roll;
 		tdata[1] = RO_ALL_Data.angvel_pitch;
 		tdata[2] = RO_ALL_Data.angvel_yaw;
@@ -247,7 +247,7 @@ void SDK_mainloop(void)
 	}
 	else if(statCounter >= statCounterMax)
 	{
-		statCounter = 0;
+		statCounter = 0; // resets the clock counter for Status data
 		tdata[0] = RO_ALL_Data.UAV_status;
 		tdata[1] = RO_ALL_Data.battery_voltage;
 		tdata[2] = RO_ALL_Data.HL_cpu_load;

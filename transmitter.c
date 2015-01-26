@@ -45,14 +45,10 @@ void transmitterInit(void)
 // This should only be called from the timer interrupt
 void transmitter(void) // Sends the current frame.
 {
-	const int clocksBetweenTransmissions = 5;
-	static int clockCounter = 0;
 	unsigned char *nb;
 	int i;
 
-	clockCounter = clockCounter + 1;
-
-	if ( (( U0LSR & 0x20 ) == 0) || (clockCounter < clocksBetweenTransmissions) ) // Return if transmitter is not empty.
+	if ( ( U0LSR & 0x20 ) == 0) // Return if transmitter is not empty.
 		return;
 
 	if ( currentFrame == 2 ) // We don't have a current frame. 
@@ -70,7 +66,6 @@ void transmitter(void) // Sends the current frame.
 	for (i = 0; i < 16; i++)
 		U0THR = *nb++;
 	
-	clockCounter = 0;
 	LED(0, 0); //led 0 off.
 	currentFrame = 2; //We don't have a ready frame.
 }
