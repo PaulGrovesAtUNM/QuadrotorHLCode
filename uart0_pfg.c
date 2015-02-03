@@ -84,6 +84,8 @@ void uart0ISR(void) __irq
 {
   unsigned int iir;
 
+  LED(1, 1); // Turns on LED 1 to indicate the UART0 ISR has been triggered
+
   // Read IIR to clear interrupt and find out the cause
   IENABLE;
 
@@ -100,15 +102,21 @@ void uart0ISR(void) __irq
 
   if (iir == 2) // RX Data (4 bytes...) Available
   {
-//  	RBEnqueue(&u0r, U0RBR);
- // 	RBEnqueue(&u0r, U0RBR);
-  //	RBEnqueue(&u0r, U0RBR);
-  //	RBEnqueue(&u0r, U0RBR);
+		LED(0, 1);
+		emptyUART0();
+		LED(0, 0);
   } 
+  if (iir == 3) // Highest priority interrupt; caused by one of four things
+  {				// 1) overflow, 2) parity error, 3) framing error, and 4) break interrupt.
+				// read from U0LSR[4:1] to clear the interrupt.
+
+  }
   if (iir == 6)
 	 RBEnqueue(&u0r, U0RBR);
   IDISABLE; 
   VICVectAddr = 0;		// Acknowledge Interrupt
+  LED(1, 0); // Turns off LED 1 to indicate the main triggered loop is exiting
+  LED(0, 0);
 }
 
 void emptyUART0(void)

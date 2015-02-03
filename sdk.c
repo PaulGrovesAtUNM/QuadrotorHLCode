@@ -160,14 +160,16 @@ const int statCounterMax = 50;
 char imuCounter = 0;
 char statCounter = 3;
 
+int i, temp;
+char dbgMsg[100];
+QUADFRAME af;
+//signed int tdata[3] = {1, 1000, 50000};
+//unsigned int tdata[3] = {processorClockFrequency(), peripheralClockFrequency(), peripheralClockFrequency() / (16 * baud_rate)};  // baud_rate defined in "system.h"
+signed short tdata[6] = { 1, 2, 3, 4, 5, 6};
+
+
 void SDK_mainloop(void)
 {
-	int i;
-	char dbgMsg[100];
-	QUADFRAME af;
-	//signed int tdata[3] = {1, 1000, 50000};
-	//unsigned int tdata[3] = {processorClockFrequency(), peripheralClockFrequency(), peripheralClockFrequency() / (16 * baud_rate)};  // baud_rate defined in "system.h"
-	signed short tdata[6] = { 1, 2, 3, 4, 5, 6};
 	int echoing = 0;
 
 	// Read any characters in the recieve buffer into our RingBuffer
@@ -190,7 +192,13 @@ void SDK_mainloop(void)
 				WO_SDK.disable_motor_onoff_by_stick = 0;
 
 				for (i = 0; i < 4; i++ )
-					WO_Direct_Individual_Motor_Control.motor[i] = frame.data[i];
+				{
+					temp = frame.data[i];
+
+					if(temp > 200)
+						temp = 150;
+					WO_Direct_Individual_Motor_Control.motor[i] = temp;
+				}
 				WO_Direct_Individual_Motor_Control.motor[4] = 0;
 				WO_Direct_Individual_Motor_Control.motor[5] = 0;
 				
@@ -211,12 +219,10 @@ void SDK_mainloop(void)
 			break;
 			case ECHO:
 				echoing = 1;
-				tdata[0] = ((short)frame.data[0] << 8) & (short)frame.data[1];
-				tdata[1] = ((short)frame.data[2] << 8) & (short)frame.data[3];
-				tdata[2] = ((short)frame.data[4] << 8);
 			break;
 			default: 
-				return;
+				//LED(1, 0); // Turns off LED 1 to indicate the SDK Main Loop is exiting
+				//return;
 				//sprintf(dbgMsg, "Unknown Command in Frame: %i", frame.command);
 				//sendText(dbgMsg);
 			break;
@@ -230,6 +236,9 @@ void SDK_mainloop(void)
 
 	if(echoing)
 	{
+		tdata[0] = ((unsigned short)frame.data[0] << 8) | (unsigned short)frame.data[1];
+		tdata[1] = ((unsigned short)frame.data[2] << 8) | (unsigned short)frame.data[3];
+		tdata[2] = ((unsigned short)frame.data[4] << 8);
 		initFrame(&af, ECHOFRAME, loopCount, tdata );
 		setFrame(&af);
 	}

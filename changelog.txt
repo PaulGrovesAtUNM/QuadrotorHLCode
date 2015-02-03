@@ -1,5 +1,24 @@
 CHANGELOG
 
+*** v0.3.5 (2/02/2015) ***
+- Condensed changes from all the v0.3.4.# revisions
+	-- solid LED 1 indicates a lock in the ISR for UART0
+	-- solid LED 0 indicates a UART0 ISR lock of type "iir = 2", or a "transmitter()" lock.
+	-- added "emptyUART0" to the UART0 ISR of type "iir = 2".
+
+
+*** v0.3.4 (2/02/2015) ***
+- Fixed the logic for returning echo characters (an AND operation was used to combine two characters into one short; needed to use OR instead)
+- Removed the "return;" command in the "frame.command" switch found in "sdk.c".
+- Added motor speed value checking (capped the motor speeds at 200)
+- Added LED 1 blinking for each call of the SDK Main Loop; this is added to study how the quadrotor's locking up when frames are sent to it. If the LED stays on when it locks up, it is believed that the bug will be between the "turn on" and "turn off" commands.
+	-- v0.3.4.1: moved LED 1 blinking to the Main Loop; LED 1 was off when it locked up in previous version.
+	-- v0.3.4.2: moved LED 1 blinking to the UART0 ISR; LED 1 was off when it locked up in previous version. CAUGHT IT!
+    -- v0.3.4.3: added case for "iir = 3" (associated with UART0 RLS interrupt, which triggers from an overrun error, a parity error, a framing error, or a break interrupt), told LED0 to activate for "iir = 3", and moved LED 1 activation to right below IENABLE. LED 1 triggered, LED 0 didn't.
+	-- v0.3.4.4: shifted LED 1 activation below the call to get the IIR value, and shifted LED 0 activation to "iir = 2" (FIFO threshold has been met). LED 0 AND LED 1 TRIGGERED!
+	-- v0.3.4.5: added "emptyUART0()" command to case where "iir = 2", moved the LED 1 trigger to "iir = 3" just in case, and left in LED 0 toggling just in case "emptyUART0" doesn't work. IT WORKED! AWWW YEAH!
+
+
 *** v0.3.3 (1/25/2015) ***
 - Changed IMU and STATUS frame counters to "char"s in attempt to fix bug where the STATUS frame is never sent
 - Removed transmission frequency regulation that was accidentally left in transmitter()
