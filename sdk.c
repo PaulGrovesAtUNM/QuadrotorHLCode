@@ -171,6 +171,7 @@ signed short tdata[6] = { 1, 2, 3, 4, 5, 6};
 void SDK_mainloop(void)
 {
 	int echoing = 0;
+	int sendingVersion = 0;
 
 	// Read any characters in the recieve buffer into our RingBuffer
 	
@@ -211,7 +212,7 @@ void SDK_mainloop(void)
 				GPIO_P1_B16_TOGGLE();
 			break;
 			case VERSION:
-				//sendText( QUAD_VERSION );
+				sendingVersion = 1;
 				break;
 			case DEBUGMODE:
 				//DEBUG_ENABLED = frame.data[0];
@@ -240,6 +241,12 @@ void SDK_mainloop(void)
 		tdata[1] = ((unsigned short)frame.data[2] << 8) | (unsigned short)frame.data[3];
 		tdata[2] = ((unsigned short)frame.data[4] << 8);
 		initFrame(&af, ECHOFRAME, loopCount, tdata );
+		setFrame(&af);
+	}
+	else if(sendingVersion)
+	{
+		loadVersion(tdata);
+		initFrame(&af, VERSIONFRAME, loopCount, tdata );
 		setFrame(&af);
 	}
 	else if(imuCounter >= imuCounterMax)

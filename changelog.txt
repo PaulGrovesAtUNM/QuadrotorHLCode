@@ -1,5 +1,8 @@
 CHANGELOG
 
+*** v0.3.6 (2/08/2015) ***
+- Added functionality to report the high level controller's version #.
+
 *** v0.3.5 (2/02/2015) ***
 - Condensed changes from all the v0.3.4.# revisions
 	-- solid LED 1 indicates a lock in the ISR for UART0
@@ -7,7 +10,7 @@ CHANGELOG
 	-- added "emptyUART0" to the UART0 ISR of type "iir = 2".
 
 
-*** v0.3.4 (2/02/2015) ***
+*** v0.3.4 (2/02/2015) ***make 
 - Fixed the logic for returning echo characters (an AND operation was used to combine two characters into one short; needed to use OR instead)
 - Removed the "return;" command in the "frame.command" switch found in "sdk.c".
 - Added motor speed value checking (capped the motor speeds at 200)

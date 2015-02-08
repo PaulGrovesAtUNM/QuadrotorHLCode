@@ -1,6 +1,7 @@
 // QuadComm.c
 //  Communications channel with Quadcopter.
 #include "quadComm.h"
+#include "quadCommands.h"
 #include "RingBuffer.h"
 #include "uart.h"
 
@@ -16,6 +17,17 @@ int ECHOMODE = FALSE; // Don't echo.
 void showRBuffer(void)
 {
 	showBuffer(&u0r);
+}
+
+void loadVersion(signed short tdata[])
+{
+	int i;	
+	char version[12] = QUAD_VERSION;
+
+	for(i = 0; i < 6; i++) {
+		tdata[i] = (unsigned short)version[2*i] << 8;
+		tdata[i] = tdata[i] | (unsigned short)version[2*i + 1]; 
+	}
 }
 
 void sendByte(char aByte)

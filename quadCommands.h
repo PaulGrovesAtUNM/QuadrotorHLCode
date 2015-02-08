@@ -15,7 +15,8 @@
 #define IMUFRAME 0
 #define STATUSFRAME 1
 #define ECHOFRAME 2
+#define VERSIONFRAME 3
 
-#define	QUAD_VERSION  "0.3.5"
+#define	QUAD_VERSION  "0.3.6"
 
 #endif

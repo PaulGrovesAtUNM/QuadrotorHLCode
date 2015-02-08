@@ -1,6 +1,7 @@
 #ifndef QUADCOMM_H
 #define QUADCOMM_H
 
+void loadVersion(signed short tdata[]);
 
 void sendByte(char aByte);
 void sendNBytes(char *bytes, int num);
