@@ -33,8 +33,9 @@ DAMAGE.
 //#define baud_rate 115200
 //#define baud_rate 230400
 //#define baud_rate 460800
-#define baud_rate 921600
+//#define baud_rate 921600
 //# define baud_rate 1843200
+#define baud_rate 3686400
 
 extern unsigned int processorClockFrequency(void);
 extern unsigned int peripheralClockFrequency(void);

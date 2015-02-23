@@ -1,7 +1,12 @@
 CHANGELOG
 
+*** v0.3.7 (2/23/2015) ***
+- Increased the baud rate from 921,600 to 3,686,400 since the Edison supports this rate
+
+
 *** v0.3.6 (2/08/2015) ***
 - Added functionality to report the high level controller's version #.
+
 
 *** v0.3.5 (2/02/2015) ***
 - Condensed changes from all the v0.3.4.# revisions
