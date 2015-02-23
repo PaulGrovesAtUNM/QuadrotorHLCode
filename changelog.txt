@@ -1,7 +1,8 @@
 CHANGELOG
 
 *** v0.3.7 (2/23/2015) ***
-- Increased the baud rate from 921,600 to 3,686,400 since the Edison supports this rate
+- Increased the baud rate from 921,600 to 3,686,400 since the Edison theoretically supports this rate.
+(LINUX'S "STTY" DOESN'T SUPPORT THIS BAUD RATE. SHORT OF DEVELOPING ANOTHER METHOD TO SET THE BAUD RATE, IT'S PRACTICALLY STUCK AT 921,600)
 
 
 *** v0.3.6 (2/08/2015) ***
