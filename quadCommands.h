@@ -17,6 +17,6 @@
 #define ECHOFRAME 2
 #define VERSIONFRAME 3
 
-#define	QUAD_VERSION  "0.3.6"
+#define	QUAD_VERSION  "0.3.7"
 
 #endif
