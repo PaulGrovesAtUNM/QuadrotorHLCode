@@ -245,7 +245,7 @@ void SDK_mainloop(void)
 	}
 	else if(sendingVersion)
 	{
-		loadVersion(tdata);
+		loadVersion(tdata); // found in "quadComm.c"
 		initFrame(&af, VERSIONFRAME, loopCount, tdata );
 		setFrame(&af);
 	}
