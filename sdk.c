@@ -155,8 +155,8 @@ int dmcs = 0;
 
 // Loop counting variables
 unsigned char loopCount = 0;
-const int imuCounterMax = 5;
-const int statCounterMax = 50;
+const int imuCounterMax = 5;	// transmits at 1000/ 5 = 200 Hz
+const int statCounterMax = 10;  // transmits at 1000/10 = 100 Hz
 char imuCounter = 0;
 char statCounter = 3;
 
@@ -197,7 +197,7 @@ void SDK_mainloop(void)
 					temp = frame.data[i];
 
 					if(temp > 200)
-						temp = 150;
+						temp = 200;
 					WO_Direct_Individual_Motor_Control.motor[i] = temp;
 				}
 				WO_Direct_Individual_Motor_Control.motor[4] = 0;
@@ -264,11 +264,14 @@ void SDK_mainloop(void)
 	else if(statCounter >= statCounterMax)
 	{
 		statCounter = 0; // resets the clock counter for Status data
-		tdata[0] = RO_ALL_Data.UAV_status;
-		tdata[1] = RO_ALL_Data.battery_voltage;
+		tdata[0] = RO_ALL_Data.UAV_status; 
+		tdata[1] = RO_ALL_Data.battery_voltage; // actual voltage = val*1000;
 		tdata[2] = RO_ALL_Data.HL_cpu_load;
-		tdata[3] = 0;
-		tdata[4] = 0;
+		// actual rpm = motor_rpm*64
+		tdata[3] = ((unsigned short)RO_ALL_Data.motor_rpm[0] << 8) 
+				 | (unsigned short)RO_ALL_Data.motor_rpm[1];
+		tdata[4] = ((unsigned short)RO_ALL_Data.motor_rpm[2] << 8) 
+				 | (unsigned short)RO_ALL_Data.motor_rpm[3];
 		tdata[5] = 0;
 		initFrame(&af, STATUSFRAME, loopCount, tdata );
 		setFrame(&af);

@@ -1,5 +1,15 @@
 CHANGELOG
 
+*** v0.3.9 (5/24/2015) ***
+- Added measured motor RPMs to Status Frame
+- Increased Status Frame frequency to 100 Hz (up from 20 Hz)
+
+
+*** v0.3.8 (3/29/2015) ***
+- Reduced baud rate back to 921,600
+- Changed motor speed limitation (originally reduced values over 200 down to 150)
+
+
 *** v0.3.7 (2/23/2015) ***
 - Increased the baud rate from 921,600 to 3,686,400 since the Edison theoretically supports this rate.
 (LINUX'S "STTY" DOESN'T SUPPORT THIS BAUD RATE. SHORT OF DEVELOPING ANOTHER METHOD TO SET THE BAUD RATE, IT'S PRACTICALLY STUCK AT 921,600. AS SUCH, KEEP USING v0.3.6!)
